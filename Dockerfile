@@ -19,7 +19,7 @@ COPY . .
 ENV VITE_API_PRODUCTO_URL=/producto-api
 ENV VITE_API_PEDIDO_URL=/pedido-api
 ENV VITE_API_USUARIO_URL=/usuario-api
-ENV VITE_API_BASE_URL=/pedido-api
+ENV VITE_API_BASE_URL=/producto-api
 
 # Construir la aplicación
 RUN npm run build

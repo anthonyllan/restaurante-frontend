@@ -17,8 +17,8 @@ const getApiUrl = (envVar, defaultPort) => {
 export const API_PRODUCTO_URL = getApiUrl('VITE_API_PRODUCTO_URL', '2001');
 export const API_PEDIDO_URL = getApiUrl('VITE_API_PEDIDO_URL', '2002');
 export const API_USUARIO_URL = getApiUrl('VITE_API_USUARIO_URL', '2003');
-// API_BASE_URL se usa para productos, así que debe apuntar al mismo que PRODUCTO_URL
-export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || getApiUrl('VITE_API_PRODUCTO_URL', '2001');
+// API_BASE_URL se usa para productos y categorías, así que debe apuntar al mismo que PRODUCTO_URL
+export const API_BASE_URL = getApiUrl('VITE_API_BASE_URL', '2001');
 
 // ✅ Interceptor para agregar token JWT automáticamente a todas las peticiones
 axios.interceptors.request.use(
