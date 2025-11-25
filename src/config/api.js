@@ -21,8 +21,12 @@ const getBaseURL = () => {
   // En producción, usar el mismo dominio con HTTPS (sin puerto)
   // Nginx hará proxy a los microservicios
   if (isProduction()) {
-    // Usar el origin completo pero forzar HTTPS
-    return window.location.origin.replace('http://', 'https://');
+    // Si ya es HTTPS, usar directamente; si no, forzar HTTPS
+    const origin = window.location.origin;
+    if (origin.startsWith('https://')) {
+      return origin;
+    }
+    return origin.replace('http://', 'https://');
   }
   
   // Fallback: usar el origin actual
@@ -49,10 +53,18 @@ const getApiUrl = (service) => {
   // Producción: usar el mismo dominio con HTTPS (sin puerto)
   // Nginx hará proxy a los microservicios HTTP internos
   if (isProduction()) {
-    // Usar el origin completo pero forzar HTTPS y eliminar cualquier puerto
-    const origin = window.location.origin.replace('http://', 'https://');
+    // Si ya es HTTPS, usar directamente; si no, forzar HTTPS
+    let origin = window.location.origin;
+    if (!origin.startsWith('https://')) {
+      origin = origin.replace('http://', 'https://');
+    }
     // Eliminar puerto si existe (ej: https://example.com:8080 -> https://example.com)
-    return origin.split(':').slice(0, 2).join(':');
+    // Solo si hay más de 2 partes después de split(':')
+    const parts = origin.split(':');
+    if (parts.length > 3) {
+      return parts.slice(0, 2).join(':');
+    }
+    return origin;
   }
   
   // Fallback: usar el origin actual
