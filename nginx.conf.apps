@@ -119,7 +119,12 @@ server {
             return 204;
         }
         
-        # Reescribir URL eliminando el prefijo /usuario-api
+        # Reescribir URL: /usuario-api/api/auth/... -> /auth/... (eliminar /api/ para auth)
+        # /usuario-api/api/... -> /api/... (mantener /api/ para otras rutas)
+        if ($uri ~ ^/usuario-api/api/auth) {
+            rewrite ^/usuario-api/api/auth/(.*)$ /auth/$1 break;
+        }
+        rewrite ^/usuario-api/api/(.*)$ /api/$1 break;
         rewrite ^/usuario-api/(.*)$ /$1 break;
         
         proxy_pass http://143.244.210.238;
