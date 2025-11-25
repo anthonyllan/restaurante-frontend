@@ -416,8 +416,11 @@ export const login = async (correo, contrasena) => {
       message: error.message,
       response: error.response?.data,
       status: error.response?.status,
+      statusText: error.response?.statusText,
+      headers: error.response?.headers,
       url: `${BASE_URL}/login`,
-      config: error.config
+      requestUrl: error.config?.url,
+      requestHeaders: error.config?.headers
     });
     
     // Mejorar el mensaje de error

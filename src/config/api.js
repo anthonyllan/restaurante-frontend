@@ -116,6 +116,10 @@ axios.interceptors.request.use(
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
+    // Log de la petición en desarrollo
+    if (!isProduction()) {
+      console.log('📤 Petición:', config.method?.toUpperCase(), config.url, config.headers);
+    }
     return config;
   },
   (error) => {
@@ -126,9 +130,23 @@ axios.interceptors.request.use(
 // ✅ Interceptor para manejar errores de autenticación
 axios.interceptors.response.use(
   (response) => {
+    // Log de respuesta exitosa en desarrollo
+    if (!isProduction()) {
+      console.log('📥 Respuesta:', response.status, response.config.url);
+    }
     return response;
   },
   (error) => {
+    // Log detallado de errores
+    console.error('🚨 Error en petición:', {
+      url: error.config?.url,
+      method: error.config?.method,
+      status: error.response?.status,
+      statusText: error.response?.statusText,
+      data: error.response?.data,
+      headers: error.response?.headers
+    });
+    
     if (error.response?.status === 401) {
       // Token expirado o inválido - redirigir a login
       localStorage.clear();
