@@ -1,0 +1,20 @@
+# Comandos para PowerShell - Ejecuta uno por uno
+
+# 1. Copiar el archivo de configuración de nginx
+Copy-Item -Path nginx.conf.apps -Destination nginx.conf -Force
+
+# 2. Limpiar builds anteriores
+if (Test-Path dist) { Remove-Item -Path dist -Recurse -Force }
+if (Test-Path build) { Remove-Item -Path build -Recurse -Force }
+
+# 3. Recompilar el proyecto
+npm run build
+
+# 4. Verificar que no haya URLs con puertos (opcional)
+Select-String -Path "dist\*.*" -Pattern ":2001" -ErrorAction SilentlyContinue
+
+# 5. Después de verificar, hacer commit y push
+git add .
+git commit -m "Fix: Configurar URLs HTTPS sin puertos para producción"
+git push origin main
+
