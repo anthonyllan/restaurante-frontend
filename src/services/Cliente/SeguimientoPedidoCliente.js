@@ -1,7 +1,8 @@
 import axios from 'axios';
+import { API_PEDIDO_URL } from '../../config/api.js';
 
 // URL del backend
-const BASE_URL = `${import.meta.env.VITE_API_BASE_URL || 'http://localhost:2002'}/api/pedidos`;
+const BASE_URL = `${API_PEDIDO_URL}/api/pedidos`;
 
 /**
  * Obtener el ÚLTIMO pedido del cliente (más reciente)

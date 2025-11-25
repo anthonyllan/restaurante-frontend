@@ -1,9 +1,10 @@
 /*DetallePedidoClienteService.js*/
 
 import axios from 'axios';
+import { API_PEDIDO_URL, API_PRODUCTO_URL } from '../../config/api.js';
 
-const BASE_URL = 'http://localhost:2002/api/detalle-pedido';
-const PRODUCTOS_URL = 'http://localhost:2001/api/productos';
+const BASE_URL = `${API_PEDIDO_URL}/api/detalle-pedido`;
+const PRODUCTOS_URL = `${API_PRODUCTO_URL}/api/productos`;
 
 // Registrar detalles de pedido
 export const registrarDetallesPedido = async (detalles) => {
