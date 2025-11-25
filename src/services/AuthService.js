@@ -292,10 +292,12 @@ const obtenerRolEmpleado = async (empleadoId) => {
  */
 export const login = async (correo, contrasena) => {
   try {
+    console.log('🔐 Intentando login en:', `${BASE_URL}/login`);
     const response = await axios.post(`${BASE_URL}/login`, {
       correo,
       contrasena
     });
+    console.log('✅ Login exitoso:', response.status, response.data);
 
     // Guardar datos en localStorage
     if (response.data) {
@@ -410,10 +412,28 @@ export const login = async (correo, contrasena) => {
       data: response.data
     };
   } catch (error) {
+    console.error('❌ Error en login:', {
+      message: error.message,
+      response: error.response?.data,
+      status: error.response?.status,
+      url: `${BASE_URL}/login`,
+      config: error.config
+    });
+    
+    // Mejorar el mensaje de error
+    let errorMessage = 'Credenciales incorrectas';
+    if (error.response?.data?.message) {
+      errorMessage = error.response.data.message;
+    } else if (error.response?.data?.error) {
+      errorMessage = error.response.data.error;
+    } else if (error.message) {
+      errorMessage = error.message;
+    }
+    
     throw {
       success: false,
       error: error.response?.data || error.message,
-      message: 'Credenciales incorrectas'
+      message: errorMessage
     };
   }
 };
@@ -423,13 +443,22 @@ export const login = async (correo, contrasena) => {
  */
 export const registrarCliente = async (datosRegistro) => {
   try {
+    console.log('📝 Intentando registro en:', `${BASE_URL}/registro`);
     const response = await axios.post(`${BASE_URL}/registro`, datosRegistro);
+    console.log('✅ Registro exitoso:', response.status, response.data);
     return {
       success: true,
       data: response.data,
       message: 'Registro exitoso. Ya puedes iniciar sesión.'
     };
   } catch (error) {
+    console.error('❌ Error en registro:', {
+      message: error.message,
+      response: error.response?.data,
+      status: error.response?.status,
+      url: `${BASE_URL}/registro`,
+      config: error.config
+    });
     throw {
       success: false,
       error: error.response?.data || error.message,
