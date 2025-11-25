@@ -1,8 +1,9 @@
 import axios from 'axios';
+import { API_USUARIO_URL } from '../../config/api.js';
 
-const BASE_URL_EMPLEADOS = `${import.meta.env.VITE_API_USUARIO_URL || 'http://localhost:2003'}/api/empleados`;
-const BASE_URL_ROLES = `${import.meta.env.VITE_API_USUARIO_URL || 'http://localhost:2003'}/api/roles`;
-const BASE_URL_EMPLEADO_ROLES = `${import.meta.env.VITE_API_USUARIO_URL || 'http://localhost:2003'}/api/empleado-roles`;
+const BASE_URL_EMPLEADOS = `${API_USUARIO_URL}/api/empleados`;
+const BASE_URL_ROLES = `${API_USUARIO_URL}/api/roles`;
+const BASE_URL_EMPLEADO_ROLES = `${API_USUARIO_URL}/api/empleado-roles`;
 
 /**
  * Servicio de Recursos Humanos para Administrador
