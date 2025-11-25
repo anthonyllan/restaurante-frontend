@@ -32,8 +32,8 @@ COPY --from=builder /app/dist /usr/share/nginx/html
 # Copiar configuración personalizada de nginx (opcional)
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-# Exponer puerto 80
-EXPOSE 80
+# Exponer puertos 80 (HTTP) y 443 (HTTPS)
+EXPOSE 80 443
 
 # Iniciar nginx
 CMD ["nginx", "-g", "daemon off;"]

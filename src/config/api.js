@@ -2,18 +2,44 @@ import axios from 'axios';
 
 // Detecta automáticamente la URL base según el entorno
 const getBaseURL = () => {
-    const hostname = window.location.hostname;
-    const origin = window.location.origin;
-    
-    // Si estamos en localhost o 127.0.0.1, usar localhost
-    if (hostname === 'localhost' || hostname === '127.0.0.1') {
-      return 'http://localhost:2001';
-    }
-    // Si estamos accediendo por IP, usar la misma IP para la API
-    return `http://${hostname}:2001`;
-  };
+  const hostname = window.location.hostname;
+  const protocol = window.location.protocol; // 'http:' o 'https:'
   
+  // Si estamos en localhost o 127.0.0.1, usar localhost
+  if (hostname === 'localhost' || hostname === '127.0.0.1') {
+    return 'http://localhost:2001';
+  }
+  
+  // En producción, usar el mismo dominio con HTTPS (nginx hará proxy)
+  // Esto resuelve el problema de Mixed Content
+  return `${protocol}//${hostname}`;
+};
+
 export const API_BASE_URL = getBaseURL();
+
+// URLs para los microservicios
+// En producción, nginx hará proxy, así que usamos rutas relativas
+const getApiUrl = (service) => {
+  const hostname = window.location.hostname;
+  const protocol = window.location.protocol;
+  
+  // Desarrollo local
+  if (hostname === 'localhost' || hostname === '127.0.0.1') {
+    const ports = {
+      producto: '2001',
+      pedido: '2002',
+      usuario: '2003'
+    };
+    return `http://localhost:${ports[service]}`;
+  }
+  
+  // Producción: usar el mismo dominio (nginx hará proxy)
+  return `${protocol}//${hostname}`;
+};
+
+export const API_PRODUCTO_URL = import.meta.env.VITE_API_PRODUCTO_URL || getApiUrl('producto');
+export const API_PEDIDO_URL = import.meta.env.VITE_API_PEDIDO_URL || getApiUrl('pedido');
+export const API_USUARIO_URL = import.meta.env.VITE_API_USUARIO_URL || getApiUrl('usuario');
 
 // ✅ Interceptor para agregar token JWT automáticamente a todas las peticiones
 axios.interceptors.request.use(

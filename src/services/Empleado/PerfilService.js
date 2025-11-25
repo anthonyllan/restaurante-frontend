@@ -1,6 +1,7 @@
 import axios from 'axios';
+import { API_USUARIO_URL } from '../../config/api.js';
 
-const BASE_URL = `${import.meta.env.VITE_API_USUARIO_URL || 'http://localhost:2003'}/api/empleados`;
+const BASE_URL = `${API_USUARIO_URL}/api/empleados`;
 
 /**
  * Servicio de Perfil de Empleado

@@ -1,6 +1,7 @@
 import axios from 'axios';
+import { API_USUARIO_URL } from '../../config/api.js';
 
-const BASE_URL = `${import.meta.env.VITE_API_USUARIO_URL || 'http://localhost:2003'}/api/clientes`;
+const BASE_URL = `${API_USUARIO_URL}/api/clientes`;
 
 /**
  * Servicio de Perfil de Cliente
@@ -100,7 +101,7 @@ export const eliminarImagenPerfilCliente = async (id) => {
  */
 export const obtenerUrlImagenCliente = (nombreImagen) => {
   if (!nombreImagen) return null;
-  const baseUrl = import.meta.env.VITE_API_USUARIO_URL || 'http://localhost:2003';
+  const baseUrl = API_USUARIO_URL;
   return `${baseUrl}/uploads/clientes/${nombreImagen}`;
 };
 
@@ -111,7 +112,7 @@ export const cargarImagenPerfilCliente = async (nombreImagen) => {
   if (!nombreImagen) return null;
   
   try {
-    const baseUrl = import.meta.env.VITE_API_USUARIO_URL || 'http://localhost:2003';
+    const baseUrl = API_USUARIO_URL;
     const imageUrl = `${baseUrl}/uploads/clientes/${nombreImagen}`;
     
     // Intentar cargar la imagen con autenticación
