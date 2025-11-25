@@ -100,8 +100,8 @@ export const eliminarImagenPerfil = async (id) => {
  */
 export const obtenerUrlImagen = (nombreImagen) => {
   if (!nombreImagen) return null;
-  const baseUrl = import.meta.env.VITE_API_USUARIO_URL || 'http://localhost:2003';
-  return `${baseUrl}/uploads/empleados/${nombreImagen}`;
+  // Usar API_USUARIO_URL de la configuración centralizada
+  return `${API_USUARIO_URL}/uploads/empleados/${nombreImagen}`;
 };
 
 /**
@@ -111,8 +111,8 @@ export const cargarImagenPerfil = async (nombreImagen) => {
   if (!nombreImagen) return null;
   
   try {
-    const baseUrl = import.meta.env.VITE_API_USUARIO_URL || 'http://localhost:2003';
-    const imageUrl = `${baseUrl}/uploads/empleados/${nombreImagen}`;
+    // Usar API_USUARIO_URL de la configuración centralizada
+    const imageUrl = `${API_USUARIO_URL}/uploads/empleados/${nombreImagen}`;
     
     // Intentar cargar la imagen con autenticación
     const response = await axios.get(imageUrl, {
