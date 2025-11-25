@@ -67,9 +67,30 @@ const getApiUrl = (service) => {
   return origin;
 };
 
-export const API_PRODUCTO_URL = import.meta.env.VITE_API_PRODUCTO_URL || getApiUrl('producto');
-export const API_PEDIDO_URL = import.meta.env.VITE_API_PEDIDO_URL || getApiUrl('pedido');
-export const API_USUARIO_URL = import.meta.env.VITE_API_USUARIO_URL || getApiUrl('usuario');
+// En producción, ignorar variables de entorno HTTP y usar siempre HTTPS a través del proxy
+const getFinalApiUrl = (service, envVar) => {
+  // Si hay una variable de entorno y estamos en producción
+  if (envVar && isProduction()) {
+    // Si la variable de entorno es HTTP, ignorarla y usar el proxy HTTPS
+    if (envVar.startsWith('http://')) {
+      return getApiUrl(service);
+    }
+    // Si ya es HTTPS, usarla
+    if (envVar.startsWith('https://')) {
+      return envVar;
+    }
+  }
+  // Si hay variable de entorno y NO estamos en producción, usarla
+  if (envVar && !isProduction()) {
+    return envVar;
+  }
+  // Si no hay variable de entorno, usar la detección automática
+  return getApiUrl(service);
+};
+
+export const API_PRODUCTO_URL = getFinalApiUrl('producto', import.meta.env.VITE_API_PRODUCTO_URL);
+export const API_PEDIDO_URL = getFinalApiUrl('pedido', import.meta.env.VITE_API_PEDIDO_URL);
+export const API_USUARIO_URL = getFinalApiUrl('usuario', import.meta.env.VITE_API_USUARIO_URL);
 
 // Log para debugging (también en producción para verificar)
 console.log('🔧 API Configuration:', {
