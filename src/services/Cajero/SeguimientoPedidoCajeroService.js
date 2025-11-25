@@ -1,7 +1,8 @@
 import axios from 'axios';
 import { getEmpleadoId } from '../../utils/authUtils';
+import { API_PEDIDO_URL } from '../../config/api.js';
 
-const BASE_URL = 'http://localhost:2002/api/pedidos';
+const BASE_URL = `${API_PEDIDO_URL}/api/pedidos`;
 
 // Obtener todos los pedidos
 export const obtenerTodosPedidos = async () => {

@@ -1,6 +1,7 @@
 import axios from 'axios';
+import { API_PEDIDO_URL } from '../../config/api.js';
 
-const BASE_URL = 'http://localhost:2002/api/pagos';
+const BASE_URL = `${API_PEDIDO_URL}/api/pagos`;
 
 // Registrar un nuevo pago
 export const registrarPago = async (pagoDto) => {

@@ -1,6 +1,7 @@
 import axios from 'axios';
+import { API_PEDIDO_URL } from '../../config/api.js';
 
-const BASE_URL = 'http://localhost:2002/api/ventas';
+const BASE_URL = `${API_PEDIDO_URL}/api/ventas`;
 
 // Obtener todas las ventas
 export const obtenerTodasVentas = async () => {
