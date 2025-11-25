@@ -1,0 +1,507 @@
+/* ============================================
+   MENÚ GENERAL SIN SESIÓN - Solo visualización
+   ============================================ */
+
+:root {
+  --primary-white: #ffffff;
+  --secondary-wine: #722f37;
+  --secondary-wine-dark: #5a252a;
+  --neutral-50: #fafafa;
+  --neutral-100: #f5f5f5;
+  --neutral-200: #e5e5e5;
+  --neutral-500: #737373;
+  --neutral-600: #525252;
+  --neutral-700: #404040;
+  --success-green: #16a34a;
+  --info-blue: #0284c7;
+}
+
+/* ============================================
+   CONTAINER PRINCIPAL
+   ============================================ */
+
+.sin-log-menuContainer {
+  padding: 100px 40px 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+  /* TIPOGRAFÍA MINIMALISTA */
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+/* ============================================
+   HEADER SECTION
+   ============================================ */
+
+.sin-log-headerSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 30px;
+  padding: 30px;
+  background: linear-gradient(135deg, var(--secondary-wine) 0%, var(--secondary-wine-dark) 100%);
+  border-radius: 16px;
+  color: var(--primary-white);
+  box-shadow: 0 8px 24px rgba(114, 47, 55, 0.25);
+}
+
+.sin-log-headerContent h1 {
+  font-size: 2.5rem;
+  margin: 0 0 10px 0;
+  font-weight: 400; /* ✅ Regular weight para diseño minimalista */
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.sin-log-headerDescription {
+  font-size: 1.1rem;
+  opacity: 0.95;
+  margin: 0 0 15px 0;
+  text-transform: capitalize;
+}
+
+.sin-log-infoDay {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.sin-log-dayBadge,
+.sin-log-productCount {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500; /* ✅ Medium weight, sin bold */
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  backdrop-filter: blur(10px);
+}
+
+.sin-log-headerActions {
+  display: flex;
+  gap: 12px;
+}
+
+.sin-log-refreshBtn {
+  background: rgba(255, 255, 255, 0.2);
+  color: var(--primary-white);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 500; /* ✅ Medium weight, sin bold */
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.sin-log-refreshBtn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* ============================================
+   BANNER INFORMATIVO
+   ============================================ */
+
+.sin-log-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 16px 24px;
+  margin-bottom: 30px;
+  background: linear-gradient(135deg, var(--info-blue) 0%, #0369a1 100%);
+  color: var(--primary-white);
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 500;
+  box-shadow: 0 4px 16px rgba(2, 132, 199, 0.3);
+}
+
+.sin-log-banner svg {
+  font-size: 1.3rem;
+}
+
+.sin-log-banner strong {
+  font-weight: 700;
+  color: var(--primary-white);
+}
+
+/* ============================================
+   ALERTAS
+   ============================================ */
+
+.sin-log-alert {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 20px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.sin-log-alertError {
+  background: #fee2e2;
+  color: #991b1b;
+  border-left: 4px solid #dc2626;
+}
+
+.sin-log-alertClose {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: inherit;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.sin-log-alertClose:hover {
+  opacity: 1;
+}
+
+/* ============================================
+   NO PRODUCTOS
+   ============================================ */
+
+.sin-log-noProductosHoy {
+  text-align: center;
+  padding: 80px 20px;
+  background: var(--neutral-50);
+  border-radius: 12px;
+  margin-top: 20px;
+}
+
+.sin-log-noProductosIcon {
+  font-size: 4rem;
+  color: var(--neutral-500);
+  margin-bottom: 20px;
+}
+
+.sin-log-noProductosHoy h3 {
+  font-size: 1.8rem;
+  color: var(--neutral-700);
+  margin-bottom: 10px;
+}
+
+.sin-log-noProductosHoy p {
+  font-size: 1.1rem;
+  color: var(--neutral-600);
+  margin-bottom: 25px;
+}
+
+.sin-log-btn {
+  padding: 12px 28px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500; /* ✅ Medium weight, sin bold */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: none;
+}
+
+.sin-log-btnPrimary {
+  background-color: var(--secondary-wine);
+  color: var(--primary-white);
+}
+
+.sin-log-btnPrimary:hover {
+  background-color: var(--secondary-wine-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(114, 47, 55, 0.3);
+}
+
+/* ============================================
+   CATEGORÍAS Y PRODUCTOS
+   ============================================ */
+
+.sin-log-categoriasGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.sin-log-categoriaSection {
+  background: var(--primary-white);
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  border: 1px solid var(--neutral-200);
+}
+
+.sin-log-categoriaHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid var(--neutral-200);
+}
+
+.sin-log-categoriaInfo h2 {
+  font-size: 1.8rem;
+  color: var(--secondary-wine);
+  margin: 0 0 5px 0;
+}
+
+.sin-log-categoriaInfo p {
+  font-size: 1rem;
+  color: var(--neutral-600);
+  margin: 0;
+}
+
+.sin-log-productosCount {
+  background: var(--neutral-100);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500; /* ✅ Medium weight, sin bold */
+  color: var(--neutral-700);
+}
+
+.sin-log-productosGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 25px;
+}
+
+/* ============================================
+   PRODUCTO CARD
+   ============================================ */
+
+.sin-log-productoCard {
+  background: var(--primary-white);
+  border: 1px solid var(--neutral-200);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.sin-log-productoCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(114, 47, 55, 0.15);
+  border-color: var(--secondary-wine);
+}
+
+.sin-log-productoImagen {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  background: var(--neutral-100);
+}
+
+.sin-log-productoImagen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.sin-log-imagenPlaceholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--neutral-200) 0%, var(--neutral-100) 100%);
+  color: var(--neutral-500);
+  font-size: 2rem;
+  font-weight: 500; /* ✅ Medium weight, sin bold */
+}
+
+.sin-log-badgeDisponibleHoy {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: var(--success-green);
+  color: var(--primary-white);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500; /* ✅ Medium weight, sin bold */
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.sin-log-productoInfo {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.sin-log-productoInfo h3 {
+  font-size: 1.3rem;
+  color: var(--neutral-700);
+  margin: 0 0 10px 0;
+  font-weight: 500; /* ✅ Medium weight, sin bold */
+}
+
+.sin-log-productoDescripcion {
+  font-size: 0.95rem;
+  color: var(--neutral-600);
+  margin-bottom: 15px;
+  line-height: 1.5;
+  flex-grow: 1;
+}
+
+.sin-log-productoDetalles {
+  margin-bottom: 15px;
+}
+
+.sin-log-precioTiempo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.sin-log-precio {
+  font-size: 1.6rem;
+  color: var(--secondary-wine);
+  font-weight: 600; /* ✅ Semibold para el precio (importante visualmente) */
+}
+
+.sin-log-tiempo {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.9rem;
+  color: var(--neutral-600);
+  background: var(--neutral-100);
+  padding: 5px 12px;
+  border-radius: 15px;
+}
+
+.sin-log-disponibilidad {
+  display: flex;
+  align-items: center;
+}
+
+.sin-log-estado {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  padding: 5px 12px;
+  border-radius: 15px;
+  font-weight: 500; /* ✅ Medium weight, sin bold */
+}
+
+.sin-log-disponible {
+  background: rgba(22, 163, 74, 0.1);
+  color: var(--success-green);
+}
+
+.sin-log-btnOrdenar {
+  width: 100%;
+  padding: 12px;
+  background: var(--secondary-wine);
+  color: var(--primary-white);
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500; /* ✅ Medium weight, sin bold */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+
+.sin-log-btnOrdenar:hover {
+  background: var(--secondary-wine-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(114, 47, 55, 0.3);
+}
+
+/* ============================================
+   LOADING
+   ============================================ */
+
+.sin-log-loadingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 20px;
+  min-height: 60vh;
+}
+
+.sin-log-spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid var(--neutral-200);
+  border-top-color: var(--secondary-wine);
+  border-radius: 50%;
+  animation: sin-log-spin 1s linear infinite;
+}
+
+@keyframes sin-log-spin {
+  to { transform: rotate(360deg); }
+}
+
+.sin-log-loadingContainer p {
+  margin-top: 20px;
+  font-size: 1.1rem;
+  color: var(--neutral-600);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 768px) {
+  .sin-log-menuContainer {
+    padding: 90px 20px 30px;
+  }
+
+  .sin-log-headerSection {
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+  }
+
+  .sin-log-headerContent h1 {
+    font-size: 1.8rem;
+  }
+
+  .sin-log-headerDescription {
+    font-size: 0.95rem;
+  }
+
+  .sin-log-headerActions {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .sin-log-productosGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .sin-log-categoriaHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+}
+

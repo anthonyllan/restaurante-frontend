@@ -1,0 +1,411 @@
+/* ============================================
+   VARIABLES CSS - Paleta Blanco/Vino
+   ============================================ */
+   :root {
+    --primary-white: #ffffff;
+    --secondary-wine: #722f37;
+    --secondary-wine-dark: #5a252a;
+    --secondary-wine-light: #8b4049;
+    --neutral-50: #fafafa;
+    --neutral-100: #f5f5f5;
+    --neutral-200: #e5e5e5;
+    --neutral-300: #d4d4d4;
+    --neutral-400: #a3a3a3;
+    --neutral-500: #737373;
+    --neutral-600: #525252;
+    --neutral-700: #404040;
+    --neutral-800: #262626;
+    --success-green: #16a34a;
+    --warning-amber: #d97706;
+    --danger-red: #dc2626;
+    --accent-wine: #a55e70;
+  }
+  
+  /* ============================================
+     HEADER FIJO - Elegante y Transparente
+     ============================================ */
+  
+  .cli-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    height: 120px; /* Altura fija */
+  }
+  
+  /* ============================================
+     CONTENIDO DEL HEADER - Distribución
+     ============================================ */
+  
+  .cli-header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 32px;
+    max-width: 1400px;
+    margin: 0 auto;
+    height: 100%;
+    width: 100%;
+  }
+  
+  /* ============================================
+     SECCIÓN DE PERFIL - Icono, nombre y rol
+     ============================================ */
+  
+  .cli-profile-section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 12px;
+    transition: background-color 0.3s ease;
+  }
+
+  .cli-profile-section:hover {
+    background-color: rgba(114, 47, 55, 0.05);
+  }
+  
+  .cli-profile-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .cli-profile-image {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    border: 2px solid var(--secondary-wine);
+  }
+  
+  .cli-profile-image:hover {
+    transform: scale(1.05);
+  }
+
+  .cli-profile-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .cli-profile-name {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--neutral-800);
+    letter-spacing: -0.2px;
+    line-height: 1.2;
+  }
+
+  .cli-profile-role {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--secondary-wine);
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+  }
+  
+  .cli-profile-text {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--secondary-wine);
+    letter-spacing: -0.1px;
+    margin: 0;
+    text-align: center;
+  }
+  
+  /* ============================================
+     NAVEGACIÓN PRINCIPAL - Botones directos
+     ============================================ */
+  
+  .cli-navbar {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .cli-nav-list {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .cli-nav-item {
+    position: relative;
+  }
+  
+  /* ============================================
+     BOTONES DE NAVEGACIÓN - Flotantes y elegantes
+     ============================================ */
+  
+  .cli-nav-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(114, 47, 55, 0.1);
+    border-radius: 50px;
+    color: var(--secondary-wine);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* Botón como elemento button para logout */
+  .cli-nav-link[type="button"],
+  button.cli-nav-link {
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(114, 47, 55, 0.1);
+  }
+  
+  .cli-nav-link::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 3px;
+    background: var(--accent-wine);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateX(-50%);
+    border-radius: 2px 2px 0 0;
+  }
+  
+  .cli-nav-link:hover {
+    background: rgba(255, 255, 255, 0.95);
+    border-color: var(--accent-wine);
+    color: var(--secondary-wine-dark);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 32px rgba(165, 94, 112, 0.25);
+  }
+  
+  .cli-nav-link:hover::before {
+    width: 100%;
+  }
+  
+  .cli-nav-link.cli-active-route {
+    background: rgba(165, 94, 112, 0.1);
+    border-color: var(--accent-wine);
+    color: var(--secondary-wine-dark);
+    transform: translateY(-2px);
+  }
+  
+  .cli-nav-link.cli-active-route::before {
+    width: 100%;
+  }
+  
+  /* ============================================
+     ICONOS - Estilizados
+     ============================================ */
+  
+  .cli-nav-link svg {
+    font-size: 1.1rem;
+    transition: transform 0.3s ease;
+  }
+  
+  .cli-nav-link:hover svg {
+    transform: scale(1.1);
+  }
+  
+  /* ============================================
+     SEPARADOR - Elegante
+     ============================================ */
+  
+  .cli-nav-separator {
+    width: 1px;
+    height: 32px;
+    background: linear-gradient(to bottom, transparent, var(--neutral-300), transparent);
+    margin: 0 16px;
+  }
+  
+  /* ============================================
+     BOTÓN LOGOUT - Especial
+     ============================================ */
+  
+  .cli-logout-link {
+    background: rgba(220, 38, 38, 0.05) !important;
+    border-color: rgba(220, 38, 38, 0.2) !important;
+    color: var(--danger-red) !important;
+  }
+  
+  .cli-logout-link:hover {
+    background: rgba(220, 38, 38, 0.1) !important;
+    border-color: var(--danger-red) !important;
+    box-shadow: 0 8px 32px rgba(220, 38, 38, 0.2) !important;
+    color: var(--danger-red) !important;
+  }
+  
+  .cli-logout-link::before {
+    background: var(--danger-red) !important;
+  }
+  
+  /* ============================================
+     ESPACIADO PARA EL CONTENIDO DEBAJO
+     ============================================ */
+  
+  /* Agregar padding-top al body o contenedor principal para compensar el header fijo */
+  body {
+    padding-top: 80px;
+  }
+  
+  /* O si prefieres aplicarlo a un contenedor específico */
+  .cli-app {
+    padding-top: 80px;
+  }
+  
+  /* ============================================
+     RESPONSIVE DESIGN
+     ============================================ */
+  
+  @media (max-width: 1024px) {
+
+    .cli-header {
+        height: 100px; /* ✅ ALTURA FIJA EN MÓVIL - Más alto que antes */
+        position: fixed; /* ✅ Mantener fijo */
+      }
+
+    .cli-header-content {
+      padding: 0 24px;
+    }
+    
+    .cli-nav-list {
+      gap: 8px;
+    }
+    
+    .cli-nav-link {
+      padding: 10px 16px;
+      font-size: 0.9rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .cli-header {
+      height: auto;
+      position: fixed; /* Mantener fijo en móvil también */
+    }
+    
+    .cli-header-content {
+      flex-direction: column;
+      gap: 16px;
+      padding: 16px 20px;
+    }
+    
+    .cli-navbar {
+      width: 100%;
+    }
+    
+    .cli-nav-list {
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+    }
+    
+    .cli-nav-separator {
+      display: none;
+    }
+    
+    /* Ajustar el espaciado en móvil */
+    body {
+      padding-top: 120px;
+    }
+    
+    .clileadocajero-app {
+      padding-top: 120px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .cli-header-content {
+      padding: 12px 16px;
+    }
+    
+    .cli-nav-link {
+      padding: 8px 12px;
+      font-size: 0.85rem;
+    }
+    
+    .cli-nav-link span {
+      display: none;
+    }
+    
+    .cli-nav-link svg {
+      font-size: 1.2rem;
+    }
+    
+    .cli-profile-text {
+      font-size: 0.75rem;
+    }
+    
+    .cli-profile-image {
+      width: 40px;
+      height: 40px;
+    }
+  }
+  
+  /* ============================================
+     ANIMACIONES Y EFECTOS
+     ============================================ */
+  
+  @keyframes cli-fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .cli-nav-link {
+    animation: cli-fadeInUp 0.4s ease-out;
+  }
+  
+  .cli-nav-link:nth-child(1) { animation-delay: 0.1s; }
+  .cli-nav-link:nth-child(2) { animation-delay: 0.2s; }
+  .cli-nav-link:nth-child(3) { animation-delay: 0.3s; }
+  .cli-nav-link:nth-child(4) { animation-delay: 0.4s; }
+  
+  /* ============================================
+     FOCUS STATES - Accesibilidad
+     ============================================ */
+  
+  .cli-nav-link:focus {
+    outline: 2px solid var(--accent-wine);
+    outline-offset: 2px;
+  }
+  
+  /* ============================================
+     EFECTOS GLASSMORPHISM
+     ============================================ */
+  
+  @supports (backdrop-filter: blur(20px)) {
+    .cli-header {
+      background: rgba(255, 255, 255, 0.9);
+    }
+    
+    .cli-nav-link {
+      background: rgba(255, 255, 255, 0.7);
+    }
+  }

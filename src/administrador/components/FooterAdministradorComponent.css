@@ -1,0 +1,84 @@
+/* ============================================
+   FOOTER ADMINISTRADOR - Minimalista Blanco/Vino
+   ============================================ */
+
+.admin-footer {
+  position: fixed;
+  bottom: 0;
+  left: 280px;
+  right: 0;
+  background: var(--primary-white);
+  border-top: 1px solid var(--neutral-200);
+  box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.05);
+  z-index: 999;
+}
+
+.admin-footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+  max-height: 70px;
+}
+
+.admin-footer-logo {
+  display: flex;
+  align-items: center;
+}
+
+.admin-logo-image {
+  height: 36px;
+  width: 36px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid var(--secondary-wine);
+  transition: transform 0.2s ease;
+}
+
+.admin-logo-image:hover {
+  transform: scale(1.05);
+}
+
+.admin-footer-info {
+  text-align: right;
+}
+
+.admin-version-text {
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--secondary-wine);
+}
+
+.admin-copyright {
+  margin: 2px 0 0 0;
+  font-size: 0.7rem;
+  color: var(--neutral-500);
+}
+
+@media (max-width: 768px) {
+  .admin-footer {
+    left: 0;
+  }
+  
+  .admin-footer-content {
+    padding: 10px 16px;
+  }
+  
+  .admin-footer-info {
+    text-align: center;
+  }
+  
+  .admin-logo-image {
+    height: 32px;
+    width: 32px;
+  }
+  
+  .admin-version-text {
+    font-size: 0.8rem;
+  }
+  
+  .admin-copyright {
+    font-size: 0.65rem;
+  }
+}

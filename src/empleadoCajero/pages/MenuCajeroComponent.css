@@ -1,0 +1,734 @@
+/* ============================================
+   VARIABLES CSS - Paleta Blanco/Vino
+   ============================================ */
+   :root {
+    --primary-white: #ffffff;
+    --secondary-wine: #722f37;
+    --secondary-wine-dark: #5a252a;
+    --secondary-wine-light: #8b4049;
+    --neutral-50: #fafafa;
+    --neutral-100: #f5f5f5;
+    --neutral-200: #e5e5e5;
+    --neutral-300: #d4d4d4;
+    --neutral-400: #a3a3a3;
+    --neutral-500: #737373;
+    --neutral-600: #525252;
+    --neutral-700: #404040;
+    --neutral-800: #262626;
+    --success-green: #16a34a;
+    --warning-amber: #d97706;
+    --danger-red: #dc2626;
+  }
+  
+  /* ============================================
+     CONTENEDOR PRINCIPAL - Minimalista
+     ============================================ */
+  .cajero-menuContainer {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 24px;
+    width: calc(100vw - 380px); /* ✅ ANCHO COMPLETO */
+    background: var(--neutral-50);
+    min-height: 100vh;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    min-height: calc(100vh - 70px); /* ✅ ALTURA COMPLETA */
+  }
+  
+  /* ============================================
+     HEADER SECTION - Minimalista Blanco/Vino
+     ============================================ */
+  .cajero-headerSection {
+    position: relative;
+    background: linear-gradient(135deg, var(--secondary-wine) 0%, var(--secondary-wine-dark) 100%);
+    border-radius: 16px;
+    padding: 40px 32px;
+    margin-bottom: 32px;
+    color: var(--primary-white);
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(114, 47, 55, 0.15);
+    border: 1px solid var(--secondary-wine-light);
+  }
+  
+  .cajero-headerContent h1 {
+    margin: 0 0 12px 0;
+    font-size: 2.75rem;
+    font-weight: 300;
+    letter-spacing: -0.5px;
+    color: var(--primary-white);
+  }
+  
+  .cajero-headerDescription {
+    margin: 0 0 20px 0;
+    font-size: 1.1rem;
+    font-weight: 400;
+    opacity: 0.9;
+    color: var(--primary-white);
+  }
+  
+  /* Información del día */
+  .cajero-infoDay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .cajero-dayBadge {
+    background: rgba(255, 255, 255, 0.15);
+    color: var(--primary-white);
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-weight: 500;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    font-size: 0.95rem;
+  }
+  
+  .cajero-productCount {
+    background: var(--primary-white);
+    color: var(--secondary-wine);
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    font-size: 0.95rem;
+  }
+  
+  /* Botón de actualizar */
+  .cajero-refreshBtn {
+    /*position: absolute;*/
+    /*top: 24px;
+    right: 24px;*/
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--primary-white);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 12px 16px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+  }
+  
+  .cajero-refreshBtn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* ============================================
+     LOADING - Minimalista
+     ============================================ */
+  .cajero-loadingContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+    color: var(--neutral-600);
+    background: var(--primary-white);
+    border-radius: 16px;
+    margin: 24px 0;
+  }
+  
+  .cajero-spinner {
+    width: 48px;
+    height: 48px;
+    border: 2px solid var(--neutral-200);
+    border-top: 2px solid var(--secondary-wine);
+    border-radius: 50%;
+    animation: cajeroSpin 1s linear infinite;
+    margin-bottom: 24px;
+  }
+  
+  @keyframes cajeroSpin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  .cajero-loadingContainer p {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin: 0;
+  }
+  
+  /* ============================================
+     ALERTAS - Minimalista
+     ============================================ */
+  .cajero-alert {
+    padding: 16px 24px;
+    margin-bottom: 24px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 500;
+    font-size: 0.95rem;
+  }
+  
+  .cajero-alertError {
+    background: var(--primary-white);
+    color: var(--danger-red);
+    border: 1px solid var(--danger-red);
+    box-shadow: 0 2px 8px rgba(220, 38, 38, 0.1);
+  }
+  
+  .cajero-alertClose {
+    background: none;
+    border: none;
+    font-size: 1.25rem;
+    cursor: pointer;
+    padding: 4px;
+    margin-left: 16px;
+    color: inherit;
+    border-radius: 4px;
+    transition: background 0.2s ease;
+  }
+  
+  .cajero-alertClose:hover {
+    background: rgba(0, 0, 0, 0.05);
+  }
+  
+  /* ============================================
+     NO PRODUCTOS HOY - Minimalista
+     ============================================ */
+  .cajero-noProductosHoy {
+    text-align: center;
+    padding: 80px 32px;
+    background: var(--primary-white);
+    border-radius: 16px;
+    margin: 24px 0;
+    border: 1px solid var(--neutral-200);
+  }
+  
+  .cajero-noProductosIcon {
+    font-size: 4rem;
+    margin-bottom: 24px;
+    opacity: 0.6;
+  }
+  
+  .cajero-noProductosHoy h3 {
+    color: var(--neutral-700);
+    margin-bottom: 12px;
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+  
+  .cajero-noProductosHoy p {
+    color: var(--neutral-500);
+    margin-bottom: 32px;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  
+  /* ============================================
+     GRID DE CATEGORÍAS - Minimalista
+     ============================================ */
+  .cajero-categoriasGrid {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  
+  /* ============================================
+     SECCIÓN DE CATEGORÍA - Minimalista
+     ============================================ */
+  .cajero-categoriaSection {
+    background: var(--primary-white);
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--neutral-200);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+  }
+  
+  .cajero-categoriaHeader {
+    background: var(--neutral-50);
+    padding: 28px 32px;
+    border-bottom: 1px solid var(--neutral-200);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .cajero-categoriaInfo h2 {
+    margin: 0 0 8px 0;
+    color: var(--secondary-wine);
+    font-size: 1.75rem;
+    font-weight: 500;
+    letter-spacing: -0.25px;
+  }
+  
+  .cajero-categoriaInfo p {
+    margin: 0;
+    color: var(--neutral-600);
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+  
+  .cajero-categoriaStats .productosCount {
+    background: var(--secondary-wine);
+    color: var(--primary-white);
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    box-shadow: 0 2px 8px rgba(114, 47, 55, 0.2);
+  }
+  
+  /* ============================================
+     GRID DE PRODUCTOS - Minimalista
+     ============================================ */
+  .cajero-productosGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 24px;
+    padding: 32px;
+  }
+  
+  .cajero-noProductos {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: var(--neutral-500);
+    font-style: italic;
+    padding: 60px;
+    font-size: 1.1rem;
+  }
+  
+  /* ============================================
+     CARD DE PRODUCTO - Minimalista
+     ============================================ */
+  .cajero-productoCard {
+    background: var(--primary-white);
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--neutral-200);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+  }
+  
+  .cajero-productoCard:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+    border-color: var(--secondary-wine-light);
+  }
+  
+  /* ============================================
+     IMAGEN DEL PRODUCTO - Minimalista
+     ============================================ */
+  .cajero-productoImagen {
+    position: relative;
+    height: 220px;
+    overflow: hidden;
+    background: var(--neutral-100);
+  }
+  
+  .cajero-productoImagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .cajero-productoCard:hover .cajero-productoImagen img {
+    transform: scale(1.05);
+  }
+  
+  .cajero-imagenPlaceholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--neutral-100) 0%, var(--neutral-200) 100%);
+    color: var(--neutral-400);
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+  
+  /* Badge disponible hoy */
+  .cajero-badgeDisponibleHoy {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: var(--success-green);
+    color: var(--primary-white);
+    padding: 6px 12px;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 8px rgba(22, 163, 74, 0.3);
+  }
+  
+  /* ============================================
+     INFORMACIÓN DEL PRODUCTO - Minimalista
+     ============================================ */
+  .cajero-productoInfo {
+    padding: 24px;
+  }
+  
+  .cajero-productoInfo h3 {
+    margin: 0 0 8px 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--secondary-wine);
+    line-height: 1.3;
+    letter-spacing: -0.25px;
+  }
+  
+  .cajero-productoDescripcion {
+    margin: 0 0 20px 0;
+    color: var(--neutral-600);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  /* ============================================
+     DETALLES DEL PRODUCTO - Minimalista
+     ============================================ */
+  .cajero-productoDetalles {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .cajero-precioTiempo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .cajero-precio {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--secondary-wine);
+    letter-spacing: -0.5px;
+  }
+  
+  .cajero-tiempo {
+    background: var(--neutral-100);
+    color: var(--neutral-700);
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border: 1px solid var(--neutral-200);
+  }
+  
+  /* ============================================
+     DISPONIBILIDAD - Minimalista
+     ============================================ */
+  .cajero-disponibilidad {
+    display: flex;
+    align-items: center;
+  }
+  
+  .cajero-estado {
+    padding: 8px 16px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border: 1px solid;
+  }
+  
+  .cajero-disponible {
+    background: var(--primary-white);
+    color: var(--success-green);
+    border-color: var(--success-green);
+  }
+  
+  .cajero-noDisponible {
+    background: var(--primary-white);
+    color: var(--danger-red);
+    border-color: var(--danger-red);
+  }
+  
+  /* ============================================
+     BOTONES - Minimalista
+     ============================================ */
+  .cajero-btn {
+    padding: 14px 28px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-decoration: none;
+    display: inline-block;
+    border: 1px solid;
+  }
+  
+  .cajero-btnPrimary {
+    background: var(--secondary-wine);
+    color: var(--primary-white);
+    border-color: var(--secondary-wine);
+  }
+  
+  .cajero-btnPrimary:hover {
+    background: var(--secondary-wine-dark);
+    border-color: var(--secondary-wine-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(114, 47, 55, 0.3);
+  }
+  
+  /* ============================================
+     RESPONSIVE - Minimalista
+     ============================================ */
+  @media (max-width: 1024px) {
+    .cajero-productosGrid {
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+      padding: 24px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .cajero-menuContainer {
+      padding: 16px;
+    }
+    
+    .cajero-headerSection {
+      padding: 32px 24px;
+      margin-bottom: 24px;
+    }
+    
+    .cajero-headerContent h1 {
+      font-size: 2.25rem;
+    }
+    
+    .cajero-refreshBtn {
+      position: relative;
+      top: auto;
+      right: auto;
+      margin-top: 20px;
+      width: auto;
+    }
+    
+    .cajero-infoDay {
+      flex-direction: column;
+      gap: 12px;
+    }
+    
+    .cajero-productosGrid {
+      grid-template-columns: 1fr;
+      padding: 20px;
+    }
+    
+    .cajero-categoriaHeader {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 24px;
+    }
+    
+    .cajero-productoInfo {
+      padding: 20px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .cajero-headerSection {
+      padding: 24px 16px;
+    }
+    
+    .cajero-headerContent h1 {
+      font-size: 1.75rem;
+    }
+    
+    .cajero-productosGrid {
+      padding: 16px;
+    }
+    
+    .cajero-precioTiempo {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    
+    .cajero-categoriaHeader {
+      padding: 20px 16px;
+    }
+    
+    .cajero-productoInfo {
+      padding: 16px;
+    }
+  }
+  
+  /* ============================================
+     ANIMACIONES SUAVES
+     ============================================ */
+  @media (prefers-reduced-motion: no-preference) {
+    .cajero-productoCard {
+      animation: cajeroFadeInUp 0.6s ease-out;
+    }
+    
+    .cajero-categoriaSection {
+      animation: cajeroFadeInUp 0.5s ease-out;
+    }
+  }
+  
+  @keyframes cajeroFadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* ============================================
+     ACCESIBILIDAD
+     ============================================ */
+  @media (prefers-color-scheme: dark) {
+    /* Si en el futuro quieren modo oscuro */
+  }
+  
+  /* Focus states para accesibilidad */
+  .cajero-refreshBtn:focus,
+  .cajero-btn:focus {
+    outline: 2px solid var(--secondary-wine);
+    outline-offset: 2px;
+  }
+  
+  /* ============================================
+     SCROLL SUAVE
+     ============================================ */
+  .cajero-menuContainer {
+    scroll-behavior: smooth;
+  }
+
+  /* Agregar estos estilos al archivo existente */
+
+/* ============================================
+   HEADER ACTIONS - Carrito integrado
+   ============================================ */
+.cajero-headerActions {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    position: absolute;
+    top: 24px;
+    right: 24px;
+  }
+  
+  /* Botón del carrito */
+  .cajero-carritoBtn {
+    position: relative;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--primary-white);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 12px 16px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .cajero-carritoBtn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Badge del carrito */
+  .cajero-carritoBadge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: var(--danger-red);
+    color: var(--primary-white);
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border: 2px solid var(--primary-white);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* ============================================
+     BOTÓN AGREGAR AL CARRITO
+     ============================================ */
+  .cajero-btnAgregarCarrito {
+    width: 100%;
+    background: var(--secondary-wine);
+    color: var(--primary-white);
+    border: none;
+    padding: 12px 16px;
+    border-radius: 12px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-top: 16px;
+    border: 1px solid var(--secondary-wine);
+  }
+  
+  .cajero-btnAgregarCarrito:hover {
+    background: var(--secondary-wine-dark);
+    border-color: var(--secondary-wine-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(114, 47, 55, 0.3);
+  }
+  
+  .cajero-btnAgregarCarrito:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 12px rgba(114, 47, 55, 0.2);
+  }
+  
+  /* ============================================
+     RESPONSIVE PARA CARRITO
+     ============================================ */
+  @media (max-width: 768px) {
+    .cajero-headerActions {
+      position: relative;
+      top: auto;
+      right: auto;
+      margin-top: 20px;
+      justify-content: center;
+    }
+    
+    .cajero-carritoBtn {
+      padding: 10px 14px;
+      font-size: 0.85rem;
+    }
+    
+    .cajero-carritoBadge {
+      width: 20px;
+      height: 20px;
+      font-size: 0.7rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .cajero-headerActions {
+      flex-direction: column;
+      gap: 8px;
+    }
+    
+    .cajero-btnAgregarCarrito {
+      padding: 10px 14px;
+      font-size: 0.85rem;
+    }
+  }

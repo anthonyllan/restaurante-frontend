@@ -1,0 +1,334 @@
+/* VARIABLES GLOBALES MÍNIMAS */
+:root {
+  /* Colores principales del negocio */
+  --primary-white: #ffffff;
+  --secondary-wine: #722f37;      /* Vino principal */
+  --secondary-wine-light: #8b4049; /* Vino claro */
+  --secondary-wine-dark: #5a242a;  /* Vino oscuro */
+  
+  /* Colores adicionales */
+  --accent-green: #38a169;
+  --accent-green-light: #68d391;
+  
+  /* Neutros */
+  --neutral-50: #f9fafb;
+  --neutral-100: #f3f4f6;
+  --neutral-200: #e5e7eb;
+  --neutral-300: #d1d5db;
+  --neutral-400: #9ca3af;
+  --neutral-500: #6b7280;
+  --neutral-600: #4b5563;
+  --neutral-700: #374151;
+  --neutral-800: #1f2937;
+  --neutral-900: #111827;
+  
+  /* Estados */
+  --success-green: #38a169;
+  --danger-red: #ef4444;
+  --warning-yellow: #f59e0b;
+  
+  /* Tipografía */
+  --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+}
+
+/* RESET BÁSICO */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--neutral-700);
+  background-color: var(--primary-white);
+  text-decoration-color: #111827;
+}
+
+/* LAYOUT BÁSICO */
+.App {
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* ============================================
+   MÓDULO EMPLEADOS (emp) - CON SIDEBAR (NORMAL)
+   ============================================ */
+
+/* Layout para empleados (con sidebar de 280px) */
+.main-content {
+  margin-left: 280px;
+  margin-bottom: 70px;
+  flex: 1;
+  padding: 20px;
+  min-height: calc(100vh - 70px);
+}
+
+.content-wrapper {
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    margin-left: 0;
+    padding: 15px;
+  }
+}
+
+/* ============================================
+   MÓDULO CAJERO (cajero) - CON SIDEBAR (NORMAL)
+   ============================================ */
+
+/* Layout para cajero (con sidebar) */
+.cajero-main-content {
+  margin-left: 280px;
+  margin-bottom: 70px;
+  flex: 1;
+  padding: 20px;
+  min-height: calc(100vh - 70px);
+}
+
+.cajero-content-wrapper {
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .cajero-main-content {
+    margin-left: 0;
+    padding: 15px;
+  }
+}
+
+/* ============================================
+   MÓDULO ADMINISTRADOR (admin) - CON SIDEBAR (NORMAL)
+   ============================================ */
+
+/* Layout para administrador (con sidebar de 280px) */
+.administrador-app {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.administrador-main-content {
+  margin-left: 280px;
+  margin-bottom: 70px;
+  flex: 1;
+  padding: 20px;
+  min-height: calc(100vh - 70px);
+}
+
+.administrador-content-wrapper {
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .administrador-main-content {
+    margin-left: 0;
+    padding: 15px;
+  }
+}
+
+/* ============================================
+   MÓDULO CLIENTE (cli)
+   ============================================ */
+
+.cliente-main-content {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  padding-top: 24px !important; /*MANEJA LA DISTANCIA ENTRE EL HEADER DE MENU Y EL NAVBAR*/
+  flex: 1;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+.cliente-content-wrapper {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 100 !important;
+  overflow-x: hidden;
+}
+
+/* ============================================
+   ESPECÍFICO PARA TUS RUTAS DE CLIENTE (cli)
+   ============================================ */
+
+/* CONTENEDORES QUE USA TU CLIENTEROUTES */
+.cliente-app {
+  width: 100% !important;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow-x: hidden;
+}
+
+.cli-main-content {
+  flex: 1;
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  
+  overflow-x: hidden;
+}
+
+.cli-content-wrapper {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow-x: hidden;
+}
+
+/* ============================================
+   FORZAR ANCHO COMPLETO SOLO EN CLIENTE
+   ============================================ */
+
+/* SOLO AFECTA RUTAS QUE EMPIECEN CON /cliente */
+[data-route*="/cliente"] .main-content,
+[data-route*="/cliente"] .content-wrapper {
+  width: 100% !important;
+  max-width: none !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+/* OVERRIDE PARA CUALQUIER CONTENEDOR DENTRO DEL MÓDULO CLIENTE */
+.cliente-main-content [class*="container"],
+.cliente-content-wrapper [class*="container"],
+.cli-app [class*="container"],
+.cli-main-content [class*="container"],
+.cli-content-wrapper [class*="container"] {
+  max-width: none !important;
+  width: 100% !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+/* ============================================
+   ELIMINAR ESPACIOS EXTRA SOLO EN CLIENTE
+   ============================================ */
+
+/* RESET COMPLETO DE MÁRGENES SOLO EN CLIENTE */
+.cliente-main-content,
+.cliente-main-content > *,
+.cliente-content-wrapper,
+.cliente-content-wrapper > *,
+.cli-app,
+.cli-app > *,
+.cli-main-content,
+.cli-main-content > *,
+.cli-content-wrapper,
+.cli-content-wrapper > * {
+  margin-top: 0 !important;
+}
+
+/* ELIMINAR MARGIN-TOP DE HEADERS INTERNOS SOLO EN CLIENTE */
+.cli-headerSection {
+  margin-top: 0 !important;
+}
+
+/* ELIMINAR MARGIN-TOP DE CONTENEDORES PRINCIPALES SOLO EN CLIENTE */
+.cli-menuContainer {
+  margin-top: 0 !important;
+}
+
+/* EXCEPCIÓN: EL HEADER DEL CLIENTE MANTIENE SU POSICIÓN FIJA */
+.cli-app > header {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 1000 !important;
+  margin-top: 0 !important;
+}
+
+/* COMPENSACIÓN PARA EL HEADER FIJO MÁS ALTO DEL CLIENTE */
+.cli-app {
+  padding-top: 120px; /* Desktop - Header más alto */
+}
+
+@media (max-width: 1024px) {
+  .cli-app {
+    padding-top: 110px; /* Tablet - Header fijo */
+  }
+}
+
+@media (max-width: 768px) {
+  .cliente-app {
+    padding-top: 100px; /* Móvil - Header fijo más alto */
+  }
+}
+
+@media (max-width: 480px) {
+  .cli-app {
+    padding-top: 90px; /* Móvil pequeño - Header fijo compacto */
+  }
+}
+
+/* ============================================
+   UTILIDAD PARA CASOS EXTREMOS
+   ============================================ */
+.cli-force-full-width {
+  width: 100vw !important;
+  margin-left: calc(-50vw + 50%) !important;
+  max-width: none !important;
+}
+
+/* ============================================
+   ANIMACIONES GLOBALES
+   ============================================ */
+@keyframes spin {
+  to { 
+    transform: rotate(360deg); 
+  }
+}
+
+/* ============================================
+   MÓDULO CLIENTE SIN SESIÓN (PÚBLICO)
+   ============================================ */
+.sin-sesion-app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--neutral-50);
+}
+
+.sin-sesion-main-content {
+  flex: 1;
+  padding-top: 85px; /* Altura del header minimalista */
+}
+
+@media (max-width: 1024px) {
+  .sin-sesion-main-content {
+    padding-top: 75px;
+  }
+}
+
+@media (max-width: 768px) {
+  .sin-sesion-main-content {
+    padding-top: 70px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sin-sesion-main-content {
+    padding-top: 65px;
+  }
+}

@@ -1,0 +1,826 @@
+/* ============================================
+   VARIABLES CSS - Igual al Header
+   ============================================ */
+   :root {
+    --primary-white: #ffffff;
+    --secondary-wine: #722f37;
+    --secondary-wine-dark: #5a252a;
+    --secondary-wine-light: #8b4049;
+    --neutral-50: #fafafa;
+    --neutral-100: #f5f5f5;
+    --neutral-200: #e5e5e5;
+    --neutral-300: #d4d4d4;
+    --neutral-400: #a3a3a3;
+    --neutral-500: #737373;
+    --neutral-600: #525252;
+    --neutral-700: #404040;
+    --neutral-800: #262626;
+    --success-green: #16a34a;
+    --warning-amber: #d97706;
+    --danger-red: #dc2626;
+    --accent-wine: #a55e70;
+  }
+  
+  /* ============================================
+     FOOTER PRINCIPAL - IGUAL AL HEADER
+     ============================================ */
+  .cli-footer {
+    position: relative;
+    
+    /* ✅ MISMO ESTILO QUE EL HEADER */
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-top: 1px solid rgba(114, 47, 55, 0.1);
+    box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.08);
+    
+    /* ✅ ANCHO COMPLETO DE LA PANTALLA */
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    
+    /* ✅ ALTURA ADECUADA */
+    min-height: 140px;
+    padding: 24px 0;
+    
+    /* Eliminar bordes y líneas */
+    border-bottom: none;
+    outline: none;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  
+  /* ============================================
+     CONTENIDO DEL FOOTER - DISTRIBUCIÓN
+     ============================================ */
+  .cli-footer-content {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    
+    /* ✅ CENTRADO CON PADDING LATERAL */
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 32px;
+    height: 100%;
+    width: 100%;
+    gap: 40px;
+    
+    /* Eliminar bordes */
+    border: none;
+    outline: none;
+    
+    /* Transición suave */
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  /* ============================================
+     LOGO DEL FOOTER - LADO IZQUIERDO MÁS GRANDE
+     ============================================ */
+  .cli-footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+  }
+  
+  .cli-footer-logo:hover {
+    transform: scale(1.02);
+  }
+  
+  .cli-logo-image {
+    height: 90px; /* ✅ MÁS GRANDE QUE EL HEADER */
+    width: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+    transition: all 0.3s ease;
+    border-radius: 12px;
+  }
+  
+  .cli-logo-image:hover {
+    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.15));
+    transform: scale(1.05);
+  }
+  
+  .cli-logo-text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .cli-logo-text h3 {
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--secondary-wine);
+    letter-spacing: -0.5px;
+  }
+  
+  .cli-logo-text span {
+    font-size: 1rem;
+    color: var(--secondary-wine);
+    opacity: 0.7;
+    font-weight: 400;
+  }
+  
+  /* ============================================
+     SECCIÓN CENTRAL - OPCIONES Y SÍGUENOS LADO A LADO
+     ============================================ */
+  .cli-footer-center {
+    display: flex;
+    gap: 48px; /* ✅ ESPACIO ENTRE OPCIONES Y SÍGUENOS */
+    flex: 1;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  
+  /* ============================================
+     NAVEGACIÓN DEL FOOTER - OPCIONES
+     ============================================ */
+  .cli-footer-nav-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* ✅ ALINEACIÓN A LA IZQUIERDA */
+    gap: 16px;
+  }
+  
+  .cli-footer-nav-title {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--secondary-wine);
+  }
+  
+  .cli-footer-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* ✅ ALINEACIÓN A LA IZQUIERDA */
+    gap: 8px;
+    width: 100%;
+  }
+  
+  .cli-footer-link {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* ✅ ESPACIO ENTRE ICONO Y TEXTO */
+    color: var(--secondary-wine);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    position: relative;
+    width: auto; /* ✅ ANCHO AUTOMÁTICO */
+  }
+  
+  .cli-footer-link:hover {
+    background: rgba(114, 47, 55, 0.1);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(114, 47, 55, 0.15);
+  }
+  
+  .cli-footer-link:active {
+    transform: translateY(0);
+  }
+  
+  /* ✅ ICONOS EN LOS LINKS */
+  .cli-footer-link svg {
+    font-size: 1.1rem;
+    transition: transform 0.3s ease;
+  }
+  
+  .cli-footer-link:hover svg {
+    transform: scale(1.1);
+  }
+  
+  /* ============================================
+     SECCIÓN SÍGUENOS - AL LADO DE OPCIONES
+     ============================================ */
+  .cli-footer-social {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* ✅ ALINEACIÓN A LA IZQUIERDA */
+    gap: 16px; /* ✅ MISMO GAP QUE OPCIONES */
+  }
+  
+  .cli-footer-social-title {
+    margin: 0;
+    font-size: 1.2rem; /* ✅ MISMO TAMAÑO QUE OPCIONES */
+    font-weight: 600;
+    color: var(--secondary-wine);
+  }
+  
+  .cli-footer-social-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--secondary-wine);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem; /* ✅ MISMO TAMAÑO QUE OPCIONES */
+    padding: 8px 16px; /* ✅ MISMO PADDING QUE OPCIONES */
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    position: relative;
+    background: rgba(24, 119, 242, 0.05); /* ✅ FONDO SUTIL DE FACEBOOK */
+    border: 1px solid rgba(24, 119, 242, 0.1);
+  }
+  
+  .cli-footer-social-link:hover {
+    background: rgba(24, 119, 242, 0.1);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(24, 119, 242, 0.2);
+    border-color: rgba(24, 119, 242, 0.3);
+  }
+  
+  .cli-footer-social-link:active {
+    transform: translateY(0);
+  }
+  
+  /* ✅ ICONO DE FACEBOOK */
+  .cli-footer-social-link svg {
+    font-size: 1.2rem;
+    color: #1877f2; /* ✅ COLOR OFICIAL DE FACEBOOK */
+    transition: transform 0.3s ease;
+  }
+  
+  .cli-footer-social-link:hover svg {
+    transform: scale(1.1);
+  }
+  
+  /* ============================================
+     ACERCA DE NOSOTROS - LADO DERECHO CON FRASES ICÓNICAS
+     ============================================ */
+  .cli-footer-about {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 16px; /* ✅ Incrementado para acomodar las frases */
+    max-width: 320px; /* ✅ Ligeramente más ancho para las frases */
+    text-align: right;
+  }
+  
+  .cli-footer-about-title {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--secondary-wine);
+  }
+  
+  .cli-footer-about-content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+  }
+  
+  .cli-footer-about-text {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--secondary-wine);
+    opacity: 0.8;
+    line-height: 1.4;
+  }
+  
+  /* ✅ FRASES ICÓNICAS DEL RESTAURANTE */
+  .cli-footer-phrases {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 12px 0;
+    border-top: 1px solid rgba(114, 47, 55, 0.15);
+    border-bottom: 1px solid rgba(114, 47, 55, 0.15);
+  }
+  
+  .cli-footer-phrase {
+    margin: 0;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--secondary-wine);
+    font-style: italic;
+    line-height: 1.3;
+    position: relative;
+  }
+  
+  .cli-footer-phrase:first-child {
+    color: var(--secondary-wine-dark); /* ✅ Ligeramente más oscuro para diferenciación */
+    font-weight: 600;
+  }
+  
+  .cli-footer-phrase:last-child {
+    color: var(--accent-wine); /* ✅ Color acento para la segunda frase */
+    font-weight: 600;
+  }
+  
+  /* ✅ EFECTO HOVER EN LAS FRASES */
+  .cli-footer-phrases:hover .cli-footer-phrase {
+    transform: translateX(-2px);
+    transition: transform 0.3s ease;
+  }
+  
+  .cli-footer-copyright {
+    padding-top: 12px;
+    width: 100%;
+  }
+  
+  .cli-footer-copyright p {
+    margin: 0;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--secondary-wine);
+    opacity: 0.7;
+  }
+  
+  /* ============================================
+     RESPONSIVE DESIGN OPTIMIZADO
+     ============================================ */
+  
+  /* Tablets - 1024px y menos */
+  @media (max-width: 1024px) {
+    .cli-footer {
+      min-height: 130px;
+      padding: 20px 0;
+    }
+    
+    .cli-footer-content {
+      padding: 0 24px;
+      gap: 32px;
+    }
+    
+    .cli-footer-center {
+      gap: 36px; /* ✅ REDUCIR ESPACIO EN TABLET */
+    }
+    
+    .cli-logo-image {
+      height: 80px;
+    }
+    
+    .cli-logo-text h3 {
+      font-size: 1.6rem;
+    }
+    
+    .cli-logo-text span {
+      font-size: 0.9rem;
+    }
+    
+    .cli-footer-nav-title,
+    .cli-footer-about-title,
+    .cli-footer-social-title {
+      font-size: 1.1rem;
+    }
+    
+    .cli-footer-link,
+    .cli-footer-social-link {
+      font-size: 0.95rem;
+      padding: 6px 14px;
+    }
+    
+    .cli-footer-about {
+      max-width: 300px;
+      gap: 14px;
+    }
+    
+    .cli-footer-about-text {
+      font-size: 0.85rem;
+    }
+    
+    .cli-footer-phrase {
+      font-size: 0.8rem;
+    }
+    
+    .cli-footer-phrases {
+      gap: 6px;
+      padding: 10px 0;
+    }
+  }
+  
+  /* Tablets - 768px y menos - MANTENER HORIZONTAL */
+  @media (max-width: 768px) {
+    .cli-footer {
+      min-height: auto;
+      padding: 20px 0;
+    }
+    
+    .cli-footer-content {
+      flex-direction: column;
+      align-items: center;
+      gap: 20px; /* ✅ REDUCIR GAP GENERAL */
+      padding: 0 20px;
+      text-align: center;
+    }
+    
+    .cli-footer-logo {
+      order: 1;
+      gap: 12px;
+    }
+    
+    .cli-footer-center {
+      order: 2;
+      flex-direction: row; /* ✅ MANTENER HORIZONTAL EN MÓVIL */
+      gap: 24px; /* ✅ REDUCIR GAP ENTRE OPCIONES Y SÍGUENOS */
+      justify-content: center;
+      width: 100%;
+    }
+    
+    .cli-footer-nav-section,
+    .cli-footer-social {
+      align-items: center; /* ✅ CENTRAR EN MÓVIL */
+      flex: 1; /* ✅ OCUPAR ESPACIO EQUITATIVO */
+    }
+    
+    .cli-footer-nav {
+      align-items: center; /* ✅ CENTRAR LINKS EN MÓVIL */
+    }
+    
+    .cli-footer-about {
+      order: 3;
+      align-items: center;
+      text-align: center;
+      max-width: none;
+      gap: 16px;
+    }
+    
+    .cli-logo-image {
+      height: 70px;
+    }
+    
+    .cli-logo-text h3 {
+      font-size: 1.4rem;
+    }
+    
+    .cli-logo-text span {
+      font-size: 0.85rem;
+    }
+    
+    .cli-footer-nav-title,
+    .cli-footer-about-title,
+    .cli-footer-social-title {
+      font-size: 1rem; /* ✅ REDUCIR TAMAÑO EN MÓVIL */
+    }
+    
+    .cli-footer-link,
+    .cli-footer-social-link {
+      font-size: 0.85rem; /* ✅ REDUCIR TAMAÑO DE LINKS */
+      padding: 6px 12px;
+    }
+    
+    .cli-footer-about-text {
+      font-size: 0.8rem;
+    }
+    
+    .cli-footer-phrase {
+      font-size: 0.75rem;
+      text-align: center;
+    }
+    
+    .cli-footer-phrases {
+      gap: 6px;
+      padding: 8px 0;
+    }
+    
+    /* ✅ EFECTO HOVER CENTRADO EN MÓVIL */
+    .cli-footer-phrases:hover .cli-footer-phrase {
+      transform: translateY(-1px);
+    }
+    
+    .cli-footer-copyright {
+      border-top: none;
+      padding-top: 8px;
+    }
+  }
+  
+  /* Móviles - 480px y menos - COMPACTO PERO HORIZONTAL */
+  @media (max-width: 480px) {
+    .cli-footer {
+      padding: 16px 0;
+    }
+    
+    .cli-footer-content {
+      gap: 16px;
+      padding: 0 16px;
+    }
+    
+    .cli-footer-center {
+      gap: 16px; /* ✅ GAP MÁS PEQUEÑO */
+    }
+    
+    .cli-footer-logo {
+      gap: 8px;
+    }
+    
+    .cli-logo-image {
+      height: 60px;
+    }
+    
+    .cli-logo-text h3 {
+      font-size: 1.2rem;
+    }
+    
+    .cli-logo-text span {
+      font-size: 0.8rem;
+    }
+    
+    .cli-footer-nav-title,
+    .cli-footer-about-title,
+    .cli-footer-social-title {
+      font-size: 0.9rem; /* ✅ MÁS COMPACTO */
+    }
+    
+    .cli-footer-link,
+    .cli-footer-social-link {
+      font-size: 0.8rem; /* ✅ MÁS COMPACTO */
+      padding: 5px 10px;
+    }
+    
+    .cli-footer-about {
+      gap: 12px;
+    }
+    
+    .cli-footer-about-text {
+      font-size: 0.75rem;
+    }
+    
+    .cli-footer-phrase {
+      font-size: 0.7rem;
+      line-height: 1.2;
+    }
+    
+    .cli-footer-phrases {
+      gap: 4px;
+      padding: 6px 0;
+    }
+    
+    .cli-footer-copyright p {
+      font-size: 0.8rem;
+    }
+    
+    /* ✅ AJUSTAR GAPS INTERNOS PARA MÓVIL PEQUEÑO */
+    .cli-footer-nav-section,
+    .cli-footer-social {
+      gap: 12px; /* ✅ REDUCIR GAP ENTRE TÍTULO Y LINKS */
+    }
+    
+    .cli-footer-nav {
+      gap: 6px; /* ✅ REDUCIR GAP ENTRE LINKS */
+    }
+  }
+  
+  /* Móviles muy pequeños - 360px y menos - ULTRA COMPACTO */
+  @media (max-width: 360px) {
+    .cli-footer {
+      padding: 12px 0;
+    }
+    
+    .cli-footer-content {
+      gap: 12px;
+      padding: 0 12px;
+    }
+    
+    .cli-footer-center {
+      gap: 12px; /* ✅ GAP MÍNIMO */
+    }
+    
+    .cli-logo-image {
+      height: 50px;
+    }
+    
+    .cli-logo-text h3 {
+      font-size: 1.1rem;
+    }
+    
+    .cli-logo-text span {
+      font-size: 0.75rem;
+    }
+    
+    .cli-footer-nav-title,
+    .cli-footer-about-title,
+    .cli-footer-social-title {
+      font-size: 0.85rem; /* ✅ ULTRA COMPACTO */
+    }
+    
+    .cli-footer-link,
+    .cli-footer-social-link {
+      font-size: 0.75rem; /* ✅ ULTRA COMPACTO */
+      padding: 4px 8px;
+    }
+    
+    .cli-footer-about {
+      gap: 10px;
+    }
+    
+    .cli-footer-about-text {
+      font-size: 0.7rem;
+    }
+    
+    .cli-footer-phrase {
+      font-size: 0.65rem;
+    }
+    
+    .cli-footer-phrases {
+      gap: 3px;
+      padding: 4px 0;
+    }
+    
+    .cli-footer-copyright p {
+      font-size: 0.75rem;
+    }
+    
+    /* ✅ GAPS ULTRA COMPACTOS */
+    .cli-footer-nav-section,
+    .cli-footer-social {
+      gap: 10px;
+    }
+    
+    .cli-footer-nav {
+      gap: 4px;
+    }
+  }
+  
+  /* ============================================
+     MODO LANDSCAPE EN MÓVILES - OPTIMIZADO
+     ============================================ */
+  @media (max-width: 768px) and (orientation: landscape) {
+    .cli-footer {
+      padding: 10px 0; /* ✅ REDUCIR PADDING EN LANDSCAPE */
+    }
+    
+    .cli-footer-content {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center; /* ✅ CENTRAR VERTICALMENTE */
+      padding: 0 20px;
+      gap: 16px;
+    }
+    
+    .cli-footer-logo {
+      order: 1;
+      flex-shrink: 0;
+    }
+    
+    .cli-footer-center {
+      order: 2;
+      flex-direction: row; /* ✅ MANTENER HORIZONTAL */
+      flex: 1;
+      gap: 20px;
+      justify-content: center;
+    }
+    
+    .cli-footer-nav-section,
+    .cli-footer-social {
+      align-items: center; /* ✅ CENTRAR EN LANDSCAPE */
+    }
+    
+    .cli-footer-nav {
+      align-items: center;
+    }
+    
+    .cli-footer-about {
+      order: 3;
+      align-items: flex-end;
+      text-align: right;
+      flex-shrink: 0;
+      max-width: 280px;
+      gap: 8px;
+    }
+    
+    .cli-logo-image {
+      height: 45px; /* ✅ MÁS COMPACTO EN LANDSCAPE */
+    }
+    
+    .cli-logo-text h3 {
+      font-size: 1rem;
+    }
+    
+    .cli-logo-text span {
+      font-size: 0.7rem;
+    }
+    
+    .cli-footer-nav-title,
+    .cli-footer-about-title,
+    .cli-footer-social-title {
+      font-size: 0.85rem;
+    }
+    
+    .cli-footer-link,
+    .cli-footer-social-link {
+      font-size: 0.75rem;
+      padding: 4px 8px;
+    }
+    
+    .cli-footer-about-text {
+      font-size: 0.7rem;
+    }
+    
+    .cli-footer-phrase {
+      font-size: 0.65rem;
+      text-align: right;
+    }
+    
+    .cli-footer-phrases {
+      gap: 2px;
+      padding: 4px 0;
+    }
+    
+    /* ✅ GAPS COMPACTOS PARA LANDSCAPE */
+    .cli-footer-nav-section,
+    .cli-footer-social {
+      gap: 8px;
+    }
+    
+    .cli-footer-nav {
+      gap: 4px;
+    }
+  }
+  
+  /* ============================================
+     ANIMACIONES SUAVES
+     ============================================ */
+  @keyframes cli-footer-fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .cli-footer {
+    animation: cli-footer-fadeIn 0.6s ease-out;
+  }
+  
+  .cli-footer-logo {
+    animation: cli-footer-fadeIn 0.7s ease-out;
+  }
+  
+  .cli-footer-center {
+    animation: cli-footer-fadeIn 0.8s ease-out;
+  }
+  
+  .cli-footer-about {
+    animation: cli-footer-fadeIn 0.9s ease-out;
+  }
+  
+  /* ============================================
+     ACCESIBILIDAD
+     ============================================ */
+  .cli-logo-image:focus,
+  .cli-footer-link:focus,
+  .cli-footer-social-link:focus {
+    outline: 2px solid var(--secondary-wine);
+    outline-offset: 4px;
+    border-radius: 8px;
+  }
+  
+  .cli-footer-link:focus {
+    background: rgba(114, 47, 55, 0.15);
+  }
+  
+  .cli-footer-social-link:focus {
+    background: rgba(24, 119, 242, 0.15);
+    border-color: rgba(24, 119, 242, 0.4);
+  }
+  
+  /* ============================================
+     EFECTOS GLASSMORPHISM - IGUAL AL HEADER
+     ============================================ */
+  @supports (backdrop-filter: blur(20px)) {
+    .cli-footer {
+      background: rgba(255, 255, 255, 0.9);
+    }
+  }
+  
+  /* ============================================
+     REDUCCIÓN DE MOVIMIENTO
+     ============================================ */
+  @media (prefers-reduced-motion: no-preference) {
+    .cli-footer * {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+  }
+  
+  @media (prefers-reduced-motion: reduce) {
+    .cli-footer *,
+    .cli-footer {
+      transition: none !important;
+      animation: none !important;
+    }
+  }
+  
+  /* ============================================
+     ESTADOS ACTIVOS Y HOVER MEJORADOS
+     ============================================ */
+  .cli-footer-link.active,
+  .cli-footer-link[aria-current="page"] {
+    background: rgba(114, 47, 55, 0.1);
+    font-weight: 600;
+  }
+  
+  .cli-footer-link.active:hover,
+  .cli-footer-link[aria-current="page"]:hover {
+    background: rgba(114, 47, 55, 0.15);
+  }

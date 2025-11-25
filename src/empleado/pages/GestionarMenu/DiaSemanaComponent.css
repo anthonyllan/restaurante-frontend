@@ -1,0 +1,307 @@
+/* ============================================
+   DIAS SEMANA EMPLEADO - Minimalista Blanco/Vino ANCHO COMPLETO
+   ============================================ */
+
+   .emp-dia-semana-container {
+    padding: 32px;
+    width: calc(100vw - 380px); /* ✅ ANCHO COMPLETO como ProductoComponent */
+    background: var(--primary-white);
+    box-sizing: border-box;
+    min-height: calc(100vh - 70px);
+  }
+  
+  /* ===== HEADER ===== */
+  .emp-header-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+    margin-bottom: 32px;
+    border-bottom: 1px solid var(--neutral-200);
+  }
+  
+  .emp-header-content h1 {
+    margin: 0;
+    font-size: 1.75rem;
+    color: var(--secondary-wine);
+    font-weight: 600;
+  }
+  
+  .emp-header-content p {
+    color: var(--neutral-600);
+    font-size: 0.9rem;
+    margin: 4px 0 0;
+  }
+  
+  /* ===== BOTONES ===== */
+  .emp-btn {
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    font-size: 0.9rem;
+  }
+  
+  .emp-btn-secondary {
+    background: var(--neutral-100);
+    color: var(--neutral-700);
+    border: 1px solid var(--neutral-300);
+  }
+  
+  .emp-btn-secondary:hover {
+    background: var(--neutral-200);
+    transform: translateY(-1px);
+  }
+  
+  .emp-btn-toggle {
+    width: 100%;
+    border-radius: 8px;
+    padding: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+  }
+  
+  .emp-btn-enable {
+    background: var(--success-green);
+    color: var(--primary-white);
+  }
+  
+  .emp-btn-enable:hover:not(:disabled) {
+    background: #059669;
+    transform: translateY(-1px);
+  }
+  
+  .emp-btn-disable {
+    background: var(--danger-red);
+    color: var(--primary-white);
+  }
+  
+  .emp-btn-disable:hover:not(:disabled) {
+    background: #dc2626;
+    transform: translateY(-1px);
+  }
+  
+  .emp-btn-toggle:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+  }
+  
+  /* ===== ALERTAS ===== */
+  .emp-alert {
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin-bottom: 24px;
+    font-weight: 500;
+    border: 1px solid;
+  }
+  
+  .emp-alert-success {
+    background: #f0fdf4;
+    color: #166534;
+    border-color: #bbf7d0;
+  }
+  
+  .emp-alert-error {
+    background: #fef2f2;
+    color: #991b1b;
+    border-color: #fecaca;
+  }
+  
+  /* ===== ESTADÍSTICAS ===== */
+  .emp-stats-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 32px;
+  }
+  
+  .emp-stat-card {
+    background: var(--primary-white);
+    border: 1px solid var(--neutral-200);
+    border-radius: 8px;
+    padding: 24px;
+    text-align: center;
+    transition: transform 0.2s ease;
+  }
+  
+  .emp-stat-card:hover {
+    transform: translateY(-2px);
+  }
+  
+  .emp-stat-card h3 {
+    margin: 0 0 8px 0;
+    font-size: 2.25rem;
+    font-weight: 700;
+  }
+  
+  .emp-stat-card p {
+    color: var(--neutral-600);
+    margin: 0;
+    font-weight: 500;
+    font-size: 0.9rem;
+  }
+  
+  .emp-stat-card.success {
+    border-left: 4px solid var(--success-green);
+  }
+  
+  .emp-stat-card.success h3 {
+    color: var(--success-green);
+  }
+  
+  .emp-stat-card.warning {
+    border-left: 4px solid var(--warning-yellow);
+  }
+  
+  .emp-stat-card.warning h3 {
+    color: var(--warning-yellow);
+  }
+  
+  .emp-stat-card.info {
+    border-left: 4px solid var(--secondary-wine);
+  }
+  
+  .emp-stat-card.info h3 {
+    color: var(--secondary-wine);
+  }
+  
+  /* ===== GRID DE DÍAS ===== */
+  .emp-dias-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+  }
+  
+  .emp-dia-card {
+    background: var(--primary-white);
+    border-radius: 8px;
+    padding: 24px;
+    border: 1px solid var(--neutral-200);
+    transition: all 0.3s ease;
+  }
+  
+  .emp-dia-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+  
+  .emp-dia-card.habilitado {
+    border-left: 4px solid var(--success-green);
+    background: linear-gradient(135deg, #f0fdf4 0%, var(--primary-white) 100%);
+  }
+  
+  .emp-dia-card.deshabilitado {
+    border-left: 4px solid var(--danger-red);
+    background: linear-gradient(135deg, #fef2f2 0%, var(--primary-white) 100%);
+  }
+  
+  .emp-dia-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  
+  .emp-dia-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: var(--secondary-wine);
+    font-weight: 600;
+  }
+  
+  .emp-status {
+    padding: 4px 12px;
+    border-radius: 16px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  .emp-status.activo {
+    background: #dcfce7;
+    color: #166534;
+  }
+  
+  .emp-status.inactivo {
+    background: #fee2e2;
+    color: #991b1b;
+  }
+  
+  .emp-dia-desc {
+    color: var(--neutral-600);
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+    min-height: 40px;
+    line-height: 1.5;
+  }
+  
+  /* ===== LOADING ===== */
+  .emp-loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px;
+  }
+  
+  .emp-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--neutral-200);
+    border-left-color: var(--secondary-wine);
+    border-radius: 50%;
+    animation: emp-spin 1s linear infinite;
+    margin-bottom: 16px;
+  }
+  
+  .emp-loading-container p {
+    color: var(--secondary-wine);
+    font-weight: 500;
+    margin: 0;
+  }
+  
+  @keyframes emp-spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 768px) {
+    .emp-dia-semana-container {
+      width: 100%; /* ✅ ANCHO COMPLETO en móvil */
+      padding: 20px;
+    }
+    
+    .emp-header-section {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    
+    .emp-stats-section {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+    
+    .emp-dias-grid {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+    
+    .emp-stat-card {
+      padding: 20px;
+    }
+    
+    .emp-dia-card {
+      padding: 20px;
+    }
+  }

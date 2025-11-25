@@ -1,0 +1,378 @@
+/* ============================================
+   PEDIDO CARD CLIENTE - ESTILOS BASE
+   ============================================ */
+:root {
+  --primary-white: #ffffff;
+  --secondary-wine: #722f37;
+  --secondary-wine-dark: #5a252c;
+  --secondary-wine-light: #8b3a44;
+  --neutral-50: #f9fafb;
+  --neutral-100: #f3f4f6;
+  --neutral-200: #e5e7eb;
+  --neutral-300: #d1d5db;
+  --neutral-400: #9ca3af;
+  --neutral-500: #6b7280;
+  --neutral-600: #4b5563;
+  --neutral-700: #374151;
+  --neutral-800: #1f2937;
+  --neutral-900: #111827;
+}
+
+.pedido-card {
+  background: var(--primary-white);
+  border-radius: 16px;
+  padding: 24px;
+  border: 1px solid var(--neutral-200);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.pedido-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(114, 47, 55, 0.08);
+  border-color: var(--secondary-wine-light);
+}
+
+/* Estados del pedido - Bordes coloreados */
+.pedido-card.registrado {
+  border-left: 4px solid #9ca3af;
+}
+
+.pedido-card.pagado {
+  border-left: 4px solid #059669;
+}
+
+.pedido-card.preparando {
+  border-left: 4px solid #f59e0b;
+}
+
+.pedido-card.listo {
+  border-left: 4px solid #16a34a;
+}
+
+.pedido-card.en_camino {
+  border-left: 4px solid #0ea5e9;
+}
+
+.pedido-card.entregado {
+  border-left: 4px solid #2563eb;
+  opacity: 0.85;
+}
+
+/* ============================================
+   HEADER DEL PEDIDO
+   ============================================ */
+.pedido-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--neutral-100);
+}
+
+.pedido-id {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--secondary-wine);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.pedido-tipo {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.875rem;
+  color: var(--neutral-600);
+  padding: 4px 12px;
+  background: var(--neutral-50);
+  border-radius: 20px;
+  margin-top: 4px;
+}
+
+.pedido-tipo svg {
+  font-size: 0.875rem;
+}
+
+.pedido-estado {
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.pedido-card.registrado .pedido-estado {
+  background: #f3f4f6;
+  color: #4b5563;
+}
+
+.pedido-card.pagado .pedido-estado {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.pedido-card.preparando .pedido-estado {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.pedido-card.listo .pedido-estado {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.pedido-card.en_camino .pedido-estado {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.pedido-card.entregado .pedido-estado {
+  background: #dbeafe;
+  color: #1e3a8a;
+}
+
+/* ============================================
+   FECHAS Y TIEMPOS
+   ============================================ */
+.pedido-fechas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 16px;
+  font-size: 0.875rem;
+  color: var(--neutral-600);
+}
+
+.pedido-fechas span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pedido-fechas svg {
+  font-size: 1rem;
+  color: var(--secondary-wine);
+}
+
+/* ============================================
+   BOTÓN VER DETALLES
+   ============================================ */
+.pedido-ver-detalles {
+  width: 100%;
+  padding: 12px 16px;
+  background: var(--neutral-50);
+  border: 1.5px solid var(--neutral-200);
+  border-radius: 12px;
+  color: var(--neutral-700);
+  font-weight: 500;
+  font-size: 0.9375rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pedido-ver-detalles:hover:not(:disabled) {
+  background: var(--secondary-wine);
+  color: var(--primary-white);
+  border-color: var(--secondary-wine);
+  transform: translateY(-1px);
+}
+
+.pedido-ver-detalles:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.pedido-ver-detalles svg {
+  font-size: 1.125rem;
+  transition: transform 0.3s ease;
+}
+
+.pedido-ver-detalles svg.rotated {
+  transform: rotate(180deg);
+}
+
+.pedido-ver-detalles .spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* ============================================
+   SECCIÓN DE DETALLES
+   ============================================ */
+.pedido-detalles {
+  margin-top: 16px;
+  padding: 16px;
+  background: var(--neutral-50);
+  border-radius: 12px;
+  border: 1px solid var(--neutral-200);
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.pedido-detalles-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.pedido-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  background: var(--primary-white);
+  border-radius: 8px;
+  border: 1px solid var(--neutral-200);
+  gap: 12px;
+}
+
+.pedido-item-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
+
+.pedido-item-cantidad {
+  font-weight: 700;
+  color: var(--secondary-wine);
+  font-size: 0.9375rem;
+  min-width: 30px;
+}
+
+.pedido-item-nombre {
+  font-weight: 500;
+  color: var(--neutral-700);
+  font-size: 0.9375rem;
+}
+
+.pedido-item-precio {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.pedido-item-precio-unitario {
+  font-size: 0.75rem;
+  color: var(--neutral-500);
+}
+
+.pedido-item-precio-total {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--secondary-wine-dark);
+}
+
+.pedido-sin-detalles {
+  text-align: center;
+  padding: 16px;
+  color: var(--neutral-500);
+  font-size: 0.9375rem;
+}
+
+/* ============================================
+   TOTAL DEL PEDIDO
+   ============================================ */
+.pedido-total-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  background: linear-gradient(135deg, var(--secondary-wine) 0%, var(--secondary-wine-dark) 100%);
+  border-radius: 8px;
+  margin-top: 12px;
+}
+
+.pedido-total-label {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--primary-white);
+  letter-spacing: 0.3px;
+}
+
+.pedido-total-valor {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary-white);
+  letter-spacing: 0.5px;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+  .pedido-card {
+    padding: 16px;
+  }
+
+  .pedido-id {
+    font-size: 1.125rem;
+  }
+
+  .pedido-fechas {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .pedido-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .pedido-item-precio {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .pedido-total-label {
+    font-size: 1rem;
+  }
+
+  .pedido-total-valor {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .pedido-card {
+    padding: 12px;
+  }
+
+  .pedido-card-header {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .pedido-estado {
+    align-self: flex-start;
+  }
+}
+

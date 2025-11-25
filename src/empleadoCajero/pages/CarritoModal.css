@@ -1,0 +1,1359 @@
+/* ============================================
+   VARIABLES CSS - Paleta Blanco/Vino
+   ============================================ */
+   :root {
+    --primary-white: #ffffff;
+    --secondary-wine: #722f37;
+    --secondary-wine-dark: #5a252a;
+    --secondary-wine-light: #8b4049;
+    --neutral-50: #fafafa;
+    --neutral-100: #f5f5f5;
+    --neutral-200: #e5e5e5;
+    --neutral-300: #d4d4d4;
+    --neutral-400: #a3a3a3;
+    --neutral-500: #737373;
+    --neutral-600: #525252;
+    --neutral-700: #404040;
+    --neutral-800: #262626;
+    --success-green: #16a34a;
+    --warning-amber: #d97706;
+    --danger-red: #dc2626;
+  }
+  
+  /* ============================================
+     MODAL OVERLAY Y CONTENEDOR
+     ============================================ */
+  .carrito-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    backdrop-filter: blur(4px);
+    animation: carritoFadeIn 0.3s ease-out;
+  }
+  
+  .carrito-modal {
+    background: var(--primary-white);
+    border-radius: 20px;
+    width: 90%;
+    max-width: 800px;
+    max-height: 90vh;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    animation: carritoSlideIn 0.3s ease-out;
+    border: 1px solid var(--neutral-200);
+  }
+  
+  @keyframes carritoFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes carritoSlideIn {
+    from { 
+      opacity: 0;
+      transform: translateY(-20px) scale(0.95);
+    }
+    to { 
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+  
+  /* ============================================
+     HEADER DEL MODAL
+     ============================================ */
+  .carrito-header {
+    background: linear-gradient(135deg, var(--secondary-wine) 0%, var(--secondary-wine-dark) 100%);
+    color: var(--primary-white);
+    padding: 24px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--secondary-wine-light);
+  }
+  
+  .carrito-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 500;
+    letter-spacing: -0.25px;
+  }
+  
+  .carrito-close {
+    background: none;
+    border: none;
+    color: var(--primary-white);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .carrito-close:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: scale(1.1);
+  }
+  
+  /* ============================================
+     STEPS INDICATOR
+     ============================================ */
+  .carrito-steps {
+    display: flex;
+    background: var(--neutral-50);
+    padding: 20px 32px;
+    border-bottom: 1px solid var(--neutral-200);
+    gap: 24px;
+  }
+  
+  .carrito-step {
+    flex: 1;
+    text-align: center;
+    padding: 12px 16px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--neutral-500);
+    background: var(--primary-white);
+    border: 1px solid var(--neutral-200);
+    transition: all 0.3s ease;
+  }
+  
+  .carrito-step.active {
+    background: var(--secondary-wine);
+    color: var(--primary-white);
+    border-color: var(--secondary-wine);
+    box-shadow: 0 2px 8px rgba(114, 47, 55, 0.2);
+  }
+  
+  /* ============================================
+     CONTENIDO DEL CARRITO
+     ============================================ */
+  .carrito-content {
+    padding: 32px;
+    max-height: 60vh;
+    overflow-y: auto;
+  }
+  
+  .carrito-content h3 {
+    margin: 0 0 24px 0;
+    color: var(--secondary-wine);
+    font-size: 1.25rem;
+    font-weight: 500;
+  }
+  
+  /* ============================================
+     CARRITO VACÍO
+     ============================================ */
+  .carrito-empty {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--neutral-500);
+  }
+  
+  .carrito-empty p {
+    margin: 8px 0;
+    font-size: 1.1rem;
+  }
+  
+  .carrito-empty p:first-child {
+    font-weight: 500;
+    color: var(--neutral-700);
+  }
+  
+  /* ============================================
+     ITEMS DEL CARRITO
+     ============================================ */
+  .carrito-items {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  
+  .carrito-item {
+    display: grid;
+    grid-template-columns: 80px 1fr auto auto;
+    gap: 16px;
+    align-items: center;
+    padding: 20px;
+    background: var(--neutral-50);
+    border-radius: 16px;
+    border: 1px solid var(--neutral-200);
+    transition: all 0.2s ease;
+  }
+  
+  .carrito-item:hover {
+    background: var(--primary-white);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+  }
+  
+  /* Imagen del item */
+  .carrito-item-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--neutral-100);
+  }
+  
+  .carrito-item-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .carrito-item-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--neutral-200);
+    color: var(--neutral-500);
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+  
+  /* Información del item */
+  .carrito-item-info h4 {
+    margin: 0 0 4px 0;
+    color: var(--secondary-wine);
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.3;
+  }
+  
+  .carrito-item-descripcion {
+    margin: 0 0 8px 0;
+    color: var(--neutral-600);
+    font-size: 0.85rem;
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .carrito-item-precio {
+    color: var(--secondary-wine);
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+  
+  /* Controles del item */
+  .carrito-item-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .carrito-cantidad-controls {
+    display: flex;
+    align-items: center;
+    background: var(--primary-white);
+    border-radius: 50px;
+    border: 1px solid var(--neutral-200);
+    overflow: hidden;
+  }
+  
+  .carrito-btn-cantidad {
+    background: none;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--secondary-wine);
+    transition: all 0.2s ease;
+    min-width: 36px;
+  }
+  
+  .carrito-btn-cantidad:hover:not(:disabled) {
+    background: var(--neutral-50);
+  }
+  
+  .carrito-btn-cantidad:disabled {
+    color: var(--neutral-300);
+    cursor: not-allowed;
+  }
+  
+  .carrito-cantidad {
+    padding: 8px 16px;
+    font-weight: 500;
+    color: var(--neutral-700);
+    min-width: 40px;
+    text-align: center;
+    background: var(--neutral-50);
+    border-left: 1px solid var(--neutral-200);
+    border-right: 1px solid var(--neutral-200);
+  }
+  
+  .carrito-btn-remover {
+    background: none;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    font-size: 1rem;
+  }
+  
+  .carrito-btn-remover:hover {
+    background: var(--danger-red);
+    transform: scale(1.1);
+  }
+  
+  /* Subtotal del item */
+  .carrito-item-subtotal {
+    font-weight: 600;
+    color: var(--secondary-wine);
+    font-size: 1.1rem;
+    text-align: right;
+  }
+  
+  /* ============================================
+     RESUMEN DEL CARRITO
+     ============================================ */
+  .carrito-summary {
+    border-top: 1px solid var(--neutral-200);
+    padding-top: 24px;
+    margin-top: 24px;
+  }
+  
+  .carrito-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    padding: 20px;
+    background: var(--neutral-50);
+    border-radius: 12px;
+    border: 1px solid var(--neutral-200);
+  }
+  
+  .carrito-total span:first-child {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--secondary-wine);
+  }
+  
+  .carrito-total span:last-child {
+    color: var(--neutral-600);
+    font-size: 0.9rem;
+  }
+  
+  /* ============================================
+     FORMULARIO
+     ============================================ */
+  .carrito-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .carrito-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .carrito-form-group label {
+    font-weight: 500;
+    color: var(--neutral-700);
+    font-size: 0.9rem;
+  }
+  
+  .carrito-form-group input,
+  .carrito-form-group select,
+  .carrito-form-group textarea {
+    padding: 12px 16px;
+    border: 1px solid var(--neutral-200);
+    border-radius: 12px;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+    background: var(--primary-white);
+    color: var(--neutral-700);
+  }
+  
+  .carrito-form-group input:focus,
+  .carrito-form-group select:focus,
+  .carrito-form-group textarea:focus {
+    outline: none;
+    border-color: var(--secondary-wine);
+    box-shadow: 0 0 0 3px rgba(114, 47, 55, 0.1);
+  }
+  
+  .carrito-form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+    font-family: inherit;
+  }
+  
+  .carrito-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  
+  /* ============================================
+     CONFIRMACIÓN
+     ============================================ */
+  .carrito-confirmacion {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  
+  .carrito-resumen-cliente,
+  .carrito-resumen-items {
+    padding: 20px;
+    background: var(--neutral-50);
+    border-radius: 12px;
+    border: 1px solid var(--neutral-200);
+  }
+  
+  .carrito-resumen-cliente h4,
+  .carrito-resumen-items h4 {
+    margin: 0 0 12px 0;
+    color: var(--secondary-wine);
+    font-size: 1rem;
+    font-weight: 500;
+  }
+  
+  .carrito-resumen-cliente p {
+    margin: 8px 0;
+    color: var(--neutral-700);
+    font-size: 0.9rem;
+  }
+  
+  .carrito-resumen-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--neutral-200);
+    color: var(--neutral-700);
+    font-size: 0.9rem;
+  }
+  
+  .carrito-resumen-item:last-child {
+    border-bottom: none;
+  }
+  
+  .carrito-resumen-total {
+    text-align: center;
+    padding: 20px;
+    background: var(--secondary-wine);
+    color: var(--primary-white);
+    border-radius: 12px;
+    margin-top: 16px;
+  }
+  
+  .carrito-resumen-total h4 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+  
+  /* ============================================
+     ALERTAS
+     ============================================ */
+  .carrito-alert {
+    padding: 16px 20px;
+    border-radius: 12px;
+    margin: 16px 0;
+    font-weight: 500;
+    font-size: 0.9rem;
+  }
+  
+  .carrito-alert-error {
+    background: var(--primary-white);
+    color: var(--danger-red);
+    border: 1px solid var(--danger-red);
+  }
+  
+  .carrito-alert-success {
+    background: var(--primary-white);
+    color: var(--success-green);
+    border: 1px solid var(--success-green);
+  }
+  
+  /* ============================================
+     ACCIONES/BOTONES
+     ============================================ */
+  .carrito-actions {
+    display: flex;
+    gap: 16px;
+    justify-content: flex-end;
+    padding: 24px 32px;
+    background: var(--neutral-50);
+    border-top: 1px solid var(--neutral-200);
+    margin: 32px -32px -32px -32px;
+  }
+  
+  .carrito-btn {
+    padding: 14px 28px;
+    border-radius: 12px;
+    font-weight: 500;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 120px;
+  }
+  
+  .carrito-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none !important;
+  }
+  
+  .carrito-btn-primary {
+    background: var(--secondary-wine);
+    color: var(--primary-white);
+    border-color: var(--secondary-wine);
+  }
+  
+  .carrito-btn-primary:hover:not(:disabled) {
+    background: var(--secondary-wine-dark);
+    border-color: var(--secondary-wine-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(114, 47, 55, 0.3);
+  }
+  
+  .carrito-btn-secondary {
+    background: var(--primary-white);
+    color: var(--neutral-600);
+    border-color: var(--neutral-300);
+  }
+  
+  .carrito-btn-secondary:hover:not(:disabled) {
+    background: var(--neutral-50);
+    border-color: var(--neutral-400);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* ============================================
+     SCROLLBAR PERSONALIZADO
+     ============================================ */
+  .carrito-content::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .carrito-content::-webkit-scrollbar-track {
+    background: var(--neutral-100);
+    border-radius: 3px;
+  }
+  
+  .carrito-content::-webkit-scrollbar-thumb {
+    background: var(--neutral-300);
+    border-radius: 3px;
+  }
+  
+  .carrito-content::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-wine);
+  }
+  
+  /* ============================================
+     RESPONSIVE
+     ============================================ */
+  @media (max-width: 768px) {
+    .carrito-modal {
+      width: 95%;
+      max-height: 95vh;
+    }
+    
+    .carrito-header {
+      padding: 20px 24px;
+    }
+    
+    .carrito-header h2 {
+      font-size: 1.25rem;
+    }
+    
+    .carrito-steps {
+      padding: 16px 24px;
+      gap: 12px;
+    }
+    
+    .carrito-step {
+      padding: 8px 12px;
+      font-size: 0.8rem;
+    }
+    
+    .carrito-content {
+      padding: 24px;
+    }
+    
+    .carrito-item {
+      grid-template-columns: 60px 1fr;
+      grid-template-rows: auto auto;
+      gap: 12px;
+    }
+    
+    .carrito-item-controls {
+      grid-column: 1 / -1;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    
+    .carrito-item-subtotal {
+      grid-column: 1 / -1;
+      text-align: center;
+      margin-top: 8px;
+    }
+    
+    .carrito-form-row {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+    
+    .carrito-actions {
+      padding: 20px 24px;
+      margin: 24px -24px -24px -24px;
+      flex-direction: column;
+    }
+    
+    .carrito-btn {
+      width: 100%;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .carrito-modal {
+      width: 98%;
+      border-radius: 16px;
+    }
+    
+    .carrito-header {
+      padding: 16px 20px;
+    }
+    
+    .carrito-content {
+      padding: 20px;
+    }
+    
+    .carrito-item-image {
+      width: 60px;
+      height: 60px;
+    }
+    
+    .carrito-steps {
+      flex-direction: column;
+      gap: 8px;
+    }
+    
+    .carrito-step {
+      padding: 10px;
+      text-align: center;
+    }
+  }
+  
+  /* ============================================
+     ANIMACIONES ADICIONALES
+     ============================================ */
+  @media (prefers-reduced-motion: no-preference) {
+    .carrito-item {
+      animation: carritoItemSlideIn 0.3s ease-out;
+    }
+  }
+  
+  @keyframes carritoItemSlideIn {
+    from {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  /* ============================================
+     ESTADOS DE FOCUS PARA ACCESIBILIDAD
+     ============================================ */
+  .carrito-btn:focus,
+  .carrito-close:focus,
+  .carrito-btn-cantidad:focus,
+  .carrito-btn-remover:focus {
+    outline: 2px solid var(--secondary-wine);
+    outline-offset: 2px;
+  }
+
+/* Agregar estos estilos adicionales */
+
+/* ============================================
+   ORDEN EXITOSA
+   ============================================ */
+   .carrito-orden-exitosa {
+    text-align: center;
+    padding: 30px 20px;
+    background: linear-gradient(135deg, var(--success-green) 0%, #059669 100%);
+    color: var(--primary-white);
+    border-radius: 16px;
+    margin-bottom: 24px;
+  }
+  
+  .carrito-orden-numero {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  
+  .carrito-orden-fecha {
+    font-size: 1rem;
+    opacity: 0.9;
+  }
+  
+  .carrito-tiempo-estimado {
+    text-align: center;
+    padding: 16px;
+    background: var(--warning-amber);
+    color: var(--primary-white);
+    border-radius: 12px;
+    font-weight: 600;
+    margin-top: 16px;
+  }
+  
+  /* ============================================
+     ANIMACIÓN DE ÉXITO
+     ============================================ */
+  @keyframes ordenExitosa {
+    0% {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+    50% {
+      transform: scale(1.05);
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  .carrito-orden-exitosa {
+    animation: ordenExitosa 0.6s ease-out;
+  }
+  
+  /* ============================================
+     ESTILOS PARA IMPRESIÓN
+     ============================================ */
+  @media print {
+    .carrito-overlay,
+    .carrito-modal {
+      position: static !important;
+      background: white !important;
+      box-shadow: none !important;
+      border: none !important;
+    }
+  }
+
+/* Agregar estos estilos al final del archivo CarritoModal.css existente */
+
+/* ============================================
+   MÓDULO DE PAGOS - Estilos adicionales
+   ============================================ */
+
+/* ============================================
+   CONTENEDOR DE PAGO
+   ============================================ */
+   .pago-container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  
+  .pago-resumen {
+    background: linear-gradient(135deg, var(--secondary-wine) 0%, var(--secondary-wine-dark) 100%);
+    color: var(--primary-white);
+    padding: 24px;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(114, 47, 55, 0.2);
+  }
+  
+  .pago-order-info h4 {
+    margin: 0 0 8px 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  
+  .pago-order-info p {
+    margin: 4px 0;
+    opacity: 0.9;
+    font-size: 1rem;
+  }
+  
+  .pago-order-info p:first-of-type {
+    font-size: 1.25rem;
+    font-weight: 700;
+    opacity: 1;
+    color: var(--primary-white);
+  }
+  
+  /* ============================================
+     FORMULARIO DE PAGO
+     ============================================ */
+  .pago-form {
+    background: var(--primary-white);
+    border: 1px solid var(--neutral-200);
+    border-radius: 16px;
+    padding: 24px;
+  }
+  
+  .pago-form-group {
+    margin-bottom: 24px;
+  }
+  
+  .pago-form-group label {
+    display: block;
+    font-weight: 600;
+    color: var(--secondary-wine);
+    margin-bottom: 12px;
+    font-size: 1rem;
+  }
+  
+  /* ============================================
+     MÉTODOS DE PAGO
+     ============================================ */
+  .pago-metodos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+  }
+  
+  .pago-metodo-btn {
+    background: var(--primary-white);
+    border: 2px solid var(--neutral-200);
+    border-radius: 12px;
+    padding: 16px 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    font-size: 0.9rem;
+    text-align: center;
+    color: var(--neutral-700);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+  
+  .pago-metodo-btn:hover {
+    border-color: var(--secondary-wine);
+    background: var(--neutral-50);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .pago-metodo-btn.active {
+    background: var(--secondary-wine);
+    border-color: var(--secondary-wine);
+    color: var(--primary-white);
+    box-shadow: 0 4px 16px rgba(114, 47, 55, 0.3);
+  }
+  
+  .pago-metodo-btn.active:hover {
+    background: var(--secondary-wine-dark);
+    border-color: var(--secondary-wine-dark);
+  }
+  
+  /* ============================================
+     INPUTS DE PAGO
+     ============================================ */
+  .pago-input {
+    width: 100%;
+    padding: 14px 16px;
+    border: 2px solid var(--neutral-200);
+    border-radius: 12px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: var(--primary-white);
+    color: var(--neutral-700);
+    font-weight: 500;
+  }
+  
+  .pago-input:focus {
+    outline: none;
+    border-color: var(--secondary-wine);
+    box-shadow: 0 0 0 4px rgba(114, 47, 55, 0.1);
+    background: var(--neutral-50);
+  }
+  
+  .pago-input[type="number"] {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--secondary-wine);
+    text-align: center;
+  }
+  
+  /* ============================================
+     INFORMACIÓN POR MÉTODO DE PAGO
+     ============================================ */
+  .pago-info-metodo {
+    margin-top: 20px;
+    animation: pagoInfoSlideIn 0.3s ease-out;
+  }
+  
+  @keyframes pagoInfoSlideIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .pago-info-card {
+    padding: 20px;
+    border-radius: 12px;
+    border-left: 4px solid;
+    background: var(--neutral-50);
+  }
+  
+  .pago-info-card h5 {
+    margin: 0 0 12px 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .pago-info-card p {
+    margin: 6px 0;
+    font-size: 0.9rem;
+    color: var(--neutral-700);
+    line-height: 1.4;
+  }
+  
+  .pago-info-card.efectivo {
+    border-left-color: var(--success-green);
+    background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+  }
+  
+  .pago-info-card.efectivo h5 {
+    color: var(--success-green);
+  }
+  
+  .pago-info-card.mercadopago {
+    border-left-color: #00a8e6;
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+  }
+  
+  .pago-info-card.mercadopago h5 {
+    color: #0284c7;
+  }
+  
+  .pago-info-card.tarjeta {
+    border-left-color: var(--warning-amber);
+    background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+  }
+  
+  .pago-info-card.tarjeta h5 {
+    color: var(--warning-amber);
+  }
+  
+  .pago-info-card.transferencia {
+    border-left-color: #8b5cf6;
+    background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 100%);
+  }
+  
+  .pago-info-card.transferencia h5 {
+    color: #7c3aed;
+  }
+  
+  /* ============================================
+     CONFIRMACIÓN FINAL DE PAGO
+     ============================================ */
+  .pago-exitoso {
+    text-align: center;
+    padding: 32px 20px;
+    background: linear-gradient(135deg, var(--success-green) 0%, #059669 100%);
+    color: var(--primary-white);
+    border-radius: 16px;
+    margin-bottom: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .pago-exitoso::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    animation: pagoExitosoShine 2s ease-in-out infinite;
+  }
+  
+  @keyframes pagoExitosoShine {
+    0%, 100% { transform: rotate(0deg) scale(0.5); opacity: 0.5; }
+    50% { transform: rotate(180deg) scale(1); opacity: 0.8; }
+  }
+  
+  .pago-exitoso-icon {
+    font-size: 3rem;
+    margin-bottom: 16px;
+    animation: pagoExitosoBounce 0.6s ease-out;
+  }
+  
+  @keyframes pagoExitosoBounce {
+    0% { transform: scale(0.3); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+  }
+  
+  .pago-exitoso h4 {
+    margin: 0 0 8px 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  
+  .pago-exitoso p {
+    margin: 0;
+    font-size: 1.1rem;
+    opacity: 0.9;
+  }
+  
+  /* ============================================
+     DETALLES DEL PAGO
+     ============================================ */
+  .pago-detalles {
+    background: var(--neutral-50);
+    border: 1px solid var(--neutral-200);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .pago-detalles h5 {
+    margin: 0 0 16px 0;
+    color: var(--secondary-wine);
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-bottom: 1px solid var(--neutral-200);
+    padding-bottom: 8px;
+  }
+  
+  .pago-detalle-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--neutral-100);
+    font-size: 0.95rem;
+  }
+  
+  .pago-detalle-item:last-child {
+    border-bottom: none;
+    font-weight: 600;
+    font-size: 1rem;
+  }
+  
+  .pago-detalle-item span:first-child {
+    color: var(--neutral-600);
+    font-weight: 500;
+  }
+  
+  .pago-detalle-item span:last-child {
+    color: var(--neutral-800);
+    font-weight: 600;
+  }
+  
+  /* ============================================
+     ESTADOS DE PAGO
+     ============================================ */
+  .pago-estado {
+    padding: 4px 12px;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  .pago-estado.pendiente {
+    background: var(--warning-amber);
+    color: var(--primary-white);
+  }
+  
+  .pago-estado.aprobado {
+    background: var(--success-green);
+    color: var(--primary-white);
+  }
+  
+  .pago-estado.rechazado {
+    background: var(--danger-red);
+    color: var(--primary-white);
+  }
+  
+  .pago-estado.cancelado {
+    background: var(--neutral-500);
+    color: var(--primary-white);
+  }
+  
+  /* ============================================
+     ACTUALIZACIONES RESPONSIVE PARA PAGOS
+     ============================================ */
+  @media (max-width: 768px) {
+    .pago-container {
+      gap: 16px;
+    }
+    
+    .pago-resumen,
+    .pago-form {
+      padding: 20px;
+    }
+    
+    .pago-metodos {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+    }
+    
+    .pago-metodo-btn {
+      padding: 12px 8px;
+      font-size: 0.8rem;
+    }
+    
+    .pago-order-info h4 {
+      font-size: 1.25rem;
+    }
+    
+    .pago-order-info p:first-of-type {
+      font-size: 1.1rem;
+    }
+    
+    .pago-exitoso {
+      padding: 24px 16px;
+    }
+    
+    .pago-exitoso-icon {
+      font-size: 2.5rem;
+    }
+    
+    .pago-exitoso h4 {
+      font-size: 1.25rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .pago-metodos {
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+    
+    .pago-metodo-btn {
+      padding: 16px;
+      font-size: 0.9rem;
+    }
+    
+    .pago-input {
+      padding: 12px 14px;
+      font-size: 0.95rem;
+    }
+    
+    .pago-input[type="number"] {
+      font-size: 1.1rem;
+    }
+    
+    .pago-info-card {
+      padding: 16px;
+    }
+    
+    .pago-info-card h5 {
+      font-size: 1rem;
+    }
+    
+    .pago-detalle-item {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4px;
+      padding: 8px 0;
+    }
+    
+    .pago-detalle-item span:last-child {
+      align-self: flex-end;
+    }
+  }
+  
+  /* ============================================
+     ANIMACIONES ADICIONALES PARA PAGOS
+     ============================================ */
+  @media (prefers-reduced-motion: no-preference) {
+    .pago-metodo-btn:hover {
+      animation: pagoMetodoHover 0.3s ease;
+    }
+    
+    .pago-exitoso {
+      animation: pagoExitosoFadeIn 0.6s ease-out;
+    }
+  }
+  
+  @keyframes pagoMetodoHover {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+    100% { transform: translateY(-2px); }
+  }
+  
+  @keyframes pagoExitosoFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px) scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+  
+  /* ============================================
+     EFECTOS ESPECIALES PARA DIFERENTES MÉTODOS
+     ============================================ */
+  .pago-metodo-btn[data-metodo="EFECTIVO"]:hover {
+    box-shadow: 0 4px 16px rgba(34, 197, 94, 0.2);
+  }
+  
+  .pago-metodo-btn[data-metodo="MERCADO_PAGO"]:hover {
+    box-shadow: 0 4px 16px rgba(0, 168, 230, 0.2);
+  }
+  
+  .pago-metodo-btn[data-metodo="TARJETA"]:hover {
+    box-shadow: 0 4px 16px rgba(217, 119, 6, 0.2);
+  }
+  
+  .pago-metodo-btn[data-metodo="TRANSFERENCIA"]:hover {
+    box-shadow: 0 4px 16px rgba(139, 92, 246, 0.2);
+  }
+  
+  /* ============================================
+     ACCESIBILIDAD PARA PAGOS
+     ============================================ */
+  .pago-metodo-btn:focus {
+    outline: 3px solid var(--secondary-wine);
+    outline-offset: 2px;
+  }
+  
+  .pago-input:focus {
+    outline: none; /* Ya tiene su propio focus style */
+  }
+  
+  /* Focus para usuarios que navegan con teclado */
+  .pago-container:focus-within {
+    animation: pagoContainerFocus 0.3s ease;
+  }
+  
+  @keyframes pagoContainerFocus {
+    0% { box-shadow: 0 0 0 0 rgba(114, 47, 55, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(114, 47, 55, 0.1); }
+    100% { box-shadow: 0 0 0 5px rgba(114, 47, 55, 0.05); }
+  }
+  
+  /* ============================================
+     MODO IMPRESIÓN PARA PAGOS
+     ============================================ */
+  @media print {
+    .pago-container,
+    .pago-form,
+    .pago-metodos {
+      display: none !important;
+    }
+    
+    .pago-detalles {
+      background: white !important;
+      border: 1px solid #000 !important;
+      page-break-inside: avoid;
+    }
+    
+    .pago-exitoso {
+      background: white !important;
+      color: #000 !important;
+      border: 2px solid #000 !important;
+    }
+  }
+  
+  /* ============================================
+     INDICADORES DE CARGA PARA PAGOS
+     ============================================ */
+  .pago-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 16px;
+    background: var(--neutral-50);
+    border-radius: 12px;
+    color: var(--neutral-600);
+    font-weight: 500;
+  }
+  
+  .pago-loading-spinner {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--neutral-200);
+    border-top: 2px solid var(--secondary-wine);
+    border-radius: 50%;
+    animation: pagoSpinner 1s linear infinite;
+  }
+  
+  @keyframes pagoSpinner {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  /* ============================================
+     ESTADOS HOVER MEJORADOS
+     ============================================ */
+  .carrito-btn-primary:hover:not(:disabled) {
+    background: var(--secondary-wine-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(114, 47, 55, 0.4);
+  }
+  
+  .carrito-btn-secondary:hover:not(:disabled) {
+    background: var(--neutral-100);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* ============================================
+     VALIDACIÓN VISUAL
+     ============================================ */
+  .pago-input.error {
+    border-color: var(--danger-red);
+    box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.1);
+  }
+  
+  .pago-input.success {
+    border-color: var(--success-green);
+    box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.1);
+  }
+  
+  .pago-form-group.required label::after {
+    content: ' *';
+    color: var(--danger-red);
+    font-weight: bold;
+  }

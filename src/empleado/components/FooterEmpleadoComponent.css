@@ -1,0 +1,84 @@
+/* ============================================
+   FOOTER EMPLEADO - Minimalista Blanco/Vino
+   ============================================ */
+
+   .emp-footer {
+    position: fixed;
+    bottom: 0;
+    left: 280px;
+    right: 0;
+    background: var(--primary-white);
+    border-top: 1px solid var(--neutral-200);
+    box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.05);
+    z-index: 999;
+  }
+  
+  .emp-footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 24px;
+    max-height: 70px;
+  }
+  
+  .emp-footer-logo {
+    display: flex;
+    align-items: center;
+  }
+  
+  .emp-logo-image {
+    height: 36px;
+    width: 36px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid var(--secondary-wine);
+    transition: transform 0.2s ease;
+  }
+  
+  .emp-logo-image:hover {
+    transform: scale(1.05);
+  }
+  
+  .emp-footer-info {
+    text-align: right;
+  }
+  
+  .emp-version-text {
+    margin: 0;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--secondary-wine);
+  }
+  
+  .emp-copyright {
+    margin: 2px 0 0 0;
+    font-size: 0.7rem;
+    color: var(--neutral-500);
+  }
+  
+  @media (max-width: 768px) {
+    .emp-footer {
+      left: 0;
+    }
+    
+    .emp-footer-content {
+      padding: 10px 16px;
+    }
+    
+    .emp-footer-info {
+      text-align: center;
+    }
+    
+    .emp-logo-image {
+      height: 32px;
+      width: 32px;
+    }
+    
+    .emp-version-text {
+      font-size: 0.8rem;
+    }
+    
+    .emp-copyright {
+      font-size: 0.65rem;
+    }
+  }

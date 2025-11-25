@@ -1,0 +1,321 @@
+/* ============================================
+   FOOTER PÚBLICO SIN SESIÓN - Reutiliza estilos del cliente
+   ============================================ */
+
+/* Importar estilos base del footer del cliente */
+@import '../../cliente/components/FooterClienteComponent.css';
+
+/* Sobrescribir prefijos para el módulo sin sesión */
+.sin-log-footer {
+  position: relative;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(114, 47, 55, 0.1);
+  box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.08);
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  min-height: 140px;
+  padding: 24px 0;
+  border-bottom: none;
+  outline: none;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.sin-log-footer-content {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 32px;
+  height: 100%;
+  width: 100%;
+  gap: 40px;
+  border: none;
+  outline: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sin-log-footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.sin-log-footer-logo:hover {
+  transform: scale(1.02);
+}
+
+.sin-log-logo-image {
+  height: 90px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+  transition: all 0.3s ease;
+  border-radius: 12px;
+}
+
+.sin-log-logo-image:hover {
+  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.15));
+  transform: scale(1.05);
+}
+
+.sin-log-logo-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sin-log-logo-text h3 {
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--secondary-wine);
+  letter-spacing: -0.5px;
+}
+
+.sin-log-logo-text span {
+  font-size: 1rem;
+  color: var(--secondary-wine);
+  opacity: 0.7;
+  font-weight: 400;
+}
+
+.sin-log-footer-center {
+  display: flex;
+  gap: 48px;
+  flex: 1;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.sin-log-footer-nav-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.sin-log-footer-nav-title {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--secondary-wine);
+}
+
+.sin-log-footer-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  width: 100%;
+}
+
+.sin-log-footer-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--secondary-wine);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  position: relative;
+  width: auto;
+}
+
+.sin-log-footer-link:hover {
+  background: rgba(114, 47, 55, 0.1);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(114, 47, 55, 0.15);
+}
+
+.sin-log-footer-link svg {
+  font-size: 1.1rem;
+  transition: transform 0.3s ease;
+}
+
+.sin-log-footer-link:hover svg {
+  transform: scale(1.1);
+}
+
+.sin-log-footer-social {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.sin-log-footer-social-title {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--secondary-wine);
+}
+
+.sin-log-footer-social-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--secondary-wine);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  position: relative;
+  background: rgba(24, 119, 242, 0.05);
+  border: 1px solid rgba(24, 119, 242, 0.1);
+}
+
+.sin-log-footer-social-link:hover {
+  background: rgba(24, 119, 242, 0.1);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(24, 119, 242, 0.2);
+  border-color: rgba(24, 119, 242, 0.3);
+}
+
+.sin-log-footer-social-link svg {
+  font-size: 1.2rem;
+  color: #1877f2;
+  transition: transform 0.3s ease;
+}
+
+.sin-log-footer-social-link:hover svg {
+  transform: scale(1.1);
+}
+
+.sin-log-footer-about {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 16px;
+  max-width: 320px;
+  text-align: right;
+}
+
+.sin-log-footer-about-title {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--secondary-wine);
+}
+
+.sin-log-footer-about-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.sin-log-footer-about-text {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--secondary-wine);
+  opacity: 0.8;
+  line-height: 1.4;
+}
+
+.sin-log-footer-phrases {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px 0;
+  border-top: 1px solid rgba(114, 47, 55, 0.15);
+  border-bottom: 1px solid rgba(114, 47, 55, 0.15);
+}
+
+.sin-log-footer-phrase {
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--secondary-wine);
+  font-style: italic;
+  line-height: 1.3;
+  position: relative;
+}
+
+.sin-log-footer-phrase:first-child {
+  color: var(--secondary-wine-dark);
+  font-weight: 600;
+}
+
+.sin-log-footer-phrase:last-child {
+  color: var(--accent-wine);
+  font-weight: 600;
+}
+
+.sin-log-footer-copyright {
+  padding-top: 12px;
+  width: 100%;
+}
+
+.sin-log-footer-copyright p {
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--secondary-wine);
+  opacity: 0.7;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .sin-log-footer-content {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 0 20px;
+    text-align: center;
+  }
+
+  .sin-log-footer-center {
+    flex-direction: row;
+    gap: 24px;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .sin-log-footer-nav-section,
+  .sin-log-footer-social {
+    align-items: center;
+    flex: 1;
+  }
+
+  .sin-log-footer-about {
+    align-items: center;
+    text-align: center;
+    max-width: none;
+  }
+
+  .sin-log-footer-phrase {
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .sin-log-footer-center {
+    gap: 16px;
+  }
+
+  .sin-log-logo-image {
+    height: 60px;
+  }
+
+  .sin-log-logo-text h3 {
+    font-size: 1.2rem;
+  }
+
+  .sin-log-footer-link,
+  .sin-log-footer-social-link {
+    font-size: 0.8rem;
+    padding: 5px 10px;
+  }
+}

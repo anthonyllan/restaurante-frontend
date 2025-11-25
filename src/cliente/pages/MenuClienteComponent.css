@@ -1,0 +1,1028 @@
+/* ============================================
+   VARIABLES CSS - Paleta Blanco/Vino
+   ============================================ */
+   :root {
+    --primary-white: #ffffff;
+    --secondary-wine: #722f37;
+    --secondary-wine-dark: #5a252a;
+    --secondary-wine-light: #8b4049;
+    --neutral-50: #fafafa;
+    --neutral-100: #f5f5f5;
+    --neutral-200: #e5e5e5;
+    --neutral-300: #d4d4d4;
+    --neutral-400: #a3a3a3;
+    --neutral-500: #737373;
+    --neutral-600: #525252;
+    --neutral-700: #404040;
+    --neutral-800: #262626;
+    --success-green: #16a34a;
+    --warning-amber: #d97706;
+    --danger-red: #dc2626;
+  }
+  
+  /* ============================================
+     CONTENEDOR PRINCIPAL - FORZAR ANCHO COMPLETO
+     ============================================ */
+  .cli-menuContainer {
+    /* FORZAR ANCHO COMPLETO AGRESIVAMENTE */
+    width: 100vw !important;
+    margin-left: calc(-50vw + 50%) !important;
+    
+    /* ELIMINAR CUALQUIER RESTRICCIÓN DEL PADRE */
+    position: relative;
+    left: 0 !important;
+    right: 0 !important;
+    
+    background: var(--neutral-50);
+    min-height: calc(100vh - 80px);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    
+    /* SIN PADDING TOP - Eliminar espacio en blanco */
+    padding-top: 0; /* ✅ CORREGIDO: Elimina separación entre navbar y contenido */
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    
+    overflow-x: hidden;
+    
+    /* OVERRIDE CUALQUIER RESTRICCIÓN EXTERNA */
+    max-width: none !important;
+    box-sizing: border-box;
+  }
+  
+  /* FORZAR QUE EL CONTENEDOR PADRE NO LIMITE */
+  .cli-menuContainer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: calc(-50vw + 50%);
+    width: 100vw;
+    height: 100%;
+    background: var(--neutral-50);
+    z-index: -1;
+  }
+  
+  /* ============================================
+     HEADER SECTION - Minimalista Blanco/Vino
+     ============================================ */
+  .cli-headerSection {
+    position: relative;
+    width: calc(100% - 20px);
+    background: linear-gradient(135deg, var(--secondary-wine) 0%, var(--secondary-wine-dark) 100%);
+    border-radius: 16px;
+    color: var(--primary-white);
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(114, 47, 55, 0.15);
+    border: 1px solid var(--secondary-wine-light);
+    
+    /* Wrapper interno con margen superior de 20px */
+    max-width: 1400px;
+    margin: 20px auto 24px; /* ✅ CORREGIDO: Margen superior de 20px para respirar */
+    padding: 40px 32px;
+  }
+  
+  .cli-headerContent h1 {
+    margin: 0 0 12px 0;
+    font-size: 2.75rem;
+    font-weight: 300;
+    letter-spacing: -0.5px;
+    color: var(--primary-white);
+  }
+  
+  .cli-headerDescription {
+    margin: 0 0 20px 0;
+    font-size: 1.1rem;
+    font-weight: 400;
+    opacity: 0.9;
+    color: var(--primary-white);
+  }
+  
+  /* Información del día */
+  .cli-infoDay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .cli-dayBadge {
+    background: rgba(255, 255, 255, 0.15);
+    color: var(--primary-white);
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-weight: 500;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    font-size: 0.95rem;
+  }
+  
+  .cli-productCount {
+    background: var(--primary-white);
+    color: var(--secondary-wine);
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    font-size: 0.95rem;
+  }
+  
+  /* ============================================
+     HEADER ACTIONS - Carrito integrado
+     ============================================ */
+  .cli-headerActions {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    position: absolute;
+    top: 24px;
+    right: 24px;
+  }
+  
+  /* Botón de actualizar */
+  .cli-refreshBtn {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--primary-white);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 12px 16px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .cli-refreshBtn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Botón del carrito */
+  .cli-carritoBtn {
+    position: relative;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--primary-white);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 12px 16px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .cli-carritoBtn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Badge del carrito */
+  .cli-carritoBadge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: var(--danger-red);
+    color: var(--primary-white);
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border: 2px solid var(--primary-white);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* ============================================
+     LOADING - Minimalista
+     ============================================ */
+  .cli-loadingContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+    color: var(--neutral-600);
+    background: var(--primary-white);
+    border-radius: 16px;
+    margin: 24px auto;
+    max-width: 1400px;
+    padding: 0 32px;
+  }
+  
+  .cli-spinner {
+    width: 48px;
+    height: 48px;
+    border: 2px solid var(--neutral-200);
+    border-top: 2px solid var(--secondary-wine);
+    border-radius: 50%;
+    animation: cliSpin 1s linear infinite;
+    margin-bottom: 24px;
+  }
+  
+  @keyframes cliSpin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  .cli-loadingContainer p {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin: 0;
+  }
+  
+  /* ============================================
+     ALERTAS - Minimalista
+     ============================================ */
+  .cli-alert {
+    padding: 16px 24px;
+    margin: 24px auto;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 500;
+    font-size: 0.95rem;
+    max-width: 1400px;
+  }
+  
+  .cli-alertError {
+    background: var(--primary-white);
+    color: var(--danger-red);
+    border: 1px solid var(--danger-red);
+    box-shadow: 0 2px 8px rgba(220, 38, 38, 0.1);
+  }
+  
+  .cli-alertClose {
+    background: none;
+    border: none;
+    font-size: 1.25rem;
+    cursor: pointer;
+    padding: 4px;
+    margin-left: 16px;
+    color: inherit;
+    border-radius: 4px;
+    transition: background 0.2s ease;
+  }
+  
+  .cli-alertClose:hover {
+    background: rgba(0, 0, 0, 0.05);
+  }
+  
+  /* ============================================
+     NO PRODUCTOS HOY - Minimalista
+     ============================================ */
+  .cli-noProductosHoy {
+    text-align: center;
+    padding: 80px 32px;
+    background: var(--primary-white);
+    border-radius: 16px;
+    margin: 24px auto;
+    border: 1px solid var(--neutral-200);
+    max-width: 1400px;
+  }
+  
+  .cli-noProductosIcon {
+    font-size: 4rem;
+    margin-bottom: 24px;
+    opacity: 0.6;
+    color: var(--neutral-400);
+  }
+  
+  .cli-noProductosHoy h3 {
+    color: var(--neutral-700);
+    margin-bottom: 12px;
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+  
+  .cli-noProductosHoy p {
+    color: var(--neutral-500);
+    margin-bottom: 32px;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  
+  .cli-debugInfo {
+    margin-bottom: 24px;
+  }
+  
+  /* ============================================
+     GRID DE CATEGORÍAS - Minimalista
+     ============================================ */
+  .cli-categoriasGrid {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+  
+  /* ============================================
+     SECCIÓN DE CATEGORÍA - Minimalista
+     ============================================ */
+  .cli-categoriaSection {
+    background: var(--primary-white);
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--neutral-200);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+  }
+  
+  .cli-categoriaHeader {
+    background: var(--neutral-50);
+    padding: 28px 32px;
+    border-bottom: 1px solid var(--neutral-200);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .cli-categoriaInfo h2 {
+    margin: 0 0 8px 0;
+    color: var(--secondary-wine);
+    font-size: 1.75rem;
+    font-weight: 500;
+    letter-spacing: -0.25px;
+  }
+  
+  .cli-categoriaInfo p {
+    margin: 0;
+    color: var(--neutral-600);
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+  
+  .cli-categoriaStats .cli-productosCount {
+    background: var(--secondary-wine);
+    color: var(--primary-white);
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    box-shadow: 0 2px 8px rgba(114, 47, 55, 0.2);
+  }
+  
+  /* ============================================
+     GRID DE PRODUCTOS - Minimalista
+     ============================================ */
+  .cli-productosGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 24px;
+    padding: 32px;
+  }
+  
+  .cli-noProductos {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: var(--neutral-500);
+    font-style: italic;
+    padding: 60px;
+    font-size: 1.1rem;
+  }
+  
+  /* ============================================
+     CARD DE PRODUCTO - Minimalista
+     ============================================ */
+  .cli-productoCard {
+    background: var(--primary-white);
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--neutral-200);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+  }
+  
+  .cli-productoCard:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+    border-color: var(--secondary-wine-light);
+  }
+  
+  /* ============================================
+     IMAGEN DEL PRODUCTO - Minimalista
+     ============================================ */
+  .cli-productoImagen {
+    position: relative;
+    height: 220px;
+    overflow: hidden;
+    background: var(--neutral-100);
+  }
+  
+  .cli-productoImagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .cli-productoCard:hover .cli-productoImagen img {
+    transform: scale(1.05);
+  }
+  
+  .cli-imagenPlaceholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--neutral-100) 0%, var(--neutral-200) 100%);
+    color: var(--neutral-400);
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+  
+  /* Badge disponible hoy */
+  .cli-badgeDisponibleHoy {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: var(--success-green);
+    color: var(--primary-white);
+    padding: 6px 12px;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 8px rgba(22, 163, 74, 0.3);
+  }
+  
+  /* ============================================
+     INFORMACIÓN DEL PRODUCTO - Minimalista
+     ============================================ */
+  .cli-productoInfo {
+    padding: 24px;
+  }
+  
+  .cli-productoInfo h3 {
+    margin: 0 0 8px 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--secondary-wine);
+    line-height: 1.3;
+    letter-spacing: -0.25px;
+  }
+  
+  .cli-productoDescripcion {
+    margin: 0 0 20px 0;
+    color: var(--neutral-600);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  /* ============================================
+     DETALLES DEL PRODUCTO - Minimalista
+     ============================================ */
+  .cli-productoDetalles {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .cli-precioTiempo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .cli-precio {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--secondary-wine);
+    letter-spacing: -0.5px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  
+  .cli-tiempo {
+    background: var(--neutral-100);
+    color: var(--neutral-700);
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border: 1px solid var(--neutral-200);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  
+  /* ============================================
+     DISPONIBILIDAD - Minimalista
+     ============================================ */
+  .cli-disponibilidad {
+    display: flex;
+    align-items: center;
+  }
+  
+  .cli-estado {
+    padding: 8px 16px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border: 1px solid;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  
+  .cli-disponible {
+    background: var(--primary-white);
+    color: var(--success-green);
+    border-color: var(--success-green);
+  }
+  
+  .cli-noDisponible {
+    background: var(--primary-white);
+    color: var(--danger-red);
+    border-color: var(--danger-red);
+  }
+  
+  /* ============================================
+     BOTONES - Minimalista
+     ============================================ */
+  .cli-btn {
+    padding: 14px 28px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid;
+  }
+  
+  .cli-btnPrimary {
+    background: var(--secondary-wine);
+    color: var(--primary-white);
+    border-color: var(--secondary-wine);
+  }
+  
+  .cli-btnPrimary:hover {
+    background: var(--secondary-wine-dark);
+    border-color: var(--secondary-wine-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(114, 47, 55, 0.3);
+  }
+  
+  /* ============================================
+     BOTÓN AGREGAR AL CARRITO
+     ============================================ */
+  .cli-btnAgregarCarrito {
+    width: 100%;
+    background: var(--secondary-wine);
+    color: var(--primary-white);
+    border: none;
+    padding: 12px 16px;
+    border-radius: 12px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-top: 16px;
+    border: 1px solid var(--secondary-wine);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  
+  .cli-btnAgregarCarrito:hover {
+    background: var(--secondary-wine-dark);
+    border-color: var(--secondary-wine-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(114, 47, 55, 0.3);
+  }
+  
+  .cli-btnAgregarCarrito:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 12px rgba(114, 47, 55, 0.2);
+  }
+  
+  /* ============================================
+     RESPONSIVE DESIGN - Ancho Completo
+     ============================================ */
+  
+  @media (max-width: 1200px) {
+    .cli-menuContainer {
+      padding-top: 18px; /* Ajustado para tablet grande */
+    }
+    
+    .cli-headerSection,
+    .cli-categoriasGrid,
+    .cli-alert,
+    .cli-loadingContainer,
+    .cli-noProductosHoy {
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+    
+    .cli-productosGrid {
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+      padding: 24px;
+    }
+  }
+  
+  @media (max-width: 1024px) {
+    .cli-menuContainer {
+      padding-top: 16px; /* Ajustado para tablet */
+    }
+    
+    .cli-headerSection,
+    .cli-categoriasGrid,
+    .cli-alert,
+    .cli-loadingContainer,
+    .cli-noProductosHoy {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+    
+    .cli-productosGrid {
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+    
+    .cli-headerSection {
+      padding: 32px 24px;
+      margin-bottom: 24px;
+    }
+    
+    /* REORGANIZAR HEADER EN TABLET */
+    .cli-headerActions {
+      position: relative;
+      top: auto;
+      right: auto;
+      margin-top: 20px;
+      justify-content: center;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .cli-menuContainer {
+      width: 100vw !important;
+      margin-left: calc(-50vw + 50%) !important;
+      padding-top: 12px; /* Padding reducido para móvil */
+    }
+    
+    .cli-headerSection,
+    .cli-categoriasGrid,
+    .cli-alert,
+    .cli-loadingContainer,
+    .cli-noProductosHoy {
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+    
+    /* HEADER OPTIMIZADO PARA MÓVIL - ESPACIO MÍNIMO */
+    .cli-headerSection {
+      padding: 12px 12px;
+      margin: 0 auto 8px; /* SIN MARGEN SUPERIOR en móvil también */
+      border-radius: 12px;
+      text-align: left;
+      overflow: hidden;
+    }
+    
+    /* REORGANIZAR CONTENIDO DEL HEADER EN MÓVIL */
+    .cli-headerContent {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    
+    .cli-headerContent h1 {
+      font-size: 1.5rem;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      text-align: left;
+    }
+    
+    .cli-headerDescription {
+      font-size: 0.85rem;
+      margin: 0;
+      opacity: 0.85;
+      text-align: left;
+      line-height: 1.2;
+    }
+    
+    /* BADGES EN FILA HORIZONTAL MÁS COMPACTA */
+    .cli-infoDay {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 6px;
+      margin-top: 8px;
+      flex-wrap: wrap;
+    }
+    
+    .cli-dayBadge {
+      padding: 4px 10px;
+      font-size: 0.7rem;
+      border-radius: 16px;
+      white-space: nowrap;
+    }
+    
+    .cli-productCount {
+      padding: 4px 10px;
+      font-size: 0.7rem;
+      border-radius: 16px;
+      white-space: nowrap;
+    }
+    
+    /* BOTONES DE ACCIÓN MÁS COMPACTOS */
+    .cli-headerActions {
+      position: static;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      gap: 6px;
+      margin-top: 10px;
+      padding-top: 8px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .cli-refreshBtn,
+    .cli-carritoBtn {
+      flex: 1;
+      max-width: 130px;
+      padding: 8px 10px;
+      font-size: 0.75rem;
+      border-radius: 8px;
+      justify-content: center;
+    }
+    
+    .cli-carritoBadge {
+      width: 16px;
+      height: 16px;
+      font-size: 0.6rem;
+      top: -5px;
+      right: -5px;
+    }
+    
+    /* PRODUCTOS EN LAYOUT HORIZONTAL CON MENOS ESPACIO */
+    .cli-productosGrid {
+      grid-template-columns: 1fr;
+      padding: 12px;
+      gap: 12px;
+    }
+    
+    .cli-categoriaHeader {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 16px;
+    }
+    
+    /* LAYOUT HORIZONTAL EN MÓVIL - MÁS COMPACTO */
+    .cli-productoCard {
+      display: flex;
+      flex-direction: row;
+      align-items: stretch;
+      min-height: 120px;
+      overflow: hidden;
+    }
+    
+    .cli-productoImagen {
+      width: 100px;
+      min-width: 100px;
+      height: auto;
+      flex-shrink: 0;
+    }
+    
+    .cli-badgeDisponibleHoy {
+      top: 6px;
+      right: 6px;
+      padding: 3px 6px;
+      font-size: 0.6rem;
+    }
+    
+    .cli-productoInfo {
+      flex: 1;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    
+    .cli-productoInfo h3 {
+      font-size: 1rem;
+      margin-bottom: 4px;
+      line-height: 1.1;
+    }
+    
+    .cli-productoDescripcion {
+      font-size: 0.8rem;
+      margin-bottom: 8px;
+      -webkit-line-clamp: 2;
+      line-height: 1.2;
+    }
+    
+    .cli-productoDetalles {
+      gap: 6px;
+      margin-top: auto;
+    }
+    
+    .cli-precioTiempo {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      gap: 6px;
+    }
+    
+    .cli-precio {
+      font-size: 1.1rem;
+    }
+    
+    .cli-tiempo {
+      padding: 3px 6px;
+      font-size: 0.7rem;
+    }
+    
+    .cli-disponibilidad {
+      display: none;
+    }
+    
+    .cli-btnAgregarCarrito {
+      margin-top: 6px;
+      padding: 6px 10px;
+      font-size: 0.75rem;
+      border-radius: 6px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .cli-menuContainer {
+      padding-top: 8px; /* Padding mínimo para móviles pequeños */
+    }
+    
+    .cli-headerSection,
+    .cli-categoriasGrid,
+    .cli-alert,
+    .cli-loadingContainer,
+    .cli-noProductosHoy {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+    
+    /* HEADER ULTRA COMPACTO PARA MÓVILES PEQUEÑOS */
+    .cli-headerSection {
+      padding: 10px 10px;
+      margin: 0 auto 4px; /* SIN MARGEN SUPERIOR en móviles pequeños también */
+    }
+    
+    .cli-headerContent h1 {
+      font-size: 1.3rem;
+    }
+    
+    .cli-headerDescription {
+      font-size: 0.75rem;
+    }
+    
+    .cli-infoDay {
+      gap: 4px;
+      margin-top: 6px;
+    }
+    
+    .cli-dayBadge,
+    .cli-productCount {
+      padding: 3px 8px;
+      font-size: 0.65rem;
+    }
+    
+    .cli-headerActions {
+      margin-top: 8px;
+      gap: 4px;
+    }
+    
+    .cli-refreshBtn,
+    .cli-carritoBtn {
+      padding: 6px 8px;
+      font-size: 0.7rem;
+      max-width: 110px;
+    }
+    
+    .cli-productosGrid {
+      padding: 10px;
+      gap: 10px;
+    }
+    
+    .cli-categoriaHeader {
+      padding: 12px;
+    }
+    
+    /* AJUSTES ESPECÍFICOS PARA MÓVILES PEQUEÑOS */
+    .cli-productoCard {
+      min-height: 100px;
+    }
+    
+    .cli-productoImagen {
+      width: 80px;
+      min-width: 80px;
+    }
+    
+    .cli-productoInfo {
+      padding: 10px;
+    }
+    
+    .cli-productoInfo h3 {
+      font-size: 0.9rem;
+    }
+    
+    .cli-productoDescripcion {
+      font-size: 0.75rem;
+      -webkit-line-clamp: 1;
+    }
+    
+    .cli-precio {
+      font-size: 1rem;
+    }
+    
+    .cli-tiempo {
+      padding: 2px 4px;
+      font-size: 0.65rem;
+    }
+    
+    .cli-btnAgregarCarrito {
+      padding: 5px 8px;
+      font-size: 0.7rem;
+    }
+    
+    .cli-noProductosHoy {
+      padding: 30px 15px;
+    }
+  }
+  
+  /* ============================================
+     ANIMACIONES SUAVES
+     ============================================ */
+  @media (prefers-reduced-motion: no-preference) {
+    .cli-productoCard {
+      animation: cliFadeInUp 0.6s ease-out;
+    }
+    
+    .cli-categoriaSection {
+      animation: cliFadeInUp 0.5s ease-out;
+    }
+  }
+  
+  @keyframes cliFadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* ============================================
+     ACCESIBILIDAD
+     ============================================ */
+  .cli-refreshBtn:focus,
+  .cli-carritoBtn:focus,
+  .cli-btn:focus,
+  .cli-btnAgregarCarrito:focus {
+    outline: 2px solid var(--secondary-wine);
+    outline-offset: 2px;
+  }
+  
+  /* ============================================
+     SCROLL SUAVE
+     ============================================ */
+  .cli-menuContainer {
+    scroll-behavior: smooth;
+  }

@@ -1,0 +1,384 @@
+/* ============================================
+   HEADER MINIMALISTA - DISEÑO ELEGANTE
+   ============================================ */
+
+:root {
+  --primary-white: #ffffff;
+  --secondary-wine: #722f37;
+  --secondary-wine-dark: #5a252a;
+  --neutral-50: #fafafa;
+  --neutral-100: #f5f5f5;
+  --neutral-200: #e5e5e5;
+  --neutral-500: #737373;
+  --neutral-600: #525252;
+  --neutral-700: #404040;
+  --neutral-800: #262626;
+}
+
+/* ============================================
+   HEADER PRINCIPAL
+   ============================================ */
+
+.sin-log-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: var(--primary-white);
+  border-bottom: 1px solid var(--neutral-200);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+  /* TIPOGRAFÍA MINIMALISTA */
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  height: 85px;
+  transition: all 0.3s ease;
+}
+
+.sin-log-header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 48px;
+  max-width: 1400px;
+  margin: 0 auto;
+  height: 100%;
+  width: 100%;
+}
+
+/* ============================================
+   LOGO + NOMBRE DEL RESTAURANTE
+   ============================================ */
+
+.sin-log-brand {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.sin-log-brand:hover {
+  transform: translateY(-1px);
+}
+
+.sin-log-brand-logo {
+  height: 55px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.08));
+  transition: all 0.3s ease;
+}
+
+.sin-log-brand:hover .sin-log-brand-logo {
+  filter: drop-shadow(0 4px 10px rgba(114, 47, 55, 0.15));
+  transform: scale(1.03);
+}
+
+.sin-log-brand-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.sin-log-brand-name {
+  font-size: 1.5rem;
+  font-weight: 400; /* ✅ Regular weight para diseño minimalista */
+  color: var(--secondary-wine);
+  margin: 0;
+  line-height: 1.2;
+  letter-spacing: -0.3px;
+  transition: color 0.3s ease;
+}
+
+.sin-log-brand:hover .sin-log-brand-name {
+  color: var(--secondary-wine-dark);
+}
+
+.sin-log-brand-tagline {
+  font-size: 0.8rem;
+  font-weight: 400; /* ✅ Regular weight para diseño minimalista */
+  color: var(--neutral-500);
+  font-style: italic;
+  letter-spacing: 0.3px;
+}
+
+/* ============================================
+   NAVEGACIÓN MINIMALISTA
+   ============================================ */
+
+.sin-log-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sin-log-nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500; /* ✅ Medium weight para diseño minimalista */
+  color: var(--neutral-700);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+  position: relative;
+}
+
+.sin-log-nav-link svg {
+  font-size: 1.1rem;
+  transition: transform 0.3s ease;
+}
+
+/* Botón por defecto (Menú) */
+.sin-log-nav-link:hover {
+  background-color: var(--neutral-100);
+  color: var(--secondary-wine);
+  transform: translateY(-1px);
+}
+
+.sin-log-nav-link:hover svg {
+  transform: scale(1.08);
+}
+
+.sin-log-nav-link-active {
+  background-color: var(--neutral-100);
+  color: var(--secondary-wine);
+  font-weight: 500; /* ✅ Medium weight, sin bold */
+}
+
+/* Botón secundario (Iniciar Sesión) */
+.sin-log-nav-link-secondary {
+  color: var(--secondary-wine);
+  border: 1px solid var(--neutral-200);
+}
+
+.sin-log-nav-link-secondary:hover {
+  background-color: var(--secondary-wine);
+  color: var(--primary-white);
+  border-color: var(--secondary-wine);
+}
+
+/* Botón primario (Registrarse) */
+.sin-log-nav-link-primary {
+  background: linear-gradient(135deg, var(--secondary-wine) 0%, var(--secondary-wine-dark) 100%);
+  color: var(--primary-white);
+  border: 1px solid var(--secondary-wine);
+  box-shadow: 0 2px 8px rgba(114, 47, 55, 0.15);
+}
+
+.sin-log-nav-link-primary:hover {
+  background: linear-gradient(135deg, var(--secondary-wine-dark) 0%, var(--secondary-wine) 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(114, 47, 55, 0.3);
+}
+
+/* Separador minimalista */
+.sin-log-nav-divider {
+  width: 1px;
+  height: 24px;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    var(--neutral-300) 50%,
+    transparent 100%
+  );
+  margin: 0 4px;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 1024px) {
+  .sin-log-header {
+    height: 75px;
+  }
+
+  .sin-log-header-content {
+    padding: 0 32px;
+  }
+
+  .sin-log-brand-logo {
+    height: 48px;
+  }
+
+  .sin-log-brand-name {
+    font-size: 1.3rem;
+  }
+
+  .sin-log-brand-tagline {
+    font-size: 0.75rem;
+  }
+
+  .sin-log-nav-link {
+    padding: 8px 16px;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .sin-log-header {
+    height: 70px;
+  }
+
+  .sin-log-header-content {
+    padding: 0 20px;
+    gap: 16px;
+  }
+
+  .sin-log-brand {
+    gap: 12px;
+  }
+
+  .sin-log-brand-logo {
+    height: 42px;
+  }
+
+  .sin-log-brand-name {
+    font-size: 1.1rem;
+  }
+
+  .sin-log-brand-tagline {
+    display: none;
+  }
+
+  .sin-log-nav {
+    gap: 6px;
+  }
+
+  .sin-log-nav-link span {
+    display: none;
+  }
+
+  .sin-log-nav-link {
+    padding: 10px;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    justify-content: center;
+  }
+
+  .sin-log-nav-link svg {
+    font-size: 1.2rem;
+    margin: 0;
+  }
+
+  .sin-log-nav-divider {
+    height: 20px;
+    margin: 0 2px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sin-log-header {
+    height: 65px;
+  }
+
+  .sin-log-header-content {
+    padding: 0 16px;
+  }
+
+  .sin-log-brand-logo {
+    height: 38px;
+  }
+
+  .sin-log-brand-name {
+    font-size: 1rem;
+  }
+
+  .sin-log-nav-link {
+    width: 38px;
+    height: 38px;
+    padding: 9px;
+  }
+
+  .sin-log-nav-link svg {
+    font-size: 1.1rem;
+  }
+}
+
+/* ============================================
+   ANIMACIONES SUAVES
+   ============================================ */
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.sin-log-header {
+  animation: fadeInDown 0.4s ease-out;
+}
+
+/* ============================================
+   ACCESIBILIDAD
+   ============================================ */
+
+.sin-log-brand:focus,
+.sin-log-nav-link:focus {
+  outline: 2px solid var(--secondary-wine);
+  outline-offset: 4px;
+  border-radius: 8px;
+}
+
+/* ============================================
+   SCROLL EFFECT (Opcional)
+   ============================================ */
+
+.sin-log-header.scrolled {
+  height: 70px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.sin-log-header.scrolled .sin-log-brand-logo {
+  height: 45px;
+}
+
+/* ============================================
+   ESTADOS HOVER MEJORADOS
+   ============================================ */
+
+.sin-log-nav-link:active {
+  transform: translateY(0) !important;
+}
+
+.sin-log-brand:active .sin-log-brand-logo {
+  transform: scale(0.98);
+}
+
+/* Efecto de brillo sutil en hover del logo */
+.sin-log-brand-logo {
+  position: relative;
+  overflow: hidden;
+}
+
+.sin-log-brand:hover .sin-log-brand-logo::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  animation: shine 0.8s ease-out;
+}
+
+@keyframes shine {
+  to {
+    left: 100%;
+  }
+}

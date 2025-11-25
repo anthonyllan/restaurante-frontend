@@ -1,0 +1,509 @@
+/* ============================================
+   GESTIÓN DE INGRESOS (ADMIN) - admin-ingresos-
+   ============================================ */
+
+.admin-ingresos-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 32px;
+  background: var(--neutral-50);
+  min-height: calc(100vh - 70px);
+}
+
+/* ============================================
+   HEADER
+   ============================================ */
+
+.admin-ingresos-header {
+  background: linear-gradient(135deg, var(--secondary-wine) 0%, var(--secondary-wine-dark) 100%);
+  border-radius: 20px;
+  padding: 48px 40px;
+  margin-bottom: 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(114, 47, 55, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.admin-ingresos-header-content h1 {
+  font-size: 1.9rem;
+  font-weight: 500;
+  color: var(--primary-white);
+  margin: 0 0 8px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.admin-ingresos-header-content p {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0;
+}
+
+/* ============================================
+   ALERTAS
+   ============================================ */
+
+.admin-ingresos-alert {
+  padding: 16px 20px;
+  border-radius: 12px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  animation: slideDown 0.3s ease;
+}
+
+.admin-ingresos-alert svg:first-child {
+  font-size: 1.2rem;
+}
+
+.admin-ingresos-alert span {
+  flex: 1;
+}
+
+.admin-ingresos-alert button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.admin-ingresos-alert.error {
+  background: #fef2f2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+}
+
+.admin-ingresos-alert.success {
+  background: #f0fdf4;
+  color: #166534;
+  border: 1px solid #bbf7d0;
+}
+
+/* ============================================
+   FILTROS DE PERIODO
+   ============================================ */
+
+.admin-ingresos-filtros {
+  background: var(--primary-white);
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 24px;
+  border: 1px solid var(--neutral-200);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.admin-ingresos-filtros-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--neutral-900);
+  margin-bottom: 20px;
+}
+
+.admin-ingresos-filtros-header svg {
+  color: var(--secondary-wine);
+  font-size: 1.3rem;
+}
+
+.admin-ingresos-filtros-botones {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.admin-ingresos-filtro-btn {
+  padding: 12px 24px !important;
+  border: 1.5px solid var(--neutral-200) !important;
+  border-radius: 10px !important;
+  background: white !important;
+  color: var(--neutral-700) !important;
+  font-size: 0.95rem !important;
+  font-weight: 500 !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+}
+
+.admin-ingresos-filtro-btn:hover {
+  background: var(--neutral-50) !important;
+  border-color: var(--secondary-wine) !important;
+}
+
+.admin-ingresos-filtro-btn.active {
+  background: var(--secondary-wine) !important;
+  color: white !important;
+  border-color: var(--secondary-wine) !important;
+}
+
+.admin-ingresos-fechas-personalizadas {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--neutral-200);
+}
+
+.admin-ingresos-fecha-grupo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.admin-ingresos-fecha-grupo label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--neutral-700);
+}
+
+.admin-ingresos-fecha-grupo input {
+  padding: 10px 14px;
+  border: 1.5px solid var(--neutral-200);
+  border-radius: 10px;
+  font-size: 0.95rem;
+  background: white !important;
+  color: var(--neutral-700) !important;
+  transition: all 0.3s ease;
+}
+
+.admin-ingresos-fecha-grupo input:focus {
+  outline: none;
+  border-color: var(--secondary-wine);
+  box-shadow: 0 0 0 3px rgba(114, 47, 55, 0.1);
+}
+
+/* ============================================
+   ESTADÍSTICAS
+   ============================================ */
+
+.admin-ingresos-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-bottom: 32px;
+}
+
+.admin-ingresos-stat-card {
+  background: var(--primary-white);
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border: 2px solid var(--neutral-200);
+  transition: all 0.3s ease;
+}
+
+.admin-ingresos-stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+}
+
+.admin-ingresos-stat-card.total {
+  border-color: var(--secondary-wine);
+  background: linear-gradient(135deg, rgba(114, 47, 55, 0.05), rgba(114, 47, 55, 0.02));
+}
+
+.admin-ingresos-stat-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  background: var(--neutral-100);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: var(--secondary-wine);
+}
+
+.admin-ingresos-stat-card.total .admin-ingresos-stat-icon {
+  background: var(--secondary-wine);
+  color: white;
+}
+
+.admin-ingresos-stat-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-ingresos-stat-value {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--neutral-900);
+  line-height: 1;
+}
+
+.admin-ingresos-stat-label {
+  font-size: 0.85rem;
+  color: var(--neutral-600);
+  margin-top: 4px;
+}
+
+/* ============================================
+   TABLA
+   ============================================ */
+
+.admin-ingresos-tabla-container {
+  background: var(--primary-white);
+  border-radius: 16px;
+  padding: 24px;
+  border: 1px solid var(--neutral-200);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.admin-ingresos-tabla-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.admin-ingresos-tabla-header h2 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--neutral-900);
+  margin: 0;
+}
+
+.admin-ingresos-tabla {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.admin-ingresos-tabla thead {
+  background: var(--neutral-100);
+}
+
+.admin-ingresos-tabla th {
+  padding: 14px 16px;
+  text-align: left;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--neutral-700);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 2px solid var(--neutral-200);
+}
+
+.admin-ingresos-tabla td {
+  padding: 16px;
+  border-bottom: 1px solid var(--neutral-100);
+  color: var(--neutral-700);
+  font-size: 0.95rem;
+  vertical-align: middle;
+}
+
+.admin-ingresos-tabla tbody tr:hover {
+  background: var(--neutral-50);
+}
+
+.admin-ingresos-tabla tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.admin-ingresos-id {
+  font-weight: 600;
+  color: var(--neutral-900);
+}
+
+.admin-ingresos-monto {
+  font-weight: 700;
+  color: #059669;
+  font-size: 1rem;
+}
+
+.admin-ingresos-no-data {
+  text-align: center;
+  color: var(--neutral-500);
+  font-style: italic;
+  padding: 48px !important;
+}
+
+/* ============================================
+   BADGES
+   ============================================ */
+
+.admin-ingresos-badge {
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  white-space: nowrap;
+  display: inline-block;
+}
+
+.admin-ingresos-badge.metodo-tarjeta {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.admin-ingresos-badge.metodo-efectivo {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.admin-ingresos-badge.estado-aprobado {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.admin-ingresos-badge.estado-pendiente {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.admin-ingresos-badge.estado-rechazado,
+.admin-ingresos-badge.estado-cancelado {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+/* ============================================
+   BOTONES
+   ============================================ */
+
+.admin-ingresos-btn-primary {
+  background: linear-gradient(135deg, var(--secondary-wine) 0%, var(--secondary-wine-dark) 100%) !important;
+  color: white !important;
+  border: none !important;
+  padding: 14px 28px !important;
+  border-radius: 12px !important;
+  cursor: pointer !important;
+  font-weight: 500 !important;
+  font-size: 0.95rem !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 2px 8px rgba(114, 47, 55, 0.2) !important;
+}
+
+.admin-ingresos-btn-primary:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 12px rgba(114, 47, 55, 0.3) !important;
+}
+
+.admin-ingresos-btn-secondary {
+  background: var(--neutral-100) !important;
+  color: var(--neutral-700) !important;
+  border: 1.5px solid var(--neutral-200) !important;
+  padding: 10px 20px !important;
+  border-radius: 10px !important;
+  cursor: pointer !important;
+  font-weight: 500 !important;
+  font-size: 0.9rem !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  transition: all 0.3s ease !important;
+}
+
+.admin-ingresos-btn-secondary:hover {
+  background: var(--neutral-200) !important;
+}
+
+/* ============================================
+   LOADING
+   ============================================ */
+
+.admin-ingresos-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 200px);
+}
+
+.admin-ingresos-spinner {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 16px;
+  border: 4px solid var(--neutral-200);
+  border-top-color: var(--secondary-wine);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 1024px) {
+  .admin-ingresos-container {
+    padding: 24px;
+  }
+
+  .admin-ingresos-header {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+
+  .admin-ingresos-fechas-personalizadas {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 768px) {
+  .admin-ingresos-filtros-botones {
+    flex-direction: column;
+  }
+
+  .admin-ingresos-filtro-btn {
+    width: 100%;
+  }
+
+  .admin-ingresos-tabla-container {
+    overflow-x: auto;
+  }
+
+  .admin-ingresos-tabla {
+    min-width: 800px;
+  }
+
+  .admin-ingresos-tabla-header {
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .admin-ingresos-btn-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-ingresos-header-content h1 {
+    font-size: 1.5rem;
+  }
+
+  .admin-ingresos-stats {
+    grid-template-columns: 1fr;
+  }
+}
+

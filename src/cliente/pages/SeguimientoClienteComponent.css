@@ -1,0 +1,519 @@
+/* Estilo para el componente de seguimiento del cliente */
+.cli-seguimiento-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px;
+    background: var(--neutral-50);
+    min-height: calc(100vh - 70px);
+  }
+  
+  /* Header minimalista y elegante con fondo vino */
+  .cli-seguimiento-header {
+    background: linear-gradient(135deg, var(--secondary-wine) 0%, var(--secondary-wine-dark) 100%);
+    border-radius: 20px;
+    padding: 48px 40px;
+    margin-bottom: 32px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(114, 47, 55, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Decoración sutil con línea más clara */
+  .cli-seguimiento-header::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  }
+  
+  .cli-seguimiento-header h1 {
+    font-size: 1.75rem;
+    font-weight: 500;
+    margin: 0 0 8px;
+    color: var(--primary-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    letter-spacing: -0.3px;
+  }
+
+  .cli-seguimiento-header h1 svg {
+    color: var(--primary-white);
+    font-size: 1.5rem;
+    opacity: 0.95;
+  }
+  
+  .cli-seguimiento-header p {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.85);
+    margin: 0;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+  }
+  
+  .cli-seguimiento-controls {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 24px;
+  }
+  
+  .cli-seguimiento-refreshBtn {
+    background: var(--primary-white);
+    color: var(--secondary-wine);
+    padding: 12px 24px;
+    border: 1.5px solid var(--neutral-200);
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+  }
+  
+  .cli-seguimiento-refreshBtn:hover {
+    background: var(--neutral-50);
+    border-color: var(--secondary-wine);
+    color: var(--secondary-wine-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+  }
+
+  .cli-seguimiento-refreshBtn svg {
+    font-size: 1.1rem;
+  }
+  
+  .cli-seguimiento-loadingContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 0;
+  }
+  
+  .cli-seguimiento-spinner {
+    width: 48px;
+    height: 48px;
+    border: 3px solid var(--neutral-200);
+    border-top: 3px solid var(--secondary-wine);
+    border-radius: 50%;
+    animation: seguimientoSpin 1s linear infinite;
+    margin-bottom: 16px;
+  }
+  
+  @keyframes seguimientoSpin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  
+  .cli-seguimiento-empty {
+    text-align: center;
+    padding: 80px 32px;
+    background: var(--primary-white);
+    border-radius: 20px;
+    border: 1px solid var(--neutral-100);
+  }
+  
+  .cli-seguimiento-emptyIcon {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    color: var(--neutral-300);
+  }
+  
+  .cli-seguimiento-empty h3 {
+    font-size: 1.25rem;
+    color: var(--neutral-700);
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+  
+  .cli-seguimiento-empty p {
+    color: var(--neutral-500);
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  /* Alert styles */
+  .cli-seguimiento-alert {
+    padding: 16px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 16px;
+    font-weight: 500;
+  }
+
+  .cli-seguimiento-alertError {
+    background: #fee;
+    color: #c33;
+    border: 1px solid #fcc;
+  }
+
+  .cli-seguimiento-alertSuccess {
+    background: #efe;
+    color: #3c3;
+    border: 1px solid #cfc;
+  }
+
+  .cli-seguimiento-alertWarning {
+    background: #ffe;
+    color: #c93;
+    border: 1px solid #ffc;
+  }
+
+  .cli-seguimiento-alertClose {
+    margin-left: auto;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    opacity: 0.6;
+  }
+
+  .cli-seguimiento-alertClose:hover {
+    opacity: 1;
+  }
+
+  /* Pedido detail card */
+  .cli-seguimiento-pedido-detail {
+    background: white;
+    border-radius: 20px;
+    padding: 32px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.03);
+    border: 1px solid var(--neutral-100);
+  }
+
+  .cli-seguimiento-info-card {
+    margin-bottom: 32px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--neutral-100);
+  }
+
+  .cli-seguimiento-info-card h2 {
+    font-size: 1.5rem;
+    color: var(--neutral-800);
+    margin-bottom: 20px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .cli-seguimiento-info-card h2::before {
+    content: '';
+    width: 4px;
+    height: 24px;
+    background: var(--secondary-wine);
+    border-radius: 2px;
+  }
+
+  .cli-seguimiento-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+  }
+
+  .cli-seguimiento-info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .cli-seguimiento-label {
+    font-size: 0.9rem;
+    color: var(--neutral-500);
+    font-weight: 500;
+  }
+
+  .cli-seguimiento-value {
+    font-size: 1.1rem;
+    color: var(--neutral-800);
+    font-weight: 600;
+  }
+
+  .cli-seguimiento-badge {
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: inline-block;
+  }
+
+  .cli-seguimiento-badge-registrado {
+    background: #e3f2fd;
+    color: #1976d2;
+  }
+
+  .cli-seguimiento-badge-pagado {
+    background: #e8f5e9;
+    color: #388e3c;
+  }
+
+  .cli-seguimiento-badge-preparando {
+    background: #fff3e0;
+    color: #f57c00;
+  }
+
+  .cli-seguimiento-badge-listo {
+    background: #f3e5f5;
+    color: #7b1fa2;
+  }
+
+  .cli-seguimiento-badge-entregado {
+    background: #e8f5e9;
+    color: #2e7d32;
+  }
+
+  .cli-seguimiento-badge-en_camino {
+    background: #e1f5fe;
+    color: #0277bd;
+  }
+
+  /* Timeline styles */
+  .cli-seguimiento-timeline {
+    margin: 40px 0;
+  }
+
+  .cli-seguimiento-timeline h3 {
+    font-size: 1.25rem;
+    color: var(--neutral-800);
+    margin-bottom: 32px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .cli-seguimiento-timeline h3::before {
+    content: '';
+    width: 4px;
+    height: 20px;
+    background: var(--secondary-wine);
+    border-radius: 2px;
+  }
+
+  .cli-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: relative;
+  }
+
+  .cli-timeline-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    position: relative;
+    padding: 24px 0;
+  }
+
+  .cli-timeline-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    background: var(--neutral-200);
+    color: var(--neutral-400);
+    border: 4px solid var(--neutral-100);
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+    z-index: 2;
+  }
+
+  .cli-timeline-step.completado .cli-timeline-icon {
+    background: var(--secondary-wine);
+    color: white;
+    border-color: var(--secondary-wine);
+  }
+
+  .cli-timeline-step.activo .cli-timeline-icon {
+    background: #ffd54f;
+    color: #f57c00;
+    border-color: #ffb300;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      transform: scale(1);
+      box-shadow: 0 0 0 0 rgba(255, 213, 79, 0.7);
+    }
+    50% {
+      transform: scale(1.05);
+      box-shadow: 0 0 0 10px rgba(255, 213, 79, 0);
+    }
+  }
+
+  .cli-timeline-content {
+    flex: 1;
+    padding-top: 8px;
+  }
+
+  .cli-timeline-content h4 {
+    font-size: 1.25rem;
+    color: var(--neutral-800);
+    margin-bottom: 4px;
+    font-weight: 600;
+  }
+
+  .cli-timeline-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #f57c00;
+    font-size: 0.95rem;
+    font-weight: 500;
+    margin-top: 8px;
+  }
+
+  .cli-timeline-line {
+    position: absolute;
+    left: 27px;
+    top: 80px;
+    width: 4px;
+    height: calc(100% - 24px);
+    background: var(--neutral-200);
+    z-index: 1;
+    transition: all 0.3s ease;
+  }
+
+  .cli-timeline-line.completado {
+    background: var(--secondary-wine);
+  }
+
+  /* Dirección y recogida */
+  .cli-seguimiento-direccion,
+  .cli-seguimiento-recoger {
+    background: var(--neutral-50);
+    border-radius: 16px;
+    padding: 24px;
+    margin-top: 32px;
+    border: 1px solid var(--neutral-100);
+  }
+
+  .cli-seguimiento-direccion h3,
+  .cli-seguimiento-recoger h3 {
+    font-size: 1.1rem;
+    color: var(--neutral-800);
+    margin-bottom: 16px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .cli-seguimiento-direccion h3::before,
+  .cli-seguimiento-recoger h3::before {
+    content: '';
+    width: 3px;
+    height: 18px;
+    background: var(--secondary-wine);
+    border-radius: 2px;
+  }
+
+  .cli-seguimiento-direccion p,
+  .cli-seguimiento-recoger p {
+    font-size: 0.95rem;
+    color: var(--neutral-600);
+    margin-bottom: 8px;
+    line-height: 1.6;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .cli-seguimiento-container {
+      padding: 16px;
+    }
+
+    .cli-seguimiento-header {
+      padding: 36px 24px;
+      border-radius: 16px;
+    }
+
+    .cli-seguimiento-header h1 {
+      font-size: 1.35rem;
+      gap: 10px;
+    }
+
+    .cli-seguimiento-header h1 svg {
+      font-size: 1.25rem;
+    }
+
+    .cli-seguimiento-header p {
+      font-size: 0.875rem;
+    }
+
+    .cli-seguimiento-refreshBtn {
+      padding: 10px 18px;
+      font-size: 0.875rem;
+    }
+
+    .cli-seguimiento-info-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .cli-seguimiento-info-card h2 {
+      font-size: 1.25rem;
+    }
+
+    .cli-seguimiento-timeline h3 {
+      font-size: 1.1rem;
+    }
+
+    .cli-timeline-icon {
+      width: 48px;
+      height: 48px;
+      font-size: 20px;
+    }
+
+    .cli-timeline-line {
+      left: 23px;
+    }
+
+    .cli-seguimiento-pedido-detail {
+      padding: 24px 20px;
+      border-radius: 16px;
+    }
+
+    .cli-seguimiento-direccion,
+    .cli-seguimiento-recoger {
+      padding: 20px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .cli-seguimiento-header {
+      padding: 28px 20px;
+      border-radius: 12px;
+    }
+
+    .cli-seguimiento-header h1 {
+      font-size: 1.2rem;
+    }
+
+    .cli-seguimiento-header h1 svg {
+      font-size: 1.1rem;
+    }
+
+    .cli-seguimiento-header p {
+      font-size: 0.8rem;
+    }
+
+    .cli-seguimiento-pedido-detail {
+      padding: 20px 16px;
+    }
+  }

@@ -1,0 +1,994 @@
+/* ============================================
+   VARIABLES CSS - Paleta Blanco/Vino
+   ============================================ */
+   :root {
+    --primary-white: #ffffff;
+    --secondary-wine: #722f37;
+    --secondary-wine-dark: #5a252a;
+    --secondary-wine-light: #8b4049;
+    --neutral-50: #fafafa;
+    --neutral-100: #f5f5f5;
+    --neutral-200: #e5e5e5;
+    --neutral-300: #d4d4d4;
+    --neutral-400: #a3a3a3;
+    --neutral-500: #737373;
+    --neutral-600: #525252;
+    --neutral-700: #404040;
+    --neutral-800: #262626;
+    --neutral-900: #171717;
+    --success-green: #16a34a;
+    --warning-amber: #d97706;
+    --danger-red: #dc2626;
+    --info-blue: #2563eb;
+  }
+  
+  /* ============================================
+     CONTENEDOR PRINCIPAL
+     ============================================ */
+  .ventas-container {
+    max-width: fit-content;
+    margin: 0;
+    padding: 24px;
+    width: calc(100vw - 280px);
+    background: var(--neutral-50);
+    min-height: calc(100vh - 70px);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  }
+  
+  /* ============================================
+     HEADER - ESTILO RESTAURANTE CORREGIDO
+     ============================================ */
+  .ventas-header {
+    position: relative;
+    background: linear-gradient(135deg, var(--secondary-wine) 0%, var(--secondary-wine-dark) 100%);
+    border-radius: 16px;
+    padding: 40px 32px;
+    margin-bottom: 32px;
+    color: var(--primary-white);
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(114, 47, 55, 0.15);
+    border: 1px solid var(--secondary-wine-light);
+  }
+  
+  .ventas-headerContent h1 {
+    margin: 0 0 12px 0;
+    font-size: 2.75rem; /* ✅ MISMO TAMAÑO QUE EL MENÚ */
+    font-weight: 300; /* ✅ TIPOGRAFÍA ELEGANTE COMO RESTAURANTE */
+    letter-spacing: -0.5px;
+    color: var(--primary-white);
+    display: flex;
+    align-items: center;
+    justify-content: center; /* ✅ CENTRADO COMO EL MENÚ */
+    gap: 12px;
+  }
+  
+  .ventas-headerDescription {
+    margin: 0 0 20px 0; /* ✅ MISMO MARGEN QUE EL MENÚ */
+    font-size: 1.1rem;
+    font-weight: 400; /* ✅ PESO ELEGANTE */
+    opacity: 0.9;
+    color: var(--primary-white);
+  }
+
+  /* ✅ INFORMACIÓN ADICIONAL COMO EL MENÚ */
+  .ventas-infoStats {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+  }
+
+  .ventas-statBadge {
+    background: rgba(255, 255, 255, 0.15);
+    color: var(--primary-white);
+    padding: 8px 16px; /* ✅ REDUCIDO PARA FECHA MÁS PEQUEÑA */
+    border-radius: 50px;
+    font-weight: 500;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    font-size: 0.85rem; /* ✅ TAMAÑO MÁS PEQUEÑO */
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .ventas-totalBadge {
+    background: var(--primary-white);
+    color: var(--secondary-wine);
+    padding: 8px 16px; /* ✅ REDUCIDO */
+    border-radius: 50px;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    font-size: 0.85rem; /* ✅ TAMAÑO MÁS PEQUEÑO */
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  
+  .ventas-refreshIndicator {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--primary-white);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 12px 16px;
+    border-radius: 12px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .ventas-refreshSpinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top: 2px solid var(--primary-white);
+    border-radius: 50%;
+    animation: ventasSpin 1s linear infinite;
+  }
+  
+  @keyframes ventasSpin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  /* ============================================
+     LOADING
+     ============================================ */
+  .ventas-loadingContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+    color: var(--neutral-600);
+    background: var(--primary-white);
+    border-radius: 16px;
+    margin: 24px 0;
+  }
+  
+  .ventas-spinner {
+    width: 48px;
+    height: 48px;
+    border: 3px solid var(--neutral-200);
+    border-top: 3px solid var(--secondary-wine);
+    border-radius: 50%;
+    animation: ventasSpin 1s linear infinite;
+    margin-bottom: 24px;
+  }
+  
+  .ventas-loadingContainer p {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin: 0;
+  }
+  
+  /* ============================================
+     ALERTAS
+     ============================================ */
+  .ventas-alert {
+    padding: 16px 24px;
+    margin-bottom: 24px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 500;
+    font-size: 0.95rem;
+  }
+  
+  .ventas-alertError {
+    background: var(--primary-white);
+    color: var(--danger-red);
+    border: 1px solid var(--danger-red);
+    box-shadow: 0 2px 8px rgba(220, 38, 38, 0.1);
+  }
+  
+  .ventas-alertClose {
+    background: none;
+    border: none;
+    font-size: 1.25rem;
+    cursor: pointer;
+    padding: 4px;
+    margin-left: 16px;
+    color: inherit;
+    border-radius: 4px;
+    transition: background 0.2s ease;
+  }
+  
+  .ventas-alertClose:hover {
+    background: rgba(0, 0, 0, 0.05);
+  }
+  
+  /* ============================================
+     ESTADÍSTICAS
+     ============================================ */
+  .ventas-estadisticas {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-bottom: 24px;
+  }
+  
+  .ventas-statCard {
+    background: var(--primary-white);
+    padding: 28px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    border: 1px solid var(--neutral-200);
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    min-height: 120px;
+  }
+  
+  .ventas-statCard:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  }
+  
+  .ventas-statIcon {
+    font-size: 3rem;
+    opacity: 0.8;
+    color: var(--secondary-wine);
+  }
+  
+  .ventas-statContent {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  
+  .ventas-statNumber {
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: var(--secondary-wine);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  
+  .ventas-statLabel {
+    font-size: 1rem;
+    color: var(--neutral-600);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  /* ============================================
+     CONTROLES Y FILTROS - LAYOUT MEJORADO
+     ============================================ */
+  .ventas-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 24px;
+    background: var(--primary-white);
+    padding: 24px;
+    border-radius: 16px;
+    border: 1px solid var(--neutral-200);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  }
+
+  /* ✅ PRIMERA FILA - SOLO BÚSQUEDA */
+  .ventas-searchRow {
+    width: 100%;
+  }
+
+  .ventas-search {
+    position: relative;
+    width: 100%;
+  }
+
+  .search-icon {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--neutral-400);
+    font-size: 1.1rem;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* ✅ INPUT DE BÚSQUEDA - COMPLETAMENTE CORREGIDO */
+  .ventas-searchInput {
+    width: 100%;
+    padding: 16px 20px 16px 50px;
+    border: 2px solid var(--neutral-200);
+    border-radius: 12px;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: all 0.2s ease;
+    background: var(--primary-white);
+    color: var(--neutral-800) !important; /* ✅ FORZAR COLOR VISIBLE */
+    box-sizing: border-box;
+  }
+
+  /* ✅ PLACEHOLDER MÁS VISIBLE */
+  .ventas-searchInput::placeholder {
+    color: var(--neutral-500) !important;
+    opacity: 1 !important;
+  }
+
+  /* ✅ FOCUS MEJORADO */
+  .ventas-searchInput:focus {
+    outline: none;
+    border-color: var(--secondary-wine);
+    box-shadow: 0 0 0 3px rgba(114, 47, 55, 0.1);
+    color: var(--neutral-900) !important;
+    background: var(--primary-white) !important;
+  }
+
+  /* ✅ AUTOFILL FORZADO */
+  .ventas-searchInput:-webkit-autofill,
+  .ventas-searchInput:-webkit-autofill:hover,
+  .ventas-searchInput:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 1000px var(--primary-white) inset !important;
+    -webkit-text-fill-color: var(--neutral-800) !important;
+    background-color: var(--primary-white) !important;
+  }
+
+  /* ✅ SEGUNDA FILA - FILTROS ORGANIZADOS */
+  .ventas-filtersRow {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  /* ✅ GRUPOS DE FECHAS */
+  .ventas-dateGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 160px;
+  }
+
+  .ventas-dateLabel {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--neutral-600);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  /* ✅ INPUTS DE FILTROS MEJORADOS */
+  .ventas-filterSelect,
+  .ventas-filterDate {
+    padding: 14px 16px;
+    border: 2px solid var(--neutral-200);
+    border-radius: 12px;
+    font-size: 1rem;
+    font-family: inherit;
+    background: var(--primary-white);
+    color: var(--neutral-800) !important; /* ✅ FORZAR COLOR VISIBLE */
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+  }
+
+  /* ✅ SELECTOR DE FECHAS VISIBLE */
+  .ventas-filterDate {
+    position: relative;
+    color-scheme: light; /* ✅ FORZAR TEMA CLARO */
+  }
+
+  /* ✅ ICONO DE CALENDARIO VISIBLE */
+  .ventas-filterDate::-webkit-calendar-picker-indicator {
+    background-color: var(--secondary-wine) !important;
+    color: var(--primary-white) !important;
+    border-radius: 4px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 4px;
+    margin-left: 8px;
+    transition: all 0.2s ease;
+    filter: invert(0) !important; /* ✅ FORZAR VISIBILIDAD */
+  }
+
+  .ventas-filterDate::-webkit-calendar-picker-indicator:hover {
+    background-color: var(--secondary-wine-dark) !important;
+    transform: scale(1.1);
+  }
+
+  /* ✅ TEXTO DE FECHA VISIBLE */
+  .ventas-filterDate::-webkit-datetime-edit {
+    color: var(--neutral-800) !important;
+  }
+
+  .ventas-filterDate::-webkit-datetime-edit-fields-wrapper {
+    color: var(--neutral-800) !important;
+  }
+
+  .ventas-filterDate::-webkit-datetime-edit-text {
+    color: var(--neutral-600) !important;
+  }
+
+  .ventas-filterDate::-webkit-datetime-edit-month-field,
+  .ventas-filterDate::-webkit-datetime-edit-day-field,
+  .ventas-filterDate::-webkit-datetime-edit-year-field {
+    color: var(--neutral-800) !important;
+  }
+  
+  .ventas-filterSelect:focus,
+  .ventas-filterDate:focus {
+    outline: none;
+    border-color: var(--secondary-wine);
+    box-shadow: 0 0 0 3px rgba(114, 47, 55, 0.1);
+  }
+
+  /* ✅ BOTONES DE ACCIÓN */
+  .ventas-actionButtons {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-left: auto; /* ✅ EMPUJAR A LA DERECHA */
+  }
+
+  .ventas-clearBtn {
+    background: var(--neutral-200);
+    color: var(--neutral-700);
+    border: none;
+    padding: 14px 20px;
+    border-radius: 12px;
+    font-weight: 500;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+  }
+
+  .ventas-clearBtn:hover {
+    background: var(--danger-red);
+    color: var(--primary-white);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+  }
+  
+  .ventas-refreshBtn {
+    background: var(--secondary-wine);
+    color: var(--primary-white);
+    border: none;
+    padding: 14px 24px;
+    border-radius: 12px;
+    font-weight: 500;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    white-space: nowrap;
+  }
+  
+  .ventas-refreshBtn:hover:not(:disabled) {
+    background: var(--secondary-wine-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(114, 47, 55, 0.3);
+  }
+  
+  .ventas-refreshBtn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+  }
+  
+  /* ============================================
+     CONTENIDO Y TABLA - CORREGIDA SIN EMPLEADO
+     ============================================ */
+  .ventas-content {
+    background: var(--primary-white);
+    border-radius: 16px;
+    border: 1px solid var(--neutral-200);
+    overflow: hidden;
+    width: 100%;
+    min-height: 60vh;
+  }
+  
+  .ventas-table {
+    width: 100%;
+    min-width: 100%;
+  }
+  
+  /* ✅ TABLA SIN COLUMNA DE EMPLEADO - 6 COLUMNAS */
+  .ventas-tableHeader {
+    display: grid;
+    grid-template-columns: 
+      minmax(120px, 1fr)    /* ID Venta */
+      minmax(120px, 1fr)    /* ID Pedido */
+      minmax(180px, 1.5fr)  /* Fecha */
+      minmax(160px, 1.5fr)  /* Estado */
+      minmax(140px, 1.2fr)  /* Monto */
+      minmax(180px, 1.5fr); /* Acciones */
+    gap: 20px;
+    padding: 24px 28px;
+    background: var(--neutral-50);
+    border-bottom: 2px solid var(--neutral-200);
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--neutral-700);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    align-items: center;
+  }
+  
+  .ventas-tableRow {
+    display: grid;
+    grid-template-columns: 
+      minmax(120px, 1fr)    /* ID Venta */
+      minmax(120px, 1fr)    /* ID Pedido */
+      minmax(180px, 1.5fr)  /* Fecha */
+      minmax(160px, 1.5fr)  /* Estado */
+      minmax(140px, 1.2fr)  /* Monto */
+      minmax(180px, 1.5fr); /* Acciones */
+    gap: 20px;
+    padding: 24px 28px;
+    border-bottom: 1px solid var(--neutral-100);
+    transition: all 0.2s ease;
+    align-items: center;
+    min-height: 80px;
+  }
+  
+  .ventas-tableRow:hover {
+    background: var(--neutral-50);
+    transform: translateX(4px);
+  }
+  
+  .ventas-ventaId,
+  .ventas-pedidoId {
+    font-weight: 700;
+    color: var(--secondary-wine);
+    font-size: 1.1rem;
+  }
+  
+  .ventas-fecha {
+    font-size: 1rem;
+    color: var(--neutral-600);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .ventas-estado {
+    padding: 8px 16px;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 0.5px;
+  }
+  
+  .ventas-estado-pagado {
+    background: rgba(5, 150, 105, 0.15);
+    color: #059669;
+    border: 1px solid rgba(5, 150, 105, 0.3);
+  }
+  
+  .ventas-estado-preparando {
+    background: rgba(245, 158, 11, 0.15);
+    color: #f59e0b;
+    border: 1px solid rgba(245, 158, 11, 0.3);
+  }
+  
+  .ventas-estado-listo {
+    background: rgba(22, 163, 74, 0.15);
+    color: #16a34a;
+    border: 1px solid rgba(22, 163, 74, 0.3);
+  }
+  
+  .ventas-estado-entregado {
+    background: rgba(37, 99, 235, 0.15);
+    color: #2563eb;
+    border: 1px solid rgba(37, 99, 235, 0.3);
+  }
+  
+  .ventas-monto {
+    font-weight: 700;
+    color: var(--secondary-wine);
+    font-size: 1.25rem;
+  }
+  
+  .ventas-acciones {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-start;
+  }
+  
+  /* ============================================
+     BOTONES
+     ============================================ */
+  .ventas-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    white-space: nowrap;
+    min-height: 40px;
+  }
+  
+  .ventas-btnPrimary {
+    background: var(--secondary-wine);
+    color: var(--primary-white);
+  }
+  
+  .ventas-btnPrimary:hover {
+    background: var(--secondary-wine-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(114, 47, 55, 0.3);
+  }
+  
+  .ventas-btnSecondary {
+    background: var(--neutral-100);
+    color: var(--neutral-700);
+    border: 1px solid var(--neutral-200);
+  }
+  
+  .ventas-btnSecondary:hover {
+    background: var(--secondary-wine);
+    color: var(--primary-white);
+    border-color: var(--secondary-wine);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(114, 47, 55, 0.2);
+  }
+  
+  /* ============================================
+     ESTADO VACÍO
+     ============================================ */
+  .ventas-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 120px 32px;
+    text-align: center;
+    min-height: 50vh;
+  }
+  
+  .ventas-emptyIcon {
+    font-size: 5rem;
+    margin-bottom: 32px;
+    opacity: 0.6;
+    color: var(--neutral-400);
+  }
+  
+  .ventas-empty h3 {
+    color: var(--neutral-700);
+    margin-bottom: 16px;
+    font-size: 1.75rem;
+    font-weight: 500;
+  }
+  
+  .ventas-empty p {
+    color: var(--neutral-500);
+    margin-bottom: 40px;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    max-width: 500px;
+  }
+  
+  /* ============================================
+     MODAL
+     ============================================ */
+  .ventas-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 20px;
+  }
+  
+  .ventas-modalContent {
+    background: var(--primary-white);
+    border-radius: 20px;
+    max-width: 700px;
+    width: 100%;
+    max-height: 85vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  }
+  
+  .ventas-modalHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 28px 28px 0 28px;
+    margin-bottom: 24px;
+  }
+  
+  .ventas-modalHeader h3 {
+    margin: 0;
+    font-size: 1.75rem;
+    color: var(--secondary-wine);
+  }
+  
+  .ventas-modalClose {
+    background: none;
+    border: none;
+    font-size: 2.25rem;
+    cursor: pointer;
+    color: var(--neutral-500);
+    padding: 8px;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+  }
+  
+  .ventas-modalClose:hover {
+    background: var(--neutral-100);
+    color: var(--neutral-700);
+  }
+  
+  .ventas-modalBody {
+    padding: 0 28px 28px 28px;
+  }
+  
+  .ventas-ventaInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+  
+  .ventas-infoSection {
+    background: var(--neutral-50);
+    padding: 24px;
+    border-radius: 16px;
+  }
+  
+  .ventas-infoSection h4 {
+    margin: 0 0 20px 0;
+    color: var(--secondary-wine);
+    font-size: 1.25rem;
+  }
+  
+  .ventas-infoSection p {
+    margin: 10px 0;
+    font-size: 1rem;
+    color: var(--neutral-700);
+  }
+  
+  .ventas-productos {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .ventas-producto {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px;
+    background: var(--primary-white);
+    border-radius: 12px;
+    border: 1px solid var(--neutral-200);
+  }
+  
+  .ventas-productoCantidad {
+    background: var(--secondary-wine);
+    color: var(--primary-white);
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    min-width: 40px;
+    text-align: center;
+  }
+  
+  .ventas-productoNombre {
+    flex: 1;
+    font-weight: 500;
+    color: var(--neutral-700);
+    font-size: 1rem;
+  }
+  
+  .ventas-productoPrecio {
+    font-weight: 600;
+    color: var(--secondary-wine);
+    font-size: 1rem;
+  }
+
+  .ventas-productoSubtotal {
+    font-weight: 700;
+    color: var(--secondary-wine);
+    font-size: 1.1rem;
+  }
+
+  .ventas-totalModal {
+    margin-top: 20px;
+    padding: 16px;
+    background: var(--secondary-wine);
+    color: var(--primary-white);
+    border-radius: 12px;
+    text-align: center;
+    font-size: 1.2rem;
+  }
+  
+  /* ============================================
+     RESPONSIVE - ACTUALIZADO SIN EMPLEADO
+     ============================================ */
+  @media (max-width: 1400px) {
+    .ventas-tableHeader,
+    .ventas-tableRow {
+      grid-template-columns: 100px 100px 150px 140px 120px 1fr;
+      gap: 16px;
+      padding: 20px 24px;
+    }
+  }
+  
+  @media (max-width: 1200px) {
+    .ventas-container {
+      width: calc(100vw - 240px);
+    }
+    
+    .ventas-estadisticas {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .ventas-tableHeader,
+    .ventas-tableRow {
+      grid-template-columns: 90px 90px 130px 120px 110px 1fr;
+      gap: 12px;
+      padding: 18px 20px;
+    }
+
+    .ventas-filtersRow {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 16px;
+    }
+
+    .ventas-actionButtons {
+      margin-left: 0;
+      justify-content: space-between;
+    }
+
+    .ventas-dateGroup {
+      min-width: auto;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .ventas-container {
+      padding: 16px;
+      width: 100%;
+    }
+    
+    .ventas-header {
+      padding: 32px 24px;
+      margin-bottom: 24px;
+    }
+    
+    .ventas-headerContent h1 {
+      font-size: 2.25rem;
+    }
+    
+    .ventas-refreshIndicator {
+      position: relative;
+      top: auto;
+      right: auto;
+      margin-top: 20px;
+      align-self: center;
+    }
+    
+    .ventas-infoStats {
+      flex-direction: column;
+      gap: 12px;
+    }
+    
+    .ventas-controls {
+      gap: 16px;
+    }
+
+    .ventas-filtersRow {
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .ventas-actionButtons {
+      width: 100%;
+      justify-content: space-between;
+    }
+    
+    .ventas-estadisticas {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+    
+    .ventas-tableHeader {
+      display: none;
+    }
+    
+    .ventas-tableRow {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding: 24px;
+      border: 1px solid var(--neutral-200);
+      border-radius: 16px;
+      margin-bottom: 16px;
+      background: var(--primary-white);
+    }
+    
+    .ventas-modal {
+      padding: 10px;
+    }
+    
+    .ventas-modalContent {
+      max-height: 90vh;
+      border-radius: 16px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .ventas-header {
+      padding: 24px 16px;
+    }
+    
+    .ventas-headerContent h1 {
+      font-size: 1.75rem;
+    }
+    
+    .ventas-statCard {
+      padding: 20px;
+      gap: 16px;
+    }
+    
+    .ventas-statIcon {
+      font-size: 2.5rem;
+    }
+    
+    .ventas-statNumber {
+      font-size: 1.75rem;
+    }
+  }
+  
+  /* ============================================
+     ANIMACIONES
+     ============================================ */
+  @media (prefers-reduced-motion: no-preference) {
+    .ventas-statCard {
+      animation: ventasFadeInUp 0.5s ease-out;
+    }
+    
+    .ventas-tableRow {
+      animation: ventasFadeInUp 0.6s ease-out;
+    }
+  }
+  
+  @keyframes ventasFadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
