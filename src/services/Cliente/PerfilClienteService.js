@@ -102,7 +102,8 @@ export const eliminarImagenPerfilCliente = async (id) => {
 export const obtenerUrlImagenCliente = (nombreImagen) => {
   if (!nombreImagen) return null;
   const baseUrl = API_USUARIO_URL;
-  return `${baseUrl}/uploads/clientes/${nombreImagen}`;
+  // El backend tiene las imágenes en /api/uploads/...
+  return `${baseUrl}/api/uploads/clientes/${nombreImagen}`;
 };
 
 /**
@@ -113,7 +114,8 @@ export const cargarImagenPerfilCliente = async (nombreImagen) => {
   
   try {
     const baseUrl = API_USUARIO_URL;
-    const imageUrl = `${baseUrl}/uploads/clientes/${nombreImagen}`;
+    // El backend tiene las imágenes en /api/uploads/...
+    const imageUrl = `${baseUrl}/api/uploads/clientes/${nombreImagen}`;
     
     // Intentar cargar la imagen con autenticación
     const response = await axios.get(imageUrl, {
