@@ -39,6 +39,7 @@ export const API_BASE_URL = getBaseURL();
 // En producción, nginx hará proxy, así que usamos el mismo dominio
 const getApiUrl = (service) => {
   const hostname = window.location.hostname;
+  const origin = window.location.origin;
   
   // Desarrollo local
   if (hostname === 'localhost' || hostname === '127.0.0.1') {
@@ -50,43 +51,42 @@ const getApiUrl = (service) => {
     return `http://localhost:${ports[service]}`;
   }
   
-  // Producción: usar el mismo dominio con HTTPS (sin puerto)
+  // Producción: SIEMPRE usar el mismo dominio con HTTPS (sin puerto)
   // Nginx hará proxy a los microservicios HTTP internos
+  // Forzar HTTPS siempre en producción
   if (isProduction()) {
-    // Si ya es HTTPS, usar directamente; si no, forzar HTTPS
-    let origin = window.location.origin;
-    if (!origin.startsWith('https://')) {
-      origin = origin.replace('http://', 'https://');
-    }
-    // Eliminar puerto si existe (ej: https://example.com:8080 -> https://example.com)
-    // Solo si hay más de 2 partes después de split(':')
-    const parts = origin.split(':');
-    if (parts.length > 3) {
-      return parts.slice(0, 2).join(':');
-    }
-    return origin;
+    // Construir URL HTTPS explícitamente
+    const protocol = 'https://';
+    const host = hostname;
+    // Eliminar cualquier puerto que pueda estar en el hostname
+    const cleanHost = host.split(':')[0];
+    return `${protocol}${cleanHost}`;
   }
   
   // Fallback: usar el origin actual
-  return window.location.origin;
+  return origin;
 };
 
 export const API_PRODUCTO_URL = import.meta.env.VITE_API_PRODUCTO_URL || getApiUrl('producto');
 export const API_PEDIDO_URL = import.meta.env.VITE_API_PEDIDO_URL || getApiUrl('pedido');
 export const API_USUARIO_URL = import.meta.env.VITE_API_USUARIO_URL || getApiUrl('usuario');
 
-// Log para debugging (solo en desarrollo)
-if (!isProduction()) {
-  console.log('API Configuration:', {
-    API_BASE_URL,
-    API_PRODUCTO_URL,
-    API_PEDIDO_URL,
-    API_USUARIO_URL,
-    hostname: window.location.hostname,
-    origin: window.location.origin,
-    protocol: window.location.protocol
-  });
-}
+// Log para debugging (también en producción para verificar)
+console.log('🔧 API Configuration:', {
+  API_BASE_URL,
+  API_PRODUCTO_URL,
+  API_PEDIDO_URL,
+  API_USUARIO_URL,
+  hostname: window.location.hostname,
+  origin: window.location.origin,
+  protocol: window.location.protocol,
+  isProd: isProduction(),
+  envVars: {
+    VITE_API_PRODUCTO_URL: import.meta.env.VITE_API_PRODUCTO_URL,
+    VITE_API_PEDIDO_URL: import.meta.env.VITE_API_PEDIDO_URL,
+    VITE_API_USUARIO_URL: import.meta.env.VITE_API_USUARIO_URL
+  }
+});
 
 // ✅ Interceptor para agregar token JWT automáticamente a todas las peticiones
 axios.interceptors.request.use(
