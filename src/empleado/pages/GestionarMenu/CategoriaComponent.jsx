@@ -40,6 +40,12 @@ const CategoriaComponent = () => {
     return true;
   };
 
+  const getSubmitButtonText = () => {
+    if (uploadingImage) return 'Subiendo imagen...';
+    if (submitting) return 'Guardando...';
+    return editMode ? 'Actualizar' : 'Guardar';
+  };
+
   useEffect(() => {
     cargarCategorias();
     verificarConexion();
@@ -233,7 +239,7 @@ const CategoriaComponent = () => {
               <div className="emp-modal-footer">
                 <button type="button" className="emp-btn emp-btn-secondary" onClick={cerrarModal}>Cancelar</button>
                 <button type="submit" className="emp-btn emp-btn-primary" disabled={submitting || uploadingImage}>
-                  {submitting ? 'Guardando...' : uploadingImage ? 'Subiendo imagen...' : (editMode ? 'Actualizar' : 'Guardar')}
+                  {getSubmitButtonText()}
                 </button>
               </div>
             </form>
