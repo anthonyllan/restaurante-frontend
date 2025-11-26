@@ -9,6 +9,7 @@ import {
   getProductoDiasByProducto
 } from '../../services/GestionarMenu/ProductoDiaService';
 import { useCarrito } from '../../context/CarritoContext.jsx';
+import { getImageUrl } from '../../config/api';
 import CarritoModal from './CarritoModal';
 import { FiRefreshCw, FiShoppingCart, FiCalendar, FiPlus, FiClock, FiX } from 'react-icons/fi';
 import { MdRestaurant, MdToday } from 'react-icons/md';
@@ -56,14 +57,6 @@ const MenuCajeroComponent = () => {
     return fecha.toLocaleDateString('es-ES', opciones);
   };
 
-  const construirUrlCompleta = (imagen) => {
-    if (!imagen) return '';
-    if (imagen.startsWith('http')) return imagen;
-    if (imagen.startsWith('/uploads/')) {
-      return `http://localhost:2001${imagen}`;
-    }
-    return imagen;
-  };
 
   const verificarDisponibilidadHoy = async (producto) => {
     try {
@@ -285,7 +278,7 @@ const MenuCajeroComponent = () => {
                     <div className="cajero-productoImagen">
                       {producto.imagen ? (
                         <img 
-                          src={construirUrlCompleta(producto.imagen)} 
+                          src={getImageUrl(producto.imagen)} 
                           alt={producto.nombre}
                           onError={(e) => {
                             e.target.style.display = 'none';

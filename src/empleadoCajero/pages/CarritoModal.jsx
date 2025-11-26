@@ -5,6 +5,7 @@ import { registrarDetallesPedido } from '../../services/Cajero/DetallePedidoCaje
 import { registrarPago } from '../../services/Cajero/PagoCajeroService.js';
 import { cambiarEstadoPedido } from '../../services/Cajero/PedidoCajeroService.js';
 import { getEmpleadoId } from '../../utils/authUtils'; // ✅ Obtener ID del cajero
+import { getImageUrl } from '../../config/api';
 // 🔄 IMPORT CORREGIDO - FiBuild no existe, uso FiSend
 import { FiShoppingCart, FiTrash2, FiClock, FiCheck, FiPrinter, FiX, FiCreditCard, FiDollarSign, FiSmartphone, FiSend } from 'react-icons/fi';
 import { MdRestaurant, MdDateRange, MdAccessTime, MdInfo } from 'react-icons/md';
@@ -87,14 +88,6 @@ const CarritoModal = ({ onClose }) => {
     return tiempoMaximo;
   };
 
-  const construirUrlCompleta = (imagen) => {
-    if (!imagen) return '';
-    if (imagen.startsWith('http')) return imagen;
-    if (imagen.startsWith('/uploads/')) {
-      return `http://localhost:2001${imagen}`;
-    }
-    return imagen;
-  };
 
   const generarReferenciaPago = (metodoPago) => {
     const timestamp = Date.now();
@@ -474,7 +467,7 @@ const CarritoModal = ({ onClose }) => {
               <div key={item.id} className="carrito-item">
                 <div className="carrito-item-image">
                   {item.imagen ? (
-                    <img src={construirUrlCompleta(item.imagen)} alt={item.nombre} />
+                    <img src={getImageUrl(item.imagen)} alt={item.nombre} />
                   ) : (
                     <div className="carrito-item-placeholder">IMG</div>
                   )}

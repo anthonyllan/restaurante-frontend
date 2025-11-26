@@ -11,7 +11,7 @@ import {
 import { 
   getProductoDiasByProducto
 } from '../../services/GestionarMenu/ProductoDiaService';
-
+import { getImageUrl } from '../../config/api';
 import { FiRefreshCw, FiShoppingCart, FiCalendar, FiClock, FiX, FiLock } from 'react-icons/fi';
 import { MdRestaurant, MdToday } from 'react-icons/md';
 import { BsCheckCircle } from 'react-icons/bs';
@@ -56,14 +56,6 @@ const MenuGeneralSinLog = () => {
     return fecha.toLocaleDateString('es-ES', opciones);
   };
 
-  const construirUrlCompleta = (imagen) => {
-    if (!imagen) return '';
-    if (imagen.startsWith('http')) return imagen;
-    if (imagen.startsWith('/uploads/')) {
-      return `http://localhost:2001${imagen}`;
-    }
-    return imagen;
-  };
 
   const verificarDisponibilidadHoy = async (producto) => {
     try {
@@ -270,7 +262,7 @@ const MenuGeneralSinLog = () => {
                     <div className="sin-log-productoImagen">
                       {producto.imagen ? (
                         <img 
-                          src={construirUrlCompleta(producto.imagen)} 
+                          src={getImageUrl(producto.imagen)} 
                           alt={producto.nombre}
                           onError={(e) => {
                             e.target.style.display = 'none';

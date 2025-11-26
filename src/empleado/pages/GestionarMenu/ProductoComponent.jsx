@@ -19,6 +19,7 @@ import {
   getProductoDiasByProducto,
   actualizarDiasProducto
 } from '../../../services/GestionarMenu/ProductoDiaService';
+import { getImageUrl } from '../../../config/api';
 import { FiPlus, FiEdit, FiTrash2, FiX, FiImage, FiSave, FiUpload, FiClock, FiDollarSign, FiCalendar, FiCheck, FiAlertCircle } from 'react-icons/fi';
 import { MdInventory, MdCategory, MdDescription, MdAccessTime } from 'react-icons/md';
 import { BsCardImage } from 'react-icons/bs';
@@ -50,14 +51,6 @@ const ProductoComponent = () => {
   const [previewUrl, setPreviewUrl] = useState('');
   const [uploadingImage, setUploadingImage] = useState(false);
 
-  const construirUrlCompleta = (imagen) => {
-    if (!imagen) return '';
-    if (imagen.startsWith('http')) return imagen;
-    if (imagen.startsWith('/uploads/')) {
-      return `http://localhost:2001${imagen}`;
-    }
-    return imagen;
-  };
 
   const cargarDiasTodosProductos = async (productosData) => {
     try {
@@ -152,7 +145,7 @@ const ProductoComponent = () => {
         idCategoria: producto.categoria?.id,
         diasDisponibles: diasDisponibles
       });
-      setPreviewUrl(construirUrlCompleta(producto.imagen));
+      setPreviewUrl(getImageUrl(producto.imagen));
     } else {
       setCurrentProducto({
         id: null,
@@ -334,7 +327,7 @@ const ProductoComponent = () => {
                       <div className="emp-productoImagen">
                         {producto.imagen ? (
                           <img 
-                            src={construirUrlCompleta(producto.imagen)} 
+                            src={getImageUrl(producto.imagen)} 
                             alt={producto.nombre}
                             onError={(e) => {
                               e.target.style.display = 'none';

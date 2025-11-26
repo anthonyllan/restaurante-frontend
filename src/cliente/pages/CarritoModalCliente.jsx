@@ -5,6 +5,7 @@ import { registrarDetallesPedido } from '../../services/Cliente/DetallePedidoCli
 import { registrarPago } from '../../services/Cliente/PagoClienteService.js';
 import { obtenerInfoPorCodigoPostal, validarCodigoPostalMexicano, obtenerColoniasUnicas } from '../../services/GeocodingService.js';
 import { getClienteId } from '../../utils/authUtils';
+import { getImageUrl } from '../../config/api';
 import { FiShoppingCart, FiTrash2, FiClock, FiCheck, FiX, FiCreditCard, FiDollarSign, FiArrowLeft, FiArrowRight, FiTruck, FiPhone, FiInfo } from 'react-icons/fi';
 import { MdRestaurant, MdLocationOn, MdHome } from 'react-icons/md';
 import './CarritoModalCliente.css';
@@ -80,14 +81,6 @@ const CarritoModalCliente = ({ onClose }) => {
     return total;
   };
 
-  const construirUrlCompleta = (imagen) => {
-    if (!imagen) return '';
-    if (imagen.startsWith('http')) return imagen;
-    if (imagen.startsWith('/uploads/')) {
-      return `http://localhost:2001${imagen}`;
-    }
-    return imagen;
-  };
 
   
 const crearLocalDateTimeParaJava = () => {
@@ -422,7 +415,7 @@ const crearLocalDateTimeParaJava = () => {
               <div key={item.id} className="cli-carrito-item">
                 <div className="cli-carrito-item-image">
                   {item.imagen ? (
-                    <img src={construirUrlCompleta(item.imagen)} alt={item.nombre} />
+                    <img src={getImageUrl(item.imagen)} alt={item.nombre} />
                   ) : (
                     <div className="cli-carrito-item-placeholder">IMG</div>
                   )}

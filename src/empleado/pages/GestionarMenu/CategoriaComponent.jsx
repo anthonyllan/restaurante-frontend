@@ -10,6 +10,7 @@ import {
   truncarDescripcion,
   subirImagen
 } from '../../../services/GestionarMenu/CategoriaService';
+import { getImageUrl } from '../../../config/api';
 import './CategoriaComponent.css';
 
 const CategoriaComponent = () => {
@@ -30,12 +31,6 @@ const CategoriaComponent = () => {
   const [previewUrl, setPreviewUrl] = useState('');
   const [uploadingImage, setUploadingImage] = useState(false);
 
-  const construirUrlImagen = (rutaImagen) => {
-    if (!rutaImagen) return null;
-    if (rutaImagen.startsWith('http')) return rutaImagen;
-    if (rutaImagen.startsWith('/uploads/')) return `http://localhost:2001${rutaImagen}`;
-    return rutaImagen;
-  };
 
   const validarImagen = (file) => {
     const tiposPermitidos = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif', 'image/webp'];
@@ -68,7 +63,7 @@ const CategoriaComponent = () => {
     if (categoria && categoria.id) {
       setEditMode(true);
       setCurrentCategoria({ ...categoria });
-      if (categoria.imagen) setPreviewUrl(construirUrlImagen(categoria.imagen));
+      if (categoria.imagen) setPreviewUrl(getImageUrl(categoria.imagen));
     } else {
       setEditMode(false);
       setCurrentCategoria({ id: null, nombre: '', descripcion: '', imagen: '' });
@@ -171,7 +166,7 @@ const CategoriaComponent = () => {
                   <td>{c.id}</td>
                   <td>
                     {c.imagen ? (
-                      <img src={construirUrlImagen(c.imagen)} alt={c.nombre} className="emp-imagen" />
+                      <img src={getImageUrl(c.imagen)} alt={c.nombre} className="emp-imagen" />
                     ) : (
                       <div className="emp-imagen-placeholder">Sin imagen</div>
                     )}
