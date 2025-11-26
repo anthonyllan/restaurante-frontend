@@ -39,7 +39,7 @@ export const API_USUARIO_URL = getApiUrl('VITE_API_USUARIO_URL', 'http://143.244
 export const API_BASE_URL = getApiUrl('VITE_API_BASE_URL', 'http://164.90.246.132');
 
 // Función helper para construir URLs de imágenes
-// IMPORTANTE: Las imágenes siempre deben ir directamente a la IP pública, no pasar por el proxy
+// IMPORTANTE: En producción, usar el proxy /producto-api/uploads/ para evitar Mixed Content
 export const getImageUrl = (rutaImagen) => {
   if (!rutaImagen) return null;
   
@@ -53,26 +53,33 @@ export const getImageUrl = (rutaImagen) => {
                         window.location.hostname !== 'localhost' &&
                         window.location.hostname !== '127.0.0.1';
   
-  // Detectar si la página está en HTTPS
-  const isHttps = typeof window !== 'undefined' && window.location.protocol === 'https:';
-  
-  // IP pública del microservicio Producto
-  // Usar HTTPS si la página está en HTTPS, HTTP en desarrollo
-  const PRODUCTO_IP_PUBLICA = isHttps ? 'https://164.90.246.132' : 'http://164.90.246.132';
-  const PRODUCTO_IP_LOCAL = 'http://localhost:2001';
-  const PRODUCTO_IP = isProduction ? PRODUCTO_IP_PUBLICA : PRODUCTO_IP_LOCAL;
-  
-  // Si es una ruta relativa que empieza con /uploads/, construir la URL completa
-  if (rutaImagen.startsWith('/uploads/')) {
-    return `${PRODUCTO_IP}${rutaImagen}`;
+  if (isProduction) {
+    // En producción, usar ruta relativa a través del proxy del frontend
+    // Esto evita problemas de Mixed Content (HTTPS → HTTP)
+    
+    if (rutaImagen.startsWith('/uploads/')) {
+      return `/producto-api${rutaImagen}`;
+    }
+    
+    if (!rutaImagen.startsWith('/')) {
+      return `/producto-api/uploads/productos/${rutaImagen}`;
+    }
+    
+    return `/producto-api${rutaImagen}`;
+  } else {
+    // En desarrollo, usar localhost directamente
+    const PRODUCTO_IP_LOCAL = 'http://localhost:2001';
+    
+    if (rutaImagen.startsWith('/uploads/')) {
+      return `${PRODUCTO_IP_LOCAL}${rutaImagen}`;
+    }
+    
+    if (!rutaImagen.startsWith('/')) {
+      return `${PRODUCTO_IP_LOCAL}/uploads/productos/${rutaImagen}`;
+    }
+    
+    return `${PRODUCTO_IP_LOCAL}${rutaImagen}`;
   }
-  
-  // Si no tiene prefijo, agregarlo
-  if (!rutaImagen.startsWith('/')) {
-    return `${PRODUCTO_IP}/uploads/productos/${rutaImagen}`;
-  }
-  
-  return `${PRODUCTO_IP}${rutaImagen}`;
 };
 
 // ✅ Interceptor para agregar token JWT automáticamente a todas las peticiones
