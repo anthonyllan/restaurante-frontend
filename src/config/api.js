@@ -50,12 +50,11 @@ export const getImageUrl = (rutaImagen) => {
                         window.location.hostname !== 'localhost';
   
   if (isProduction) {
-    // Usar IP pública directamente (HTTP, pero funcionará)
-    const PRODUCTO_IP = 'http://164.90.246.132';
+    // Use relative URL to serve through HTTPS domain proxy
     if (rutaImagen.startsWith('/uploads/')) {
-      return `${PRODUCTO_IP}${rutaImagen}`;
+      return rutaImagen; // This will be served through nginx proxy
     }
-    return `${PRODUCTO_IP}/uploads/productos/${rutaImagen}`;
+    return `/uploads/productos/${rutaImagen}`;
   } else {
     return `http://localhost:2001${rutaImagen.startsWith('/') ? rutaImagen : '/uploads/productos/' + rutaImagen}`;
   }
