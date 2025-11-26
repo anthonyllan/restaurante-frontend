@@ -103,9 +103,26 @@ const CategoriaComponent = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmitting(true);
+    
     try {
-      if (editMode) await actualizarCategoria(currentCategoria.id, currentCategoria);
-      else await guardarCategoria(currentCategoria);
+      // ✅ AGREGAR: Subir imagen ANTES de guardar (si hay una nueva)
+      if (selectedFile) {
+        setUploadingImage(true);
+        const uploadResponse = await subirImagen(selectedFile);
+        setCurrentCategoria(prev => ({
+          ...prev,
+          imagen: uploadResponse.data.rutaImagen // ← GUARDAR LA RUTA
+        }));
+        setUploadingImage(false);
+      }
+      
+      // ✅ Guardar la categoría CON la ruta de imagen
+      if (editMode) {
+        await actualizarCategoria(currentCategoria.id, currentCategoria);
+      } else {
+        await guardarCategoria(currentCategoria);
+      }
+      
       await cargarCategorias();
       setSuccess(editMode ? 'Actualizado correctamente' : 'Guardado correctamente');
       cerrarModal();
@@ -113,6 +130,7 @@ const CategoriaComponent = () => {
       setError('Error al guardar la categoría');
     } finally {
       setSubmitting(false);
+      setUploadingImage(false);
     }
   };
 
