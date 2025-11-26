@@ -49,16 +49,20 @@ export const getImageUrl = (rutaImagen) => {
   }
   
   // Detectar si estamos en producción o desarrollo
-  const isProduction = typeof window !== 'undefined' && 
-                       window.location.hostname !== 'localhost' && 
-                       window.location.hostname !== '127.0.0.1';
+  const isProduction = typeof window !== 'undefined' &&
+                        window.location.hostname !== 'localhost' &&
+                        window.location.hostname !== '127.0.0.1';
   
-  // IP pública del microservicio Producto (siempre usar IP directa para imágenes)
-  const PRODUCTO_IP_PUBLICA = 'http://164.90.246.132';
+  // Detectar si la página está en HTTPS
+  const isHttps = typeof window !== 'undefined' && window.location.protocol === 'https:';
+  
+  // IP pública del microservicio Producto
+  // Usar HTTPS si la página está en HTTPS, HTTP en desarrollo
+  const PRODUCTO_IP_PUBLICA = isHttps ? 'https://164.90.246.132' : 'http://164.90.246.132';
   const PRODUCTO_IP_LOCAL = 'http://localhost:2001';
   const PRODUCTO_IP = isProduction ? PRODUCTO_IP_PUBLICA : PRODUCTO_IP_LOCAL;
   
-  // Si es una ruta relativa que empieza con /uploads/, construir la URL completa con IP pública
+  // Si es una ruta relativa que empieza con /uploads/, construir la URL completa
   if (rutaImagen.startsWith('/uploads/')) {
     return `${PRODUCTO_IP}${rutaImagen}`;
   }
