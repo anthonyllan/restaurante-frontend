@@ -39,6 +39,7 @@ export const API_USUARIO_URL = getApiUrl('VITE_API_USUARIO_URL', 'http://143.244
 export const API_BASE_URL = getApiUrl('VITE_API_BASE_URL', 'http://164.90.246.132');
 
 // Función helper para construir URLs de imágenes
+// IMPORTANTE: Las imágenes siempre deben ir directamente a la IP pública, no pasar por el proxy
 export const getImageUrl = (rutaImagen) => {
   if (!rutaImagen) return null;
   
@@ -47,17 +48,27 @@ export const getImageUrl = (rutaImagen) => {
     return rutaImagen;
   }
   
-  // Si es una ruta relativa que empieza con /uploads/, construir la URL completa
+  // Detectar si estamos en producción o desarrollo
+  const isProduction = typeof window !== 'undefined' && 
+                       window.location.hostname !== 'localhost' && 
+                       window.location.hostname !== '127.0.0.1';
+  
+  // IP pública del microservicio Producto (siempre usar IP directa para imágenes)
+  const PRODUCTO_IP_PUBLICA = 'http://164.90.246.132';
+  const PRODUCTO_IP_LOCAL = 'http://localhost:2001';
+  const PRODUCTO_IP = isProduction ? PRODUCTO_IP_PUBLICA : PRODUCTO_IP_LOCAL;
+  
+  // Si es una ruta relativa que empieza con /uploads/, construir la URL completa con IP pública
   if (rutaImagen.startsWith('/uploads/')) {
-    return `${API_PRODUCTO_URL}${rutaImagen}`;
+    return `${PRODUCTO_IP}${rutaImagen}`;
   }
   
   // Si no tiene prefijo, agregarlo
   if (!rutaImagen.startsWith('/')) {
-    return `${API_PRODUCTO_URL}/uploads/productos/${rutaImagen}`;
+    return `${PRODUCTO_IP}/uploads/productos/${rutaImagen}`;
   }
   
-  return `${API_PRODUCTO_URL}${rutaImagen}`;
+  return `${PRODUCTO_IP}${rutaImagen}`;
 };
 
 // ✅ Interceptor para agregar token JWT automáticamente a todas las peticiones
