@@ -38,46 +38,35 @@ export const API_USUARIO_URL = getApiUrl('VITE_API_USUARIO_URL', 'http://143.244
 // API_BASE_URL se usa para productos y categorías, así que debe apuntar al mismo que PRODUCTO_URL
 export const API_BASE_URL = getApiUrl('VITE_API_BASE_URL', 'http://164.90.246.132');
 
-// Función helper para construir URLs de imágenes
-// IMPORTANTE: En producción, usar el proxy /producto-api/uploads/ para evitar Mixed Content
 export const getImageUrl = (rutaImagen) => {
   if (!rutaImagen) return null;
   
-  // Si ya es una URL completa, devolverla tal cual
   if (rutaImagen.startsWith('http://') || rutaImagen.startsWith('https://')) {
     return rutaImagen;
   }
   
-  // Detectar si estamos en producción o desarrollo
   const isProduction = typeof window !== 'undefined' &&
                         window.location.hostname !== 'localhost' &&
                         window.location.hostname !== '127.0.0.1';
   
   if (isProduction) {
-    // En producción, usar ruta relativa a través del proxy del frontend
-    // Esto evita problemas de Mixed Content (HTTPS → HTTP)
-    
+    // Usar proxy del frontend
     if (rutaImagen.startsWith('/uploads/')) {
       return `/producto-api${rutaImagen}`;
     }
-    
     if (!rutaImagen.startsWith('/')) {
       return `/producto-api/uploads/productos/${rutaImagen}`;
     }
-    
     return `/producto-api${rutaImagen}`;
   } else {
-    // En desarrollo, usar localhost directamente
+    // Desarrollo local
     const PRODUCTO_IP_LOCAL = 'http://localhost:2001';
-    
     if (rutaImagen.startsWith('/uploads/')) {
       return `${PRODUCTO_IP_LOCAL}${rutaImagen}`;
     }
-    
     if (!rutaImagen.startsWith('/')) {
       return `${PRODUCTO_IP_LOCAL}/uploads/productos/${rutaImagen}`;
     }
-    
     return `${PRODUCTO_IP_LOCAL}${rutaImagen}`;
   }
 };
