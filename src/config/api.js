@@ -38,6 +38,7 @@ export const API_USUARIO_URL = getApiUrl('VITE_API_USUARIO_URL', 'http://143.244
 // API_BASE_URL se usa para productos y categorías, así que debe apuntar al mismo que PRODUCTO_URL
 export const API_BASE_URL = getApiUrl('VITE_API_BASE_URL', 'http://164.90.246.132');
 
+// En src/config/api.js
 export const getImageUrl = (rutaImagen) => {
   if (!rutaImagen) return null;
   
@@ -46,28 +47,17 @@ export const getImageUrl = (rutaImagen) => {
   }
   
   const isProduction = typeof window !== 'undefined' &&
-                        window.location.hostname !== 'localhost' &&
-                        window.location.hostname !== '127.0.0.1';
+                        window.location.hostname !== 'localhost';
   
   if (isProduction) {
-    // Usar proxy del frontend
+    // Usar IP pública directamente (HTTP, pero funcionará)
+    const PRODUCTO_IP = 'http://164.90.246.132';
     if (rutaImagen.startsWith('/uploads/')) {
-      return `/producto-api${rutaImagen}`;
+      return `${PRODUCTO_IP}${rutaImagen}`;
     }
-    if (!rutaImagen.startsWith('/')) {
-      return `/producto-api/uploads/productos/${rutaImagen}`;
-    }
-    return `/producto-api${rutaImagen}`;
+    return `${PRODUCTO_IP}/uploads/productos/${rutaImagen}`;
   } else {
-    // Desarrollo local
-    const PRODUCTO_IP_LOCAL = 'http://localhost:2001';
-    if (rutaImagen.startsWith('/uploads/')) {
-      return `${PRODUCTO_IP_LOCAL}${rutaImagen}`;
-    }
-    if (!rutaImagen.startsWith('/')) {
-      return `${PRODUCTO_IP_LOCAL}/uploads/productos/${rutaImagen}`;
-    }
-    return `${PRODUCTO_IP_LOCAL}${rutaImagen}`;
+    return `http://localhost:2001${rutaImagen.startsWith('/') ? rutaImagen : '/uploads/productos/' + rutaImagen}`;
   }
 };
 
