@@ -40,6 +40,12 @@ const CategoriaComponent = () => {
     return true;
   };
 
+  const getSubmitButtonText = () => {
+    if (uploadingImage) return 'Subiendo imagen...';
+    if (submitting) return 'Guardando...';
+    return editMode ? 'Actualizar' : 'Guardar';
+  };
+
   useEffect(() => {
     cargarCategorias();
     verificarConexion();
@@ -105,22 +111,26 @@ const CategoriaComponent = () => {
     setSubmitting(true);
     
     try {
-      // ✅ AGREGAR: Subir imagen ANTES de guardar (si hay una nueva)
+      let imagenUrl = currentCategoria.imagen;
+
+      // Upload image first if a new file is selected
       if (selectedFile) {
         setUploadingImage(true);
         const uploadResponse = await subirImagen(selectedFile);
-        setCurrentCategoria(prev => ({
-          ...prev,
-          imagen: uploadResponse.data.rutaImagen // ← GUARDAR LA RUTA
-        }));
+        imagenUrl = uploadResponse.data.rutaImagen;
         setUploadingImage(false);
       }
-      
-      // ✅ Guardar la categoría CON la ruta de imagen
+
+      // Save category with the image path
+      const categoriaToSave = {
+        ...currentCategoria,
+        imagen: imagenUrl
+      };
+
       if (editMode) {
-        await actualizarCategoria(currentCategoria.id, currentCategoria);
+        await actualizarCategoria(currentCategoria.id, categoriaToSave);
       } else {
-        await guardarCategoria(currentCategoria);
+        await guardarCategoria(categoriaToSave);
       }
       
       await cargarCategorias();
@@ -220,11 +230,16 @@ const CategoriaComponent = () => {
                 <label>Imagen</label>
                 <input type="file" onChange={handleFileChange} />
                 {previewUrl && <img src={previewUrl} alt="Preview" className="emp-preview-img" />}
+                {uploadingImage && (
+                  <div className="emp-upload-progress">
+                    <p>Subiendo imagen...</p>
+                  </div>
+                )}
               </div>
               <div className="emp-modal-footer">
                 <button type="button" className="emp-btn emp-btn-secondary" onClick={cerrarModal}>Cancelar</button>
-                <button type="submit" className="emp-btn emp-btn-primary" disabled={submitting}>
-                  {editMode ? 'Actualizar' : 'Guardar'}
+                <button type="submit" className="emp-btn emp-btn-primary" disabled={submitting || uploadingImage}>
+                  {getSubmitButtonText()}
                 </button>
               </div>
             </form>
