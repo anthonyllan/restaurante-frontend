@@ -486,7 +486,7 @@ const crearLocalDateTimeParaJava = () => {
                 </button>
                 
                 <button 
-                  className={`cli-tipo-entrega-btn ${tipoEntrega === 'DOMICILIO' ? 'active' : ''}`}
+                  className={`cli-tipo-entrega-btn disabled`}
                   onClick={() => actualizarTipoEntrega('DOMICILIO')}
                   disabled={true}
                   title="Deshabilitado temporalmente"
