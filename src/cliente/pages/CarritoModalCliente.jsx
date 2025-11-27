@@ -486,8 +486,10 @@ const crearLocalDateTimeParaJava = () => {
                 </button>
                 
                 <button 
-                  className={`cli-tipo-entrega-btn ${tipoEntrega === 'DOMICILIO' ? 'active' : ''}`}
+                  className={`cli-tipo-entrega-btn disabled`}
                   onClick={() => actualizarTipoEntrega('DOMICILIO')}
+                  disabled={true}
+                  title="Deshabilitado temporalmente"
                 >
                   <div className="cli-tipo-entrega-icono">
                     <FiTruck />
@@ -495,7 +497,7 @@ const crearLocalDateTimeParaJava = () => {
                   <div className="cli-tipo-entrega-info">
                     <h5>A domicilio</h5>
                     <p>Entregamos en tu ubicación</p>
-                    <p><small>Pago: Efectivo o Tarjeta</small></p>
+                    <p><small style={{color: '#9ca3af', fontStyle: 'italic'}}>Deshabilitado temporalmente</small></p>
                   </div>
                 </button>
               </div>
@@ -867,23 +869,21 @@ const crearLocalDateTimeParaJava = () => {
           <div className="cli-pago-form-group">
             <h4>Método de pago para {tipoEntrega === 'PARA_LLEVAR' ? 'recogida' : 'domicilio'}</h4>
             <div className="cli-pago-metodos-left">
-              <button 
-                className={`cli-pago-metodo-btn-left ${datosPago.metodoPago === 'EFECTIVO' ? 'active' : ''}`}
-                onClick={() => handleMetodoPagoChange('EFECTIVO')}
-              >
-                <div className="cli-pago-metodo-icon">
-                  <FiDollarSign />
-                </div>
-                <div className="cli-pago-metodo-content">
-                  <strong>Pago en Efectivo</strong>
-                  <small>
-                    {tipoEntrega === 'PARA_LLEVAR' 
-                      ? 'Paga al recoger tu pedido en el restaurante'
-                      : 'Paga al recibir tu pedido en tu domicilio'
-                    }
-                  </small>
-                </div>
-              </button>
+              {/* Cash payment option - only available for PARA_LLEVAR */}
+              {tipoEntrega === 'PARA_LLEVAR' && (
+                <button 
+                  className={`cli-pago-metodo-btn-left ${datosPago.metodoPago === 'EFECTIVO' ? 'active' : ''}`}
+                  onClick={() => handleMetodoPagoChange('EFECTIVO')}
+                >
+                  <div className="cli-pago-metodo-icon">
+                    <FiDollarSign />
+                  </div>
+                  <div className="cli-pago-metodo-content">
+                    <strong>Pago en Efectivo</strong>
+                    <small>Paga al recoger tu pedido en el restaurante</small>
+                  </div>
+                </button>
+              )}
               
               <button 
                 className={`cli-pago-metodo-btn-left ${datosPago.metodoPago === 'TARJETA' ? 'active' : ''}`}
@@ -904,18 +904,6 @@ const crearLocalDateTimeParaJava = () => {
               </button>
             </div>
           </div>
-  
-          {tipoEntrega === 'DOMICILIO' && datosPago.metodoPago === 'EFECTIVO' && (
-            <div className="cli-info-section">
-              <div className="cli-info-card-left">
-                <FiInfo />
-                <div>
-                  <strong>Pago en efectivo a domicilio</strong>
-                  <p>El repartidor recibirá el pago al momento de la entrega. Asegúrate de tener el monto exacto disponible.</p>
-                </div>
-              </div>
-            </div>
-          )}
   
           {datosPago.metodoPago === 'TARJETA' && (
             <div className="cli-info-section">
@@ -983,17 +971,9 @@ const crearLocalDateTimeParaJava = () => {
                     <p>Tu pedido quedará registrado como <strong>PENDIENTE DE PAGO</strong></p>
                     <p>
                       Pagarás <strong>${total.toFixed(2)} MXN</strong>{' '}
-                      {tipoEntrega === 'PARA_LLEVAR' 
-                        ? 'al recoger tu pedido en el restaurante'
-                        : 'al recibir tu pedido en tu domicilio'
-                      }
+                      al recoger tu pedido en el restaurante
                     </p>
-                    {tipoEntrega === 'PARA_LLEVAR' && (
-                      <p><MdRestaurant /> Ubicación: Zaragoza #6, Centro, Chilpancingo</p>
-                    )}
-                    {tipoEntrega === 'DOMICILIO' && (
-                      <p><FiTruck /> El repartidor recibirá el pago al momento de la entrega</p>
-                    )}
+                    <p><MdRestaurant /> Ubicación: Zaragoza #6, Centro, Chilpancingo</p>
                   </div>
                 </div>
                 
